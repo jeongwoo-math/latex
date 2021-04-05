@@ -1,0 +1,213 @@
+\documentclass{scrartcl}
+\usepackage{../../styles/style}
+
+%\darkmode
+% https://jangsookim.github.io/lectures/vscode/vscode_lecture0.html
+
+\title{
+    Introduction to Commutative Algebra \\ \Large
+    --- Solution of Homework 2 ---
+    }
+\author{20190262 Jeongwoo Park}
+\date{}
+
+\begin{document}
+    \maketitle
+
+    \section{Terminologies}
+
+    \begin{itemize}[labelsep=1.5em, leftmargin=8em]
+        \item[$\trianglelefteq$] For a ring $R$, a relation $I \trianglelefteq R$ means that $I$ is an ideal of $R$.
+        \item[\emph{rng}] A pair $(R,+,\times, 0)$ is called a \emph{rng} if $(R,+,0)$ is an Abelian group, $(R,\times)$ is a semigroup, and the usual distributive law holds. In this paper, we also suppose the commutativity of the multiplication.
+        \item[\emph{rng morphism}] A group homomorphism $f:R \to S$ between rngs $R$ and $S$ is called a \emph{rng homomorphism} if $f(r_1 r_2) = f(r_1)f(r_2)$ holds for all $r_1, r_2 \in R$.
+    \end{itemize}
+
+    \section{Solutions}
+    
+    \begin{proof}[Solution of Problem 1]
+        Clearly, if $E_1 \subseteq E_2$ are subsets of $R$, then $V(E_1) \supseteq V(E_2)$ holds because every prime ideal containing $E_2$ also contains $E_1$.
+
+        \begin{enumerate}
+            \item Note that $E \subseteq I \subseteq \sqrt{I}$, i.e., $V(E) \supseteq V(I) \supseteq V(\sqrt{I})$. The remainder is to show that $V(E) \subseteq V(\sqrt{I})$, and let's assume that $P \in V(E)$, or equivalently, $P$ be a prime ideal containing $E$. Then, $P = \langle P \rangle \supseteq \langle E \rangle = I$ holds. Also, we can obtain that $P = \sqrt{P} \supseteq \sqrt{I}$ because $a^n \in P$ implies that $a \in P$ since $P$ is prime. In conclusion, we have $V(E) \subseteq V(\sqrt{I})$, and this completes the proof.
+            
+            \item Every ideal of $R$ contains $0 = (0)$, in particular, every prime ideal contains $0$, i.e., $V(0) = X$.
+            
+            Every prime ideal is proper, so no prime ideal contains $X$, i.e., $V(X) = \varnothing$.
+
+            \item Let $P$ be a prime ideal of $R$, then $P \in V\left( \bigcup_i E_i \right)$ is equivalent to that $P \supseteq \bigcup_i E_i$. In the other word, for all $i \in \Lambda$, $P$ contains $E_i$, and it is logically same with that for all $i \in \Lambda$, $P$ is an element of $V(E_i)$. It is equivalent to $P \in \bigcap_i V(E_i)$, and this implies the statement.
+            
+            \item Note that an ideal $P$ is prime if and only if for any two ideals $I_1$ and $I_2$, the relation $I_1 I_2 \subseteq P$ implies that $I_1$ or $I_2$ is contained in $P$. By a simple induction argument, we can obtain that $P$ is prime if and only if for any finitely many ideals $I_i$'s, the relation $\prod_i I_i \subseteq P$ implies that one of $I_i$'s is contained in $P$.
+            
+            First, let's prove the first equality. Let $P$ be a prime ideal, then $P \in \bigcup_i V(I_i)$ is a logically same thing with there is $i$ such that $I_i$ is contained in $P$. Since $P$ is prime, it is equivalent to $P \supseteq \prod_i I_i$, i.e., $P \in V\left( \prod_i I_i \right)$. This proves the first equality.
+
+            For the second one, it is enough to show that $\sqrt{\prod_i I_i} = \sqrt{\bigcap_i I_i}$, because if this holds, then we can conclude that
+            $$ V\left( \prod_i I_i \right) = V\left( \sqrt{\prod_i I_i} \right) = V\left( \sqrt{\bigcap_i I_i} \right) = V\left( \bigcap_i I_1 \right) $$
+
+            \begin{Lemma}\label{radical of product and intersection}
+                 Let $R$ be a ring. For any finitely many ideals $I_i \trianglelefteq R$, the equality
+                 $$ \sqrt{\prod_i I_i} = \sqrt{\bigcap_i I_i} $$
+                 holds.
+            \end{Lemma}
+
+            \begin{proof}[Proof of Lemma~\ref{radical of product and intersection}]
+                Let's use an index set $\{1, 2, \cdots, n\}$. Of course, $\prod_i I_i \subseteq \bigcap_i I_i$, and this gives an inclusion $\sqrt{\prod_i I_i} \subseteq \sqrt{\bigcap_i I_i}$. So, the remainder is to show the reversed inclusion.
+
+                Let's assume that $a \in \sqrt{\bigcap_i I_i}$, then there is a natural number $N$ such that $a^N \in \bigcap_i I_i$. Hence, $a^{Nn} = (a^N)^n \in \left( \bigcap_i I_i \right) \subseteq \prod_i I_i$ holds, i.e., $a \in \sqrt{\prod_i I_i}$, and this completes the proof.
+            \end{proof}
+
+            This completes the proof.
+
+            Now, we have to show that the collection $\mathscr{F} = \left \{ V(I) \right\}_{I \trianglelefteq R}$ forms a topology on $X$ consist of closed sets. First, $\varnothing, X \in \mathscr{F}$ by the second part of this problem. Also, $\mathscr{F}$ is closed under a finite union and arbitrary inclusion by the third and fourth parts. This implies that $\mathscr{F}$ forms a topology of $X$. This completes the proof.
+        \end{enumerate}
+    \end{proof}
+
+    \begin{proof}[Solution of Problem 2]
+        Note that $V(f) = V(\langle f \rangle)$ holds, so we can identify them.
+        
+        \begin{enumerate}
+            \item It can be easily verified by using next equality
+            $$ D(f) \cap D(g) = V(f)^c \cap V(g)^c = \left( V(f) \cup V(g) \right)^c = V(fg)^c = D(fg) $$
+
+            \item The equality $D(f) = \varnothing$ is equivalent to $V(f) = X$, i.e., $f \in \bigcap_{P \text{: prime}} P = \sqrt{0}$. Hence, $D(f) = \varnothing$ if and only if $f$ is a nilpotent.
+            
+            \item The condition $D(f) = X$ is equivalent to $V(f) = \varnothing$, i.e., $f \notin \bigcup_{P \text{: prime}} P = \bigcup_{M \text{: maximal}} M = R \setminus R^\times$ because every proper ideal is contained in a maximal ideal. Hence, $D(f) = X$ is equivalent to $f \in R^\times$.
+            
+            \item We need a lemma.
+            
+            \begin{Lemma}\label{correspondence between varieties and radical ideals}
+                 Let $R$ be a ring. For any ideals $I_1, I_2 \trianglelefteq R$, the equality $V(I_1) = V(I_2)$ is equivalent to the equality $\sqrt{I_1} = \sqrt{I_2}$.
+            \end{Lemma}
+
+            \begin{proof}[Proof of Lemma~\ref{correspondence between varieties and radical ideals}]
+                First, let's consider the direct implication. Since a radical of an ideal coincides with the intersection of all prime ideal containing that ideal, we can obtain that
+                $$ \sqrt{I_1} = \bigcap V(I_1) = \bigcap V(I_2) = \sqrt{I_2} $$
+
+                Second, let's consider the reversed implication. However, it can be easily shown as $V(I_1) = V(\sqrt{I_1}) = V(\sqrt{I_2}) = V(I_2)$. This completes the proof of the lemma.
+            \end{proof}
+
+            Hence, $D(f) = D(g)$ holds if and only if $V(f) = V(g)$ holds, but it is equivalent to that $\sqrt{\langle f \rangle} = \sqrt{\langle g \rangle}$. This completes the proof.
+
+            \item It is enough to show that for any collection of closed sets $\left \{V(I_i) \right\}_{i \in I}$, if $\bigcap_{i \in I} V(I_i) = \varnothing$, then there is a finite subset $I'$ of $I$ such that $\bigcap_{i \in I'} V(I_i) = \varnothing$.
+            
+            However,
+            $$ \varnothing = \bigcap_{i \in I} V(I_i) = V\left( \bigcup_{i \in I} I_i \right) = V\left( \sum_{i \in I} I_i \right) $$
+            implies that $\sum_{i \in I} I_i = R$. Thus, there is a finite subset $I'$ of $I$ and an element $a_i \in I_i$ for each $i \in I'$ such that $\sum_{i \in I'} a_i =1$, and this implies that $\bigcap_{i \in I'} V(I_i) = V\left( \sum_{i \in I'} I_i \right) = \varnothing$ because $\sum_{i \in I'} I_i$ must be the unit ideal since it contains $1$. This completes the proof.
+        \end{enumerate}
+    \end{proof}
+
+    \begin{proof}[Solution of Problem 3]
+        \begin{enumerate}
+            \item Since $V(P) \supseteq \{P\}$, it is enough to show that if a closed set $V(I)$ contains $P$, then it must include $V(P)$. This is clear by the definition of $V$ because $P$ contains $I$, and so every prime ideal containing $P$ also contains $I$. This completes the proof.
+            
+            \item By the first part of this problem, the singleton $\{P\}$ is closed if and only if the unique prime ideal containing $P$ is itself. However, it is equivalent to that $P$ is maximal because every proper ideal is contained in a maximal ideal. This completes the proof.
+            
+            \item We need lemmas.
+
+            \begin{Lemma}\label{topology on k[[x]]}
+                Let's define an order function $\ord:k[[x]] \to \mathbb{N} \cup \left\{ \infty \right\}$ as
+                $$ \ord\left( \sum_{i \ge 0} a_i x^i\right) := \inf \left\{ i \in \mathbb{N} \,;\, a_i \neq 0 \right\} $$
+                Then,
+                $$ \ord(f(x) \cdot g(x)) = \ord f(x) + \ord g(x) $$
+                and
+                $$ \ord(f(x)+g(x)) \ge \min\{\ord(f(x)), \ord(g(x))\} $$
+                hold. Moreover, if we define a norm $ \lVert \bullet \rVert := \exp \circ (-\ord) $, then this is well-define with the strong triangle inequality
+                $$ \lVert f(x) + g(x) \rVert \le \max \{\lVert f(x) \rVert, \lVert g(x) \rVert\} $$
+                Here, we assign $e^{-\infty} := 0$, and we consider the trivial absolute value $| \bullet |$ on $k$, which gives $1$ on $k^\times$ and $0$ at $0$.
+            \end{Lemma}
+
+            \begin{proof}[Proof of Lemma~\ref{topology on k[[x]]}]
+                The multiplicativity of the order function can be checked easily because $k$ is a field, in particular, is a domain. Also, the inequality $\ord(f(x)+g(x)) \ge \min\{\ord(f(x)), \ord(g(x))\}$ is due to that if $i$th coefficient of $f(x)+g(x)$ is non-zero, then one of $i$th coefficient of $f(x)$ and of $g(x)$ must be non-zero. Also, the well-definedness of the norm can be checked straightforwardly by using facts that $\exp$ is a non-zero increasing function, and the order is invariant under the unit multiplication. This completes the proof.
+            \end{proof}
+
+            \begin{Lemma}\label{completeness of k[[x]]}
+                 The normed $k$-vector space $k[[x]]$ is complete.
+            \end{Lemma}
+
+            \begin{proof}[Proof of Lemma~\ref{completeness of k[[x]]}]
+                It is enough to show that every absolutely convergent series converges. Let $\sum_{i=1}^{\infty} f_i(x)$ be an absolutely convergent series, then $\lim_{i \to \infty} \lVert f_i(x) \rVert = 0$, or equivalently, $\lim_{i \to \infty} \ord f_i(x) = \infty$. This implies that if we consider the partial sum $\sum_{i=1}^{N} f_i(x) = \sum_{i \ge 0} a_{Ni} x^i$, then the sequence $(a_{Ni})_N$ stabilizes for each $i$. We define $a_i := \lim_{N \to \infty} a_{Ni}$ and $f(x) := \sum_{i \ge 0} a_i x^i$. Then, it can be easily checked that
+                $$ \lim_{N \to \infty} \ord \left( \left[ \sum_{i=1}^{N} f_i(x) \right] - f(x) \right) = \infty $$
+                since each sequence $(a_{Ni}-a_i)_N$ stabilizes to $0$. Therefore, the infinite series converges to $f(x)$, and this completes the proof.
+            \end{proof}
+
+            \begin{Lemma}\label{property of k[[x]]}
+                 Every non-zero ideal of the domain $k[[x]]$ is of the form $\langle x \rangle^n$ for some $n \in \mathbb{N}$. In particular, the unique prime ideals of $k[[x]]$ is $0$ and $\langle x \rangle$.
+            \end{Lemma}
+
+            \begin{proof}[Proof of Lemma~\ref{property of k[[x]]}]
+                By using the order function, it can be easily checked that the ring $k[[x]]$ is a domain. By using the same method in analysis, we can know that the addition and multiplication on $k[[x]]$ are continuous.
+
+                Now, I want to show that $f(x) = \sum_i a_i x^i$ is a unit element if and only if $a_0 \in k^\times$. If it is a unit element, then $0 = \ord 1 = \ord f(x) + \ord f(x)^{-1}$ implies that $\ord f(x) = 0$, i.e., $a_0 \neq 0$. To show the converse, it is enough to show that $1-xg(x)$ is a unit element for every $g \in k[[x]]$ because we can normalize $a_0$ to $1$ by using a unit multiplication which does not changes the unit-ness. Now, we consider an infinite series
+                $$ 1 + xg(x) + (xg(x))^2 + \cdots $$
+                This series converges because $k[[x]]$ is complete and a partial sum from an $N$th term to an $M$th term has a norm at most $e^{-N+1}$. By the continuity, we can calculate the geometric series, and that must be the inverse of $1-xg(x)$, i.e., $1-xg(x)$ is a unit element.
+
+                Therefore, for any non-zero element $f(x) \in k[[x]]$ is equivalent to $x^{\ord f(x)}$ up to the unit multiplication. In particular, for any non-zero ideal $I \trianglelefteq k[[x]]$ can be written as $\langle x \rangle^{\min_{f(x) \in I} \ord f(x)}$. This completes the proof.
+            \end{proof}
+
+            Therefore, $\Spec k[[x]]$ is homeomorphic to the \href{https://en.wikipedia.org/wiki/Sierpi%C5%84ski_space#:~:text=In%20mathematics%2C%20the%20Sierpi%C5%84ski%20space,is%20named%20after%20Wac%C5%82aw%20Sierpi%C5%84ski.}{\uwave{Sierpinski space}}. Here, the singleton $\{1\}$ is open but not closed. Hence, the zero ideal of $k[[x]]$ makes an example that is open but not closed.
+
+            \item Let's consider the zero ideal of $\mathbb{Z}$, then it is not closed since it is not maximal. If it was open, then the complement $C = \{p \mathbb{Z} \,;\, p \text{ is a prime.}\}$ must be closed. So, there is an ideal $I \trianglelefteq \mathbb{Z}$ such that $V(I) = C$, but then $I \subset \bigcap_{p \,;\, p \text{ is a prime.}} p \mathbb{Z} = 0$ holds, i.e., $I=0$. However, this contradicts to the fact that $0 \notin C$ but $0 \in V(0) = C$. This completes the proof.
+        \end{enumerate}
+    \end{proof}
+
+    \begin{proof}[Solution of Problem 4]
+        First, let's prove (1) implies (2). Assume that $U$ and $V$ are non-empty open sets, then $U^c$ and $V^c$ are proper closed sets. By the assumption, $(U \cap V)^c = U^c \cup V^c \subsetneq X$, and this concludes that $U \cap V \neq \varnothing$.
+
+        Second, let's consider the implication from (2) to (3). Let $U$ be a non-empty open set, then $\overline{U}^c$ is an open set which is disjoint from $U$. By the assumption, $\overline{U}^c$ must be an empty set, i.e., $\overline{U} = X$. Hence, $U$ must be dense.
+
+        Third, the remainder is to show that (3) implies (1). Let $C_1$ and $C_2$ are proper closed subsets. If $C_1 \cup C_2 = X$, then $C_1^c \subseteq C_2$ holds. Since $C_1^c$ is non-empty open, so it is dense by the condition (3), i.e., $C_2 = X$. This contradicts to the assumption, and this completes the proof.
+    \end{proof}
+
+    \begin{proof}[Solution of Problem 5]
+        \begin{enumerate}
+            \item The unique irreducible Hausdorff topological space is the singleton because if there are two different points $x_1$ and $x_2$, then there are non-empty disjoint open sets $U_1 \ni x_1, U_2 \ni x_2$, so $X$ is reducible. Of course, the real line is a Hausdorff topological space which is not a singleton. Therefore, the real line is reducible. This proves the statement.
+            
+            \item $X$ is connected if and only if there is no \emph{disjoint} proper closed subsets covering $X$, but $X$ is irreducible means that there is no proper closed subsets covering $X$. Hence, the irreduciblity implies the the connectedness.
+            
+            \item Of course, $X$ is non-empty since $R$ is non-trivial. The space $X$ is irreducible if and only if for any ideals $I_1$ and $I_2$, if $V(I_1) \cup V(I_1) = V(I_1 I_2) = X$, then $V(I_1) = X$ or $V(I_2) = X$. In the other words, this means that $I_1 I_2 \subseteq \bigcap_{P \,;\, P \text{ is prime.}} P = \sqrt{0}$ implies that one of $I_1$ and $I_2$ is contained in $\sqrt{0}$, i.e., $\sqrt{0}$ is prime. This completes the proof.
+            
+            \item We need a lemma.
+            
+            \begin{Lemma}\label{closed subspace of a spectrum}
+                 Let $R$ be a ring. For any closed subset $V(I)$ is homeomorphic to the space $\Spec(R/I)$.
+            \end{Lemma}
+
+            \begin{proof}[Proof of Lemma~\ref{closed subspace of a spectrum}]
+                Let's consider the natural order-preserving one-to-one correspondence
+                $$ \{\text{ideals of } R \text{ containing } I\} \longleftrightarrow \{\text{ideals of } R/I\} $$
+                This correspondence restricts to prime ideals, i.e, restricts to a bijection between $V(I)$ and $\Spec(R/I)$. Also, this bijection makes a one-to-one correspondence between set of all closed sets by $V(I') \leftrightsquigarrow V(I'/I)$ for all ideal $I' \supseteq I$ because an prime ideal on $I$ corresponds to a prime on $I'/I$, and converse also holds. Hence the bijection between $V(I)$ and $\Spec(R/I)$ is a homeomorphism, and this proves the lemma.
+            \end{proof}
+
+            We can pick a radial ideal $I$ such that $Y = V(I)$. Note that this $I$ is unique by the \textbf{Lemma~\ref{correspondence between varieties and radical ideals}}, so it is enough to show that $I$ is prime because a radical of a prime ideal is itself. By the lemma and the third part of this problem, we can conclude that $Y$ is irreducible if and only if the nilradical of $R/I$ is prime. By the correspondence theorem (and an isomorphism theorem), it is equivalent to $\sqrt{I} = I$ is prime. Hence, $Y$ is irreducible if and only if $Y=V(P)$ for some prime $P$.
+        \end{enumerate}
+    \end{proof}
+    
+    \begin{proof}[Solution of Problem 6]
+        Note that the generic point of a closed set $Y$ is the minimum prime ideal contained in $Y$.
+
+        \begin{enumerate}
+            \item If $R$ is a domain, then $0$ is the minimum prime ideal of $R$, so it is the generic point of $X$.
+            
+            \item Since $\eta$ is the minimum prime ideal, there is no proper closed subset of $X$ containing $\eta$. By considering complements, we can conclude that every non-empty open subset of $X$ contains $\eta$, in particular, the intersection of all non-empty open subsets is non-empty since it contains $\eta$.
+        \end{enumerate}
+    \end{proof}
+
+    \begin{proof}[Solution of Problem 7]
+        \begin{enumerate}
+            \item Consider two closed sets $V(R \times 0)$ and $V(0 \times S)$. They are proper since a maximal ideal containing a proper ideal $0 \times S$ is not in $V(R \times 0)$, so $V(R \times 0)$ is proper. Similarly, the closed set $V(0 \times S)$ is also proper.
+            
+            Let's write $X = \Spec(R \times S)$. We can know that
+            $$ V(R \times 0) \cup V(0 \times S) = V((R \times 0) \cap (0 \times S)) = V(0) = X $$
+            and
+            $$ V(R \times 0) \cap V(0 \times S) = V((R \times 0) + (0 \times S)) = V(R) = \varnothing $$
+            Therefore, the space $X$ is not connected.
+
+            \item First, let's show that the non-empty space $X = \Spec R$ is connected. Note that the ring $R$ is \href{https://en.wikipedia.org/wiki/Reduced_ring#:~:text=In%20ring%20theory%2C%20a%20ring,its%20underlying%20ring%20is%20reduced.}{\uwave{reduced}} since $\sqrt{\langle xy \rangle} = \sqrt{\langle x \rangle \langle y \rangle} = \sqrt{\langle x \rangle} \cap \sqrt{\langle y \rangle} = \langle x \rangle \cdot \langle y \rangle = \langle xy \rangle$ holds.  Let $V(I_1)$ and $V(I_2)$ be two disjoint closed subsets covering $X$, then we can obtain that $X = V(I_1) \cup V(I_2) = V(I_1 I_2)$ and $\varnothing = V(I_1) \cap V(I_2) = V(I_1 + I_2)$ holds. In the other word, $I_1 I_2 = 0$  and $I_1 + I_2 = R$. Let $a_1, a_2 \in k[x,y]$ such that $\overline{a_1} \in I_1, \overline{a_2} \in I_2$ and $\overline{a_1}+\overline{a_2} = 1$. Then,
+            $$ a_1 + a_2 \equiv 1 \, \text{mod} \, \langle xy \rangle $$
+            and
+            $$ a_1 a_2 \equiv 0 \, \text{mod} \, \langle xy \rangle $$
+            hold. However, it is impossible since $a_1 (1-a_1) \equiv a_1 a_2 \equiv 0$ implies that $a_1(1-a_1) \in \langle xy \rangle$. But one of $a_1$ and $1-a_1$ has a non-constant term, so either $a_1 \equiv 0$ or $1-a_1 \equiv a_2 \equiv 0$. By the first equality $a_1 + a_2 \equiv 1$, we have that one of $I_1$ and $I_2$ is the unit ideal, and the another one must be the zero ideal. Hence, one of the closed sets is the whole space. This proves the connectedness of the space $X$.
+
+            However, the ring $R$ is reduced but not a domain since the ideal $\langle xy \rangle$ is not prime. So, the nilradical is not prime, and this implies that $X$ is reducible. This completes the proof.
+        \end{enumerate}
+    \end{proof}
+\end{document}

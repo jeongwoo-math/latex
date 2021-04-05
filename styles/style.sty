@@ -1,0 +1,205 @@
+%\documentclass{scrartcl}
+
+%%%%%%%%%% To be fixed %%%%%%%%%%
+
+% mapsdown
+
+% Packages, please DO NOT change the order!
+\usepackage{amsmath, amssymb, amsthm, amsfonts}
+\usepackage{tikz-cd, adjustbox}
+\usepackage[all]{xy}
+\usepackage{euler}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{manfnt}
+\usepackage{array}
+\usepackage{marginnote}
+\usepackage{fullpage}
+\usepackage{comment}
+\usepackage[overlay]{textpos}
+\usepackage{libertine}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+\usepackage{stmaryrd}
+\usepackage{ulem}
+
+\setlength{\parskip}{0.5em}
+
+%\numberwithin{equation}{subsection}
+
+% Theorem-type environments
+
+\theoremstyle{plain}
+\newtheorem{Theorem}[subsection]{Theorem}
+\newtheorem*{Theorem*}{Theorem}
+
+\newtheorem{Lemma}[subsection]{Lemma}
+\newtheorem*{Lemma*}{Lemma}
+
+\newtheorem{Proposition}[subsection]{Proposition}
+\newtheorem{Proposition/definition}[section]{Proposition/Definition}
+\newtheorem*{Proposition*}{Proposition}
+
+\newtheorem{Corollary}[subsection]{Corollary}
+\newtheorem*{Corollary*}{Corollary}
+
+\newtheorem{Claim}[subsection]{Claim}
+\newtheorem*{Claim*}{Claim}
+
+\newtheorem{conjecture}[subsection]{Conjecture}
+\newtheorem*{conjecture*}{Conjecture}
+
+\theoremstyle{definition}
+\newtheorem{Definition}[subsection]{Definition}
+\newtheorem*{Definition*}{Definition}
+
+\newtheorem{Question}[subsection]{Question}
+\newtheorem*{Question*}{Question}
+
+\newtheorem{Problem}[subsection]{Problem}
+\newtheorem{Goal}[subsection]{Goal}
+
+\newtheorem{Example}[subsection]{Example}
+\newtheorem*{Example*}{Example}
+
+\newtheorem{Exercise}[subsection]{Exercise}
+
+\theoremstyle{remark}
+
+\newtheorem{Caution}[subsection]{Caution}
+\newtheorem*{Caution*}{Caution}
+
+\newtheorem{Remark}[subsection]{Remark}
+\newtheorem*{Remark*}{Remark}
+
+\def \bd {\partial}
+\def \C {\mathbb{C}}
+\def \CP {\mathbb{C}P}
+\def \ds {\oplus}
+\def \Ds {\bigoplus}
+\def \I {\bigcap}
+\def \N {\mathbb{N}}
+\def \R {\mathbb{R}}
+\def \RP {\mathbb{R}P}
+\def \T {^{\operatorname{T}}}
+\def \tp {\otimes}
+\def \Tp {\bigotimes}
+\def \* {\times}
+\def \Q {\mathbb{Q}}
+\def \u {\cup}
+\def \U {\bigcup}
+\def \Z {\mathbb{Z}}
+
+\def \0 {\varnothing}
+\def \2 {\sqrt{2}}
+\def \3 {\sqrt{3}}
+\def \5 {\sqrt{5}}
+\def \6 {\sqrt{6}}
+\def \7 {\sqrt{7}}
+
+\def \< {\subseteq}
+\def \> {\supseteq}
+\def \<| {\trianglelefteq}
+\def \|> {\trianglerighteq}
+\def \open {\underset{\text{open}}{\subseteq}}
+\def \closed {\underset{\text{closed}}{\subseteq}}
+\def \compact {\underset{\text{compact}}{\subseteq}}
+\def \imm {\underset{\text{imm}}{\subseteq}}
+\def \emb {\underset{\text{emb}}{\subseteq}}
+\def \submod {\underset{\text{submod}}{\subseteq}}
+\def \*| {\rtimes}
+\def \w {\wedge}
+
+% Mathematical symbols
+\def \iffdef {\overset{\text{def}}{\iff}}
+
+\DeclareMathOperator{\ab}{ab}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\fd}{fd}
+\DeclareMathOperator{\Frac}{Frac}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\MaxSpec}{MaxSpec}
+\DeclareMathOperator{\op}{op}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\pd}{pd}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\PSL}{PSL}
+\DeclareMathOperator{\rad}{rad}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SO}{\mathbf{SO}}
+\DeclareMathOperator{\Span}{Span}
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Tors}{Tors}
+\DeclareMathOperator{\Tr}{Tr}
+
+\newcommand{\name}[1]{\textbf{\textit{#1}}}
+
+\newcommand{\abs}[1]{\left|{#1}\right|}
+\newcommand{\bimod}[2]{{#1}\text{-}\mathsf{mod}\text{-}{#2}}
+\newcommand{\card}[1]{\left| {#1} \right|}
+\newcommand{\cl}[1]{\overline{#1}}
+\newcommand{\coll}[1]{\left\{{#1}\right\}}
+\newcommand{\conj}[1]{\overline{#1}}
+\newcommand{\dv}[2]{\frac{\mathrm{d}{#1}}{\mathrm{d}{#2}}}
+\newcommand{\elts}[2]{{#1} \,:\, {#2}}
+\newcommand{\gen}[1]{\left\langle{#1}\right\rangle}
+\newcommand{\lmod}[1]{#1{\operatorname{\mathbf{-mod}}}}
+\newcommand{\mat}[4]{\begin{bmatrix} {#1} & {#2} \\ {#3} & {#4} \end{bmatrix}}
+\newcommand{\norm}[1]{\left\|{#1}\right\|}
+\newcommand{\Ord}[1]{\left| {#1} \right|}
+\newcommand{\pdv}[2]{\frac{\partial {#1}}{\partial {#2}}}
+\newcommand{\res}[2]{\left.{#1}\right|_{#2}}
+\newcommand{\rmod}[1]{\mathsf{mod}\text{-}{#1}}
+\newcommand{\set}[2]{\left\{{#1} \,:\, {#2}\right\}}
+\newcommand{\tuple}[1]{\left({#1}\right)}
+
+% Quotient
+\newcommand*{\quo}[2]{ % \newfaktor{#1}{#2} -> #1/#2
+  \raisebox{0.8\height}{\ensuremath{#1}} % Numerator
+  \mkern-7mu\raisebox{-0.2\height}{\scalebox{2}{$\diagup$}}\mkern-7mu % Slash /
+  \raisebox{-0.9\height}{\ensuremath{#2}} % Denominator
+}
+
+% Bourbaki dangerous bend symbol
+\newenvironment{dnote}{\begin{cau}\reversemarginpar\marginnote{\huge\textdbend}[-\baselineskip]}{\end{cau}}
+
+% Dark Mode, basic format from https://tex.stackexchange.com/a/502238 by https://tex.stackexchange.com/users/71473/loved-by-jesus
+\newcommand{\setbackgroundcolour}{\pagecolor[rgb]{0,0,0}}  
+\newcommand{\settextcolour}{\color[rgb]{0.8,0.8,0.8}}    
+\newcommand{\darkmode}{\setbackgroundcolour\settextcolour}
+
+% Hyperlink setting
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=orange,
+}
+
+% Step setting
+
+% Roman Numeral, code from https://tex.stackexchange.com/questions/23487/how-can-i-get-roman-numerals-in-text by https://tex.stackexchange.com/users/213/stefan-kottwitz
+\makeatletter
+\newcommand*{\rom}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
