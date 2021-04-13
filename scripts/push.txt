@@ -1,6 +1,5 @@
 cd ..
 git init
 git add --all
-date=printf '%(%Y-%m-%d)T\n' -1
-git commit -m "$date"
+git commit -m "save"
 git push -u origin main
