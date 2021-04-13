@@ -1,0 +1,184 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{amsmath,amssymb,amsthm, tikz,titlesec,hyperref, mathrsfs, mathtools}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{ulem}
+\linespread{1.3}
+\newtheorem{claim}{Claim}[section]
+\newtheorem{lemma}{Lemma}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+%%%%%%%%%%%%%%%%%%%%%%%% My Settings %%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hypersetup{
+    colorlinks=true
+}
+
+\DeclareMathOperator*{\codim}{codim}
+\DeclareMathOperator*{\im}{im}
+\DeclareMathOperator*{\rank}{rank}
+\DeclareMathOperator*{\Span}{Span}
+\DeclareMathOperator*{\Sym}{Sym}
+
+\newcommand{\dx}{\mathrm{d}x}
+
+% Quotient
+\newcommand*{\quo}[2]{ % \newfaktor{#1}{#2} -> #1/#2
+  \raisebox{0.8\height}{\ensuremath{#1}} % Numerator
+  \mkern-7mu\raisebox{-0.2\height}{\scalebox{2}{$\diagup$}}\mkern-7mu % Slash /
+  \raisebox{-0.9\height}{\ensuremath{#2}} % Denominator
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\name{Jeongwoo Park}   % Name of the student
+\newcommand\university{KAIST} % Name of the university
+\newcommand\department{Mathematical Sciences} % Name of the department
+\newcommand\studentid{20190262} % Student ID
+
+\title{KAIST\\2021 MAS575 Combinatorics\\
+Homework\bigskip}
+\author{\textbf{\Large \name} \\
+University: \university\\
+Department: \department\\
+Student ID: \studentid}
+\date{\today}
+
+\begin{document}
+\thispagestyle{empty}
+\maketitle
+\tableofcontents
+\titleformat{\section}[frame]{\pagebreak}{\filright
+\footnotesize  \enspace \textsf{KAIST --- MAS575 Combinatorics 2021 Spring}\enspace}{6pt}{\Large\bfseries\filcenter}
+
+\section{HW 3.1}
+
+First, let's consider the left inequality. The inequality is clear when $n=1$, and if $n=2$, then the regular $5$-gon gives an inequality $m(2) \ge 5$, thus the inequality holds in these cases. Now, let's think about cases for $n \ge 3$. Note that it doesn't matter if we consider arbitrary sphere of dimension $n-1$, instead of the unit sphere $S^{n-1}$. Also, we can identify $\mathbb{R}^n$ with the hyperplane $H := \left\{ (a_i)_i \in \mathbb{R}^{n+1} \,;\, \sum_i a_i = 1 \right\}$ equipped with the distance inherited from $\mathbb{R}^{n+1}$. Let $S \subseteq H$ be an ($n-1$)-dimensional sphere with radius $\sqrt{\frac{1}{2}-\frac{1}{n}}$, centered at $\left( \frac{1}{n} \right)_i \in H$. Let $X = \left\{ \frac{e_i+e_j}{2} \right\}_{1 \le i < j \le n+1}$, then this set is a subset of $S$ due to the equality
+$$ d\left( \tfrac{e_i + e_j}{2}, \left( \tfrac{1}{n} \right)_i \right) = \sqrt{2 \cdot \left( \tfrac{1}{2} - \tfrac{1}{n} \right)^2 + \tfrac{n-2}{n^2}} = \sqrt{\tfrac{1}{2} - \tfrac{1}{n}} $$
+Moreover, the set $X$ is a $2$-distance set because
+\begin{align*}
+  d\left( \tfrac{e_i + e_j}{2}, \tfrac{e_{i'} + e_{j'}}{2} \right) =
+  \begin{cases}
+    1 & \lvert i, i', j, j' \rvert = 4\\
+    \frac{1}{\sqrt{2}} & \lvert i, i', j, j' \rvert = 3
+  \end{cases}
+\end{align*}
+holds where $i<j, i'<j'$ are integers in $[1,n+1]$. Hence, $m(n) \ge \lvert X \rvert = \binom{n+1}{2} = \frac{n(n+1)}{2}$ holds.
+
+For the second inequality, note that the equality $d(x,y) = 1-x \cdot y$ holds for all unit vectors $x$ and $y$, by the elementary Euclidean geometry. So, if we define two numbers $\hat a = 1-a, \hat b = 1-b$, then the condition ``$\lVert x-y \rVert \in \left\{ a,b \right\}$ for all different $x,y \in X$'' is equivalent to ``$x \cdot y \in \left\{ \hat a, \hat b \right\}$ for all different $x,y \in X$''. Here, we can suppose that $a, b \neq 0$, or equivalently, $\hat a, \hat b \neq 1$. Let's use an index $X = \left\{ a_i \right\}_{1 \le i \le m}$ with $m = \lvert X \rvert$. Now, we define $n$-variable polynomials
+$$ f_{i'}\left( x_\bullet \right) = \frac{\Big(x_\bullet \cdot a_{i'} - \hat a \Big) \left(x_\bullet \cdot a_{i'} - \hat b \right)}{\Big ( 1- \hat{a} \Big )\left( 1- \hat{b} \right)} \in \mathbb{R}[x_i]_{1 \le i \le n} $$
+for all $1 \le i' \le m$. Note that the equality $f_{i'}(a_i) = \delta_{i,i'}$ holds by the construction, in particular, the the set $\left\{ f_{i'}(x_\bullet) \right\}_{i'}$ is linearly independent.
+
+If one of $\hat a$ and $\hat b$ is zero, then $f_{i'}(x_\bullet) \in \left\langle x_i x_j, x_i \right\rangle_{1 \le i < j \le n+1}$ holds since there is no constant term. By using the dimension argument, we can conclude that
+$$ m = \lvert \left\{ f_{i'}(x_\bullet) \right\}_{i'} \rvert \le \dim \left\langle x_i x_j, x_i \right\rangle_{i,j} = n + \binom{n}{2} + n = \frac{n(n+3)}{2} $$
+
+Let's consider the case for $\hat a$ and $\hat b$ are non-zero. If we define a new polynomial $f_0(x_\bullet) := 1 - x_\bullet \cdot x_\bullet$ and a vector $a_0 = 0$, then the equalities $f_0(x_i) = \delta_{i,0}$ and $f_{i'}(x_0) = \frac{\hat a \hat b}{( 1- \hat a )\left(1- \hat b \right)} \cdot \delta_{0,i'}$ hold. By the usual technique of linear independence, we can deduce that the set $\left\{ f_{i'}(x_\bullet) \right\}_{0 \le i' \le m}$ is linearly independent, because the number $\frac{\hat a \hat b}{(1- \hat a) \left(1- \hat b \right)}$ is non-zero. By a relation $f_{i'}(x_\bullet) \in \left\langle x_i x_j, x_i, 1 \right\rangle_{1 \le i < j \le n}$, we can conclude that
+$$ m+1 = \lvert \left\{ f_{i'}(x_\bullet) \right\}_{i'} \rvert \le \dim \left\langle x_i x_j, x_i, 1 \right\rangle_{i,j} = n + \binom{n}{2} + n + 1 = \frac{n(n+3)}{2} $$
+or equivalently,
+$$ m \le \frac{n(n+3)}{2} $$
+holds. This completes the proof. \qed
+
+\section{HW 3.2}
+
+Let $N = \left \lvert \bigcup_{i,j} A_{i,j} \right \rvert$, then we can assume that $A_{i,j} \subseteq [N]$ for all $i$ and $j$. We define sets
+$$ P_i := \left\{ \sigma \in \Sym(N) \,;\, \text{Every element of } A_{i,k} \text{ appears before every element of } A_{i,k'} \text{ for all } k<k'. \right\} $$
+By the elementary combinatorics, we can deduce an identity $\left \lvert P_i \right \rvert = \binom{N}{\sum_i r_i} \cdot \left( \prod_i r_i! \right) \cdot \left( N - \sum_i r_i \right)! = \frac{N!}{\binom{\sum_i r_i}{r_1, r_2, \cdots, r_k}}$.
+
+\begin{claim}
+  These sets $P_i$ are pairwisely disjoint.
+\end{claim}
+
+\begin{proof}[Proof of the Claim]
+  Let's assume that $\sigma \in P_i \cap P_{i'}$ for some different $i$ and $i'$. By the property in the problem, there are $j_1 < j_2$ and $j_1' < j_2'$ such that $A_{i,j_1} \cap A_{i', j_2'} \neq \varnothing$ and $A_{i, j_2} \cap A_{i', j_1'} \neq \varnothing$. If we pick an element $a_1$ from the first set and an element $a_2$ from the second set, then $a_1$ appears before $a_2$ in $\sigma$ since $a_1 \in A_{i, j_1}$ and $a_2 \in A_{i, j_2}$ hold, by the property of $\sigma \in P_i$. However, the fact that $a_1 \in A_{i', j_2'}$ and $a_2 \in A_{i', j_1'}$ implies that $a_1$ appears after $a_2$ in $\sigma$, by the property of $\sigma \in P_{i'}$, and this makes a contradiction. This proves the claim.
+\end{proof}
+
+In conclusion, we can deduce that
+\begin{align*}
+  N! &= \left \lvert \Sym(N) \right \rvert\\
+  &\ge \left \lvert \coprod_i P_i \right \rvert\\
+  &= \sum_i \left \lvert P_i \right \rvert\\
+  &= m \cdot \frac{N!}{\binom{\sum_i r_i}{r_1, r_2, \cdots, r_k}}
+\end{align*}
+or equivalently, $m \le \binom{\sum_i r_i}{r_1, r_2, \cdots, r_k}$ holds. This completes the proof. \qed
+
+\section{HW 3.3}
+
+We need some definitions and lemmas.
+
+\begin{definition}[tensor product of vector spaces]
+  Let $V_i$'s be real vector spaces, where $1 \le i \le n$. Define a \emph{tensor product of $V_i$'s} as the dual vector space of the space of all multilinear maps $L(V_1, \cdots, V_n ; \mathbb{R})$. We denote this vector space as $\bigotimes_{i=1}^n V_i$.
+\end{definition}
+
+\begin{definition}[tensor]
+  Let $V_i$'s be real vector spaces, and $v_i \in V_i$. We define a tensor $\otimes_i v_i \in \bigotimes_i V_i$ as a map sending a multilinear map $L \in L(V_1, \cdots, V_n, \mathbb{R})$ to $L(v_1, \cdots, v_n)$.
+\end{definition}
+
+\begin{lemma}\label{dimension of tensor product}
+  Let $V_i$'s be $d_i$-dimensional real vector spaces, where $1 \le i \le n$. Then, the dimension of the tensor product $\bigotimes_i V_i$ is $\prod_i d_i$.
+\end{lemma}
+
+\begin{proof}[Proof of Lemma~\ref{dimension of tensor product}]
+  Let $\{w_{i,j}\}_{1 \le j \le d_i}$ be a basis of $V_i$, and let $\{w^*_{i,j}\}_{1 \le j \le d_i}$ be the dual basis of it. We define $\otimes_i w^*_{i,j_i} \in L(V_1, \cdots, V_n ; \mathbb{R})$\footnote{This is some kind of abuse of notation.} as a map sending $(v_i)_i$ to $\prod_i w^*_{i,j_i}(v_i)$. It is enough to show that the set $B = \left\{ \otimes_i v_{i, j_i} \right\}_{i,j}$ forms a basis of the tensor product $\bigotimes_i V_i$.
+
+  First, let's show that $B$ generated the tensor product. Let $\varphi \in \bigotimes_i V_i$, and $c_{j_\bullet} = \varphi\left( \otimes_i w^*_{i, j_i} \right)$. Then, we can conclude that $\varphi = \sum_{j_\bullet} c_{j_\bullet} \cdot \left( \otimes_i w_{i,j_i} \right)$, since $L(V_1, \cdots, V_n ; \mathbb{R})$ is generated by tensors $\left\{ \otimes_i w_{i, j_i} \right\}_{j_\bullet}$, by the elementary linear algebra.
+
+  Second, let's show that $B$ is linearly independent. If we have an equality $\sum_{j_\bullet} c_{j_\bullet} \cdot \left( \otimes_i w_{i, j_i} \right) = 0$, then
+  $$ c_{j'_\bullet} = \left( \sum_{j_\bullet} c_{j_\bullet} \cdot \left( \otimes_i w_{i, j_i} \right) \right) \left( \otimes_i w^*_{i, j'_i} \right) = 0 $$
+  holds for all $j'_\bullet$. This completes the proof.
+\end{proof}
+
+In particular, a tensor of vectors forms a zero map if and only if one of these vectors is zero.
+
+\begin{definition}[wedge product of a tensor product]
+  Let $V_i$'s be real vector spaces, and let $r_i, s_i$ be natural numbers. We define a \emph{wedge product} $\wedge : \left( \bigotimes_{i} V_i^{\wedge r_i} \right) \times \left( \bigotimes_{i} V_i^{\wedge s_i} \right) \to \left( \bigotimes_{i} V_i^{\wedge r_i+s_i} \right)$ as $\left( \otimes_{i} v_i \right) \wedge \left( \otimes_{i} w_i \right) := \otimes_{i} \left( v_i \wedge w_i \right)$.
+\end{definition}
+
+To show the well-definedness of this wedge product, let $\otimes_{i} v_i = \otimes_{i} v'_i$ and $\otimes_{i} w_i = \otimes_{i} w'_i$, where $v_i, v'_i \in V_i^{\wedge r_i}$ and $w_i, w'_i \in V_i^{\wedge s_i}$. Let $L \in L \left (V_i^{\wedge r_i + s_i} ; \mathbb{R} \right)_i$ be a multilinear map, then we can define $L_1 \in L \left(V_i^{\wedge r_i}; \mathbb{R} \right)_i$ and $L_2 \in L \left(V_i^{\wedge s_i}; \mathbb{R} \right)_i$ as $L_1 : (a_i)_i \mapsto L(a_i \wedge w_i)_i$ and $L_2 : (b_i)_i \mapsto L(v'_i \wedge b_i)_i$. From this one, we can deduce that
+$$ L(v_i \wedge w_i)_i = \left( \otimes_{i} v_i \right) \left( L_1 \right) = \left( \otimes_{i} v'_i \right) \left( L_1 \right) = L(v'_i \wedge w_i)_i $$
+and
+$$ L(v'_i \wedge w_i)_i = \left( \otimes_{i} w_i \right) \left( L_2 \right) = \left( \otimes_{i} w'_i \right) (L_2) = L(v'_i \wedge w'_i)_i $$
+i.e., the wedge is well-defined.
+
+Now, let's start the proof of the problem. Note that we have equality
+$$ \left( \bigcup_i A_{ij} \right) \cap \left( \bigcup_i B_{ij'} \right) = \bigcup_i \left( A_{ij} \cap B_{ij'} \right) $$
+since $X_i$'s are disjoint. Let's consider an inner direct sum $\mathbb{R}^{\sum_i (r_i + s_i)} = \bigoplus_{i=1}^{n} V_i$ such that $\dim V_i = r_i + s_i$. We can find an infinite subset of $V_i$ with property ``every $r+s$ points in this set is linearly independent'', and moreover, we can assume that $X_i$ is actually this set, since such a subset doesn't contain $0$, an equality $V_i \cap V_{i'} = 0$ holds for all different $i$ and $i'$, and by the displayed equality\footnote{This guarantees that we can consider the sets $X_i$'s separately.} of sets above. Under this assumption, we define $w_I$ as a wedge product of all elements in $I$, where the order of wedge product can be chosen arbitrary one. Also, let's consider vectors $v_{i,j} := w_{A_{ij}} \in V_i^{\wedge r_i}$, $w_{i,j} := w_{B_{ij}} \in V_i^{\wedge s_i}$, and $v_j := \otimes_{i} v_{i,j} \in \bigotimes_{i} V_i^{\wedge r_i}$ and $w_j := \otimes_{i} w_{i,j} \in \bigotimes_{i} V_i^{\wedge s_i}$. By the assumptions that 
+$$ \bigcup_i (A_{ij} \cap B_{ij'}) 
+\begin{cases}
+  = \varnothing & j = j'\\
+  \neq \varnothing & j < j'
+\end{cases}
+$$
+and the properties (e.g. a tensor product of vectors is zero if and only if one of these vectors is zero; every $r_i+s_i$ points in $X_i$ is linearly independent; a wedge product of vectors is zero if and only if these vectors are linearly dependent) we have, we can deduce that
+$$ v_j \wedge w_{j'} = \otimes_i (v_{ij} \wedge w_{ij'})
+\begin{cases}
+  \neq 0 & j = j'\\
+  = 0 & j<j'
+\end{cases}
+$$
+Therefore, $v_j$'s are linearly independent in the tensor product $\bigotimes_i V_i^{\wedge r_i}$, as we did in the lecture. Since the dimension of this tensor product is
+$$ \dim \left( \bigotimes_i V_i^{\wedge r_i} \right) = \prod_i \dim\left( V_i^{\wedge r_i} \right) = \prod_i \binom{r_i+s_i}{r_i} $$
+This completes the proof. \qed
+
+\section{HW 3.4}
+
+Let $V_1$ (respectively, $V_2$) be a ($a+b+c$)-dimensional (respectively, ($b+c$)-dimensional) real vector space, and let $X_1 \subseteq V_1$ (respectively, $X_2 \subseteq V_2$) is an infinite subset such that every $a+b+c$ (respectively, $b+c$) points in the subset are linearly independent. Moreover, we can assume that $V_1$ and $V_2$ together form an inner direct sum of a real vector space $V$. Let $i_1 : \bigcup_{i,j} A_{i,j} \to X_1$ and $i_2 : \bigcup_{i, j ; j \neq 1} A_{i,j} \to X_2$ be injective maps. Again, we use the notation $w_I$ to denote the wedge of all elements in $I$, and the order of the wedge product doesn't matter. Consider vectors $v_{i,j} := w_{i_1(A_{i,j})} \in V_1^{\wedge a_j}, w_{i,j} := w_{i_2(A_{i,j})} \in V_2^{\wedge a_j}$ where $(a_1, a_2, a_3) = (a,b,c)$. Then, we have (in)equalities
+$$ v_{i,1} \wedge v_{i',2} \wedge v_{i',3} \wedge w_{i,2} \wedge w_{i',3}
+\begin{cases}
+  \neq 0 & i = i'\\
+  = 0 & i < i'
+\end{cases}
+$$
+by the property of sets $X_i$'s and $A_{i,j}$'s, because the wedge product is non-zero if and only if the vectors $v_{i,1}, v_{i',1}, v_{i',3}, w_{i,2}, w_{i',3}$ are linearly independent, and it is equivalent to that each of two sets $v_{i,1}, v_{i',2}, v_{i',3}$ and $w_{i,2}, w_{i',3}$ is linearly independent, because $V_1$ and $V_2$ together form an inner direst sum. By the usual argument, we can conclude that the vectors $v_{i,1} \wedge w_{i,2}$ are linearly independent in the vector space $V_1^{\wedge a} \wedge V_2^{\wedge b}$. However, if $e_i$'s (respectively, $e'_{i'}$'s) form a basis of $V_1^{\wedge a}$ (respectively, $V_2^{\wedge b}$) then $e_i \wedge e'_{i'}$ generates the wedge $V_1^{\wedge a} \wedge V_2^{\wedge b}$. In conclusion, we can obtain the inequality
+$$ m \le \dim \left( V_1^{\wedge a} \wedge V_2^{\wedge b} \right) \le \dim\left( V_1^{\wedge a} \right) \cdot \dim\left( V_2^{\wedge b} \right) = \binom{a+b+c}{a} \cdot \binom{b+c}{b} = \binom{a+b+c}{a,b,c} $$
+This completes the proof. \qed
+
+\section{HW 3.5}
+
+If $\left \lvert \mathbb{F} \right \rvert \le d+1$, then we can deduce that
+$$ \dim L \le \dim \mathbb{F}^{\mathbb{F}^n} = \left \lvert \mathbb{F}^n \right \rvert \le (d+1)^n $$
+so we are done. If not, let $S \subseteq \mathbb{F}$ be a subset of $d+1$ elements, and we define a linear map $\varphi : L \to \mathbb{F}^{S^m}, f \mapsto \left( f(s_i)_i \right)_{(s_i)_i \in S^n}$. It is enough to show that the map $\varphi$ is injective, or equivalently, $f \in \ker \varphi$ must be zero. Let's denote the zero set of $f$ as $V(f)$. By the definition of $\varphi$, we have a relation $V(f) \supseteq S^n$. By the property given in the problem, we can deduce that $V(f) \supseteq \mathbb{F} \times S^{n-1}$, since $f(t,s_2, \cdots, s_n)$ has $d+1$ solutions for each $(s_2, \cdots, s_n) \in S^{n-1}$. Again by the property, we can obtain that $V(f) \supseteq \mathbb{F}^2 \times S^{n-2}$, and by repeating this process, we can finally conclude that $V(f) \supseteq \mathbb{F}^n$, i.e., $f=0$. Therefore, the linear map $\varphi$ is injective, hence the inequality $\dim L \le \dim \mathbb{F}^{S^n} = \left \lvert S^n \right \rvert = (d+1)^n$ holds, and this completes the proof. \qed
+
+$\left\{ \mathbb{R}^3 \right\}, \{ \mathbb{R}^3 \}$
+
+\end{document}

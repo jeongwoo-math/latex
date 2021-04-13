@@ -10,7 +10,6 @@
     }
 \author{20190262 Jeongwoo Park}
 \date{}
-
 \begin{document}
     \maketitle
 
@@ -104,6 +103,45 @@
         $$ B \overset{b \mapsto b \otimes 1}{\longrightarrow} B \otimes_A B \overset{b_1 \otimes b_2 \mapsto b_1 b_2}{\longrightarrow} B $$
         is the identity, in particular, the map at the left is injective. This is what we want to show.
 
+        Last, I'll show that the last property implies the first one. Note that the kernel of the composition $A \overset{\phi}{\to} B \to B/(\phi(I) \cdot B)$ is $\phi^{-1}(\phi(I) \cdot B)$, which contains $I$. So, the composition factor through the natural projection $A \to A/I$, i.e., there is a map $\bar \phi A/I \to B/(\phi(I) \cdot B)$ making a commutative diagram
+        $$
+        \begin{tikzcd}
+            A \arrow[r, "\phi"] \arrow[d, "\pi_I"'] & B \arrow[d, "\pi_{\phi(I) \cdot B}"]\\
+            A/I \arrow[r, "\bar \phi"'] & B/(\phi(I) \cdot B)
+        \end{tikzcd}
+        $$
+        where the vertical maps are natural projections. Also, we have a commutative diagram
+        $$
+        \begin{tikzcd}
+            A/I \arrow[r, "\bar \phi"] \arrow[d] & B/(\phi(I) \cdot B) \arrow[dl, "\cong"] \\
+            B \otimes_{A} (A/I)
+        \end{tikzcd}
+        $$
+        where the isomorphism is defined as $b+\phi(I) \cdot B \mapsto b \otimes (1+I)$, and the vertical is the map $x \mapsto 1 \otimes x$. By the assumption, the map $A/I \to B \otimes_{A} (A/I)$ is injective, so is $\bar \phi$. Hence, the inverse image of $0$ by $\bar \phi \circ \pi_I = \pi_{\phi(I) \cdot B} \circ \phi$, which coincide with $\phi^{-1}(\phi(I) \cdot B)$, can be calculated as
+        $$ \pi_I^{-1} \left(\bar \phi^{-1} (0) \right) = \pi_I ^{-1}(0) = I $$
+        Hence, $\phi ^{-1}(\phi(I) \cdot B) = I$ holds, and this completes the proof.
+    \end{proof}
 
+    \begin{proof}[Solution of Problem 4]
+        Direct implication is due to the flatness of the module $B$, so the remainder is to show the converse one. Let $f:N_1 \to N_2$ and $g:N_2 \to N_3$ be two morphisms in the sequence. Note that the tensoring by a flat module commute with kernel, cokernel, and image since it is an exact functor. Assume that the sequence
+        $$ N_1 \otimes_{A} B \longrightarrow N_2 \otimes_{A} B \longrightarrow N_3 \otimes_{A} B $$
+        is exact. Since we have an isomorphism
+        $$ 0 = \frac{\ker(g \otimes \id) + \im(f \otimes \id)}{\im(f \otimes \id)} \cong \frac{\ker g + \im f}{\im f} \otimes_{A} B $$
+        Since $B$ is faithfully flat, we can conclude that the module $\frac{\ker g + \im f}{\im f}$ is zero. Therefore, $ \ker g \subseteq \im f$ holds. Also, we have an isomorphism
+        $$ \frac{\im f}{\ker g} \otimes_{A} B \cong \frac{\im (f \otimes \id)}{\ker (g \otimes \id)} = 0 $$
+        so $\im f = \ker g$ holds. Therefore, the original sequence is exact, and this completes the proof.
+    \end{proof}
+
+    \begin{proof}[Solution of Problem 5]
+        We know that
+        $$ \frac{\mathbb{Z}[x]}{\langle 2,x \rangle} \cong \frac{\mathbb{Z}[x]/\langle x \rangle}{\langle 2,x \rangle/\langle x \rangle} \cong \mathbb{Z}/2 \mathbb{Z} $$
+        is a field, in particular, the ideal $\langle 2, x \rangle$ is maximal. Also, $\sqrt{Q} \ni 2, x$ implies that $P \subseteq \sqrt{Q} \subseteq \sqrt{P} = P$ holds, so the equality $\sqrt{Q} = P$ holds. From this equanity, and since $P$ is maximal, the ideal $Q$ must be $P$-primary. However, $Q$ is not a power of $P$ because
+        \begin{itemize}
+            \item The relation $Q \subsetneq P$ holds since $2 \in P \setminus Q$.
+            \item The relation $P^2 \subsetneq Q$ holds since $P^2 = \left\langle 4, 2x, x^2 \right\rangle \subseteq Q$ and $x \in Q \setminus P^2$ hold.
+        \end{itemize}
+        i.e., we have a chain
+        $$ P^0 \supseteq P^1 \supsetneq Q \supsetneq P^2 \supseteq P^3 \supseteq \cdots $$
+        This completes the proof.
     \end{proof}
 \end{document}
