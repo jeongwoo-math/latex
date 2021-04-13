@@ -1,0 +1,10 @@
+for d in */ ; do
+	find . -type f -iname \*.aux -delete
+	find . -type f -iname \*.fls -delete
+	find . -type f -iname \*.gz -delete
+	find . -type f -iname \*.fdb_latexmk -delete
+	find . -type f -iname \*.log -delete
+	find . -type f -iname \*.out -delete
+	find . -type f -iname \*.pdf -delete
+	find . -type f -iname \*.toc -delete
+done

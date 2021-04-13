@@ -1,7 +1,0 @@
-\contentsline {section}{Terminologies}{1}{section*.2}%
-\contentsline {section}{\numberline {1}QR decomposition Reduced QR decomposition}{1}{section.1}%
-\contentsline {section}{\numberline {2}Algorithms for reduced QR decomposition}{2}{section.2}%
-\contentsline {subsection}{\numberline {2.1}Classical Gram--Schmidt process}{2}{subsection.2.1}%
-\contentsline {subsection}{\numberline {2.2}Modified Gram--Schmidt process}{3}{subsection.2.2}%
-\contentsline {section}{\numberline {3}Numerical stability of the algorithms}{4}{section.3}%
-\contentsline {subsection}{\numberline {3.1}Analysis of the result}{5}{subsection.3.1}%
