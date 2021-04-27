@@ -10,7 +10,91 @@
     \section{Solutions}
 
     \begin{proof}[Solution of Problem 1]
-        For a formal power series $f(x) = \sum_{i \ge 0} a_i x^i$, we define $\supp f(x) := \left\{ i \,;\, a_i \neq 0 \right\}}$, $\ord f(x) := \inf \supp f(x)$. 
+        For a formal power series $f(x) = \sum_{i \ge 0} a_i x^i$, we define $\Supp f(x) := \left\{ i \,;\, a_i \neq 0 \right\}$, $\ord f(x) := \inf \left( \Supp f(x) \right)$, and $ \ell \left(f(x) \right) = a_{\ord f(x)}$, where $a_\infty$ is considered as $0$. Also, we define $\pi_d \left( f(x) \right) = a_d$. Let $I \trianglelefteq A \left \llbracket x \right \rrbracket $ be an ideal, then $\ell(I) \trianglelefteq A$ because
+        \begin{enumerate}
+            \item It contains $0$.
+            \item For any $f(x), g(x) \in I$, a relation $\ell \left( f(x)+g(x) \right) \in \left\{ \ell \left( f(x) \right), \ell \left( g(x) \right), \ell \left( f(x)+g(x) \right) \right\}$ holds, i.e., $\ell(I)$ is closed under the addition.
+            \item For any $f(x) \in I$, the equality $-\ell \left( f(x) \right) = \ell \left( -f(x) \right)$ holds, i.e., $\ell(I)$ forms an additive subgroup.
+            \item The equality $\ell \left( f(x) \right) \cdot \ell \left( g(x) \right) = \ell \left( f(x) \cdot g(x) \right)$ holds, i.e., $\ell(I)$ is closed under the constant multiplication.
+        \end{enumerate}
+
+        Let $f_i(x) \in A\left \llbracket x \right \rrbracket$ be non-zero formal power series such that $a_i := \ell\left( f_i(x) \right)$ generates $\ell(I)$. We can assume that $1 \le i \le m$ for some natural number $m$, since $A$ is Noetherian.
+
+        Let $g(x) \in A\left \llbracket x \right \rrbracket$ be a formal power series of order at least $d := \min_i \left( \ord f_i(x) \right)$. Let $g_d(x) = g(x)$, then $\pi_d \left( g_d(x) \right) \in \ell(I)$ because it is either $\ell \left(f(x) \right)$ or zero, so there are $c_{d,i} \in A$ such that $\ell\left( f(x) \right) = \sum_i c_{d,i} \cdot a_i$. Let $\hat g_d(x) := \sum_i c_{d,i} \cdot x^{d- \ord f_i(x)} f_i(x)$, then the order of $g_{d+1}(x) := g_d(x) - \hat g_d(x)$ is at least $d+1$ because it is clearly at least $d$, and $\pi_d\left( g_d(x) - \hat g_d(x) \right) = 0$ holds. Similarly, there are $c_{d+1, i} \in A$ such that $\ell\left( g_{d+1}(x) \right) = \sum_i c_{d+1,i} \cdot a_i$, and if we define $\hat g_{d+1}(x) = \sum_i a_i \cdot x^{d+1-\ord f_i(x)} f_i(x)$, then the order of $g_{d+1}(x) - \hat g_{d+1}(x)$ is at least $d+1$. Recursively, one can find $\hat g_n(x) \in \sum_i A \left \llbracket x \right \rrbracket \cdot f_i(x)$ such that $\ord g_n(x) \ge n$ and the order of $g_n(x) - \hat g_n(x)$ is at least $n+1$, for any $n \ge d$. The formal power series $\hat g(x) := \sum_n \hat g_n(x) \in \sum_i A \left \llbracket x \right \rrbracket \cdot f_i(x)$ is well-defined since $\lim_{n \to \infty} \ord \left( \hat g_n(x) \right) = \infty$. Moreover, one can deduce that, for any natural number $n$,
+        \begin{align*}
+            \pi_n \left( g(x) - \hat g(x) \right) &= \pi_n \left( g_d(x) - \left( \hat g_d(x) + \cdots + \hat g_n(x) \right) \right) \\
+            &= \pi_n\left( g_{n+1}(x) \right) \\
+            &= 0
+        \end{align*}
+        because $\sum_{i \ge n+1} \hat g_i(x)$ is of order at least $n+1$. Hence, every formal power series in $I$ of order at least $d$ is an element of $\sum_i A\left \llbracket x \right \rrbracket \cdot f_i(x)$.
+
+        I'll show the equality
+
+        \begin{align}\label{the main equality}
+            I = \left( \sum_{i=1}^m A\left \llbracket x \right \rrbracket \cdot f_i(x) \right) + A\left \llbracket x \right \rrbracket \cdot \left( I \cap \frac{1}{x^d} \cdot \left( \sum_{i \ge d} A \cdot x^i \cap \sum_{\substack{1 \le i \le m \\ 1 \le j \le d-1}} A \cdot x^j f_i(x) \right) \right)
+        \end{align}
+
+        The reversed inclusion can be shown easily, since each term is contained in $I$. So, let's focus on the direct inclusion. Let $g(x) \in I$, then $x^d \cdot g(x) \in I$ is of degree at least $d$. Hence, there are formal power series $c_i(x)$ such that $x^d \cdot g(x) = \sum_i c_i(x) \cdot f_i(x)$. Let $c'_i(x)$ is the sum of all terms of $c_i(x)$, of degree at most $d-1$, and $c''(x) = c_i(x) - c'_i(x)$. Then, the order of $c''(x)$ is at least $x^d$, so we have the equality
+        $$ g(x) - \sum_i \frac{c''(x)}{x^d} \cdot f_i(x) = \frac{1}{x^d} \cdot \sum_i c'(x) \cdot f_i(x) \in I \cap \frac{1}{x^d} \cdot \left( \sum_{i \ge d} A \cdot x^i \cap \sum_{\substack{1 \le i \le m \\ 1 \le j \le d-1}} A \cdot x^j f_i(x) \right) $$
+        One can deduce that $g(x)$ is an element of the right hand side of (\ref{the main equality}).
+
+        Let's conclude the proof. Of course, the module $\sum_{i=1}^m A \left \llbracket x \right \rrbracket \cdot f_i(x)$ is finite. For the another term, note that $\sum_{i,j} A \cdot x^j f_i(x)$ is Noetherian $A$-module, because it is a finitely generated, and $A$ is Noetherian. Hence, the submodule $\sum_{i \ge d} A \cdot x^i \cap \sum_{i,j} A \cdot x^j f_i(x)$ is also Noetherian. However, the module
+        $$ \frac{1}{x^d} \cdot \left( \sum_{i \ge d} A \cdot x^i \cap \sum_{\substack{1 \le i \le m \\ 1 \le j \le d-1}} A \cdot x^j f_i(x) \right) $$
+        is isomorphic to $\sum_{i \ge d} A \cdot x^i \cap \sum_{i,j} A \cdot x^j f_i(x)$ since $x^d$ is a non-zero divisor, i.e., a map $\mu_{x^d} : A \left \llbracket x \right \rrbracket \to A\left \llbracket x \right \rrbracket, f(x) \mapsto x^d \cdot f(x)$ is injective, so the restriction
+        $$ \mu_{x^d} \left|_{\frac{1}{x^d} \cdot \left( \sum_{i \ge d} A \cdot x^i \cap \sum_{\substack{1 \le i \le m \\ 1 \le j \le d-1}} A \cdot x^j f_i(x) \right)} \right. : \frac{1}{x^d} \cdot \left( \sum_{i \ge d} A \cdot x^i \cap \sum_{\substack{1 \le i \le m \\ 1 \le j \le d-1}} A \cdot x^j f_i(x) \right) \to \sum_{i \ge d} A \cdot x^i \cap \sum_{\substack{1 \le i \le m \\ 1 \le j \le d-1}} A \cdot x^j f_i(x) $$
+        is an isomorphism. Thereform, the submodule
+        $$ I \cap \frac{1}{x^d} \cdot \left( \sum_{i \ge d} A \cdot x^i \cap \sum_{\substack{1 \le i \le m \\ 1 \le j \le d-1}} A \cdot x^j f_i(x) \right) $$
+        is Noetherian $A$-module, in particular, a finite $A$-module. This implies that the second term
+        $$ A\left \llbracket x \right \rrbracket \cdot \left( I \cap \frac{1}{x^d} \cdot \left( \sum_{i \ge d} A \cdot x^i \cap \sum_{\substack{1 \le i \le m \\ 1 \le j \le d-1}} A \cdot x^j f_i(x) \right) \right) $$
+        is finite $A\left \llbracket x \right \rrbracket$-module, and this completes the proof.
+    \end{proof}
+
+    \begin{proof}[Solution of Problem 2]
+        \begin{enumerate}
+            \item We need a lemma.
+            
+            \begin{Lemma}\label{Hausdorff Noetherian space is finite discrete}
+                Every Hausdorff Noetherian space is finite and discrete.
+            \end{Lemma}
+
+            \begin{proof}[Proof of Lemma~\ref{Hausdorff Noetherian space is finite discrete}]
+                Let $X$ be a Hausdorff Noetherian space. If $X = \varnothing$, then there is nothing to prove, so let's assume that $X$ is non-empty. By \textbf{Problem 2}(3,4), every subspace of $X$ is compact, in particular, any subset of $X$ is closed, i.e., $X$ is discrete.
+
+                Note that every subset of $X$ is clopen, since its complement is closed. One can consider a non-empty collection of open sets $\left\{X'\right\}_{X' \subseteq X \text{ is finite.}}$, then there is a maximal element $X'$. If $X$ is infinite, then clearly there is a finite subset of $X$ which properly containing $X'$, but this contradicts to the maximality of $X'$. Hence, $X$ must be finite, and this completes the proof of the lemma.
+            \end{proof}
+
+            Hence, the closed interval $[0,1]$ is not a Noetherian space, since it is Hausdorff and not finite. Also, every sphere $S^n$ and torus $T^n$ are not Noetherian provided with $n \ge 1$, because they are Hausdorff spaces that are not finite.
+
+            \item Let's consider a non-empty collection of closed sets $\left\{ V(I_i) \right\}_{i \in \Sigma}$ where each $I_i$ is a radical ideal of $A$. Since $A$ is Noetherian, there is a maximal element $I$ of the non-empty collection of ideals $\left\{ I_i \right\}_{i \in \Sigma}$. Since $V$ is contravariant, $V(I)$ must be the minimal element of $\left\{ V(I) \right\}_{i \in \Sigma}$, and this completes the proof.
+            
+            \item Let $X'$ be a subspace of a Noetherian space $X$, and let $\left\{ X' \cap C_i \right\}_{i \in I}$ be a non-empty collection of closed subsets of $X'$, where each $C_i$ is a closed subset of $X$. Since a collection $\left\{ C_i \right\}_{i \in I}$ is non-empty, there is a minimal element $C$. Of course, $X' \cap C$ must be a minimal element of $\left\{ X' \cap C_i \right\}_{i \in I}$, since a map $X' \cap -$ is covariant. Hence, $X'$ is Noetherian, and this completes the proof.
+            
+            \item Let $X$ be a Noetherian space, and let $\left\{ C_i \right\}_{i \in I}$ be a collection of closed sets such that $\bigcap_{i \in I} C_i = \varnothing$. One can consider a non-empty collection of closed sets $\left\{ \bigcap_{i \in I'} C_i \right\}_{I' \subseteq I \text{ is finite.}}$, then there is a minimal element $\bigcap_{i \in I'} C_i$ where $I' \subseteq I$ is finite. If this intersection is non-empty, then there is $i' \in I$ such that $C_{i'} \not \supseteq \bigcap_{i \in I'} C_i$ holds, because $\bigcap_{i \in I} C_i = \varnothing$ holds. However, this implies the $\bigcap_{i \in I' \cup \left\{ i' \right\}} C_i \subsetneq \bigcap_{i \in I'} C_i$ holds, and this contradicts to the minimality of $\bigcap_{i \in I'} C_i$. Hence, $\bigcap_{i \in I'} C_i$ must be empty, and this shows the compactness of the space $X$. This is what we want to show.
+        \end{enumerate}
+    \end{proof}
+
+    \begin{proof}[Solution of Problem 3]
+        Assume that $X$ is a Noetherian space, but it \emph{can't} be represented as a finite union of closed irreducible subspaces. By the assumption, $X$ itself have to be reducible, so there are proper closed subsets $C_1$ and $C'_1$ such that $X = C_1 \cup C'_1$. Again by the assumption, at least one of $C_1$ and $C'_1$ is reducible, and we can suppose that $C_1$ is reducible, i.e., there are proper closed subsets $C_2$ and $C'_2$ (which are also closed in $X$) such that $C_1 = C_2 \cup C'_2$. Again by the assumption, we can suppose that $C_2$ is reducible, and so there are proper closed subsets $C_3$ and $C'_3$ satisfying the property. By repeating this process, one can obtain a chain of closed subsets
+        $$ C_1 \supsetneq C_2 \supsetneq C_3 \supsetneq \cdots $$
+        but this contradicts to the fact that $X$ is Noetherian. Hence, $X$ can be represented as a finite union of irreducible closed subsets.
+    \end{proof}
+
+    \begin{proof}[Solution of Problem 4]
+        We can consider a composition
+        $$ k \longrightarrow k[x_i]_{1 \le i \le n} \longrightarrow \frac{k[x_i]_i}{M} $$
+        Because this composition is finite by the weak nullstellensatz, and $k$ is algebraically closed, so it must be an isomorphism. Hence, there is $a_i \in k$ such that $x_i + M = a_i + M$ for each $i$, that means, the ideal $\left\langle x_i - a_i \right\rangle_i \trianglelefteq k[x_i]_i$ is contained in $M$. To conclude the proof, it is enough to show that the ideal $\left\langle x_i - a_i \right\rangle$ is maximal.
+
+        Note that $k[x_i]_i = k[x_i - a_i]_i$ holds. One consider a surjective ring map
+        $$ \phi : k[x_i]_i \to k;\, x_i \mapsto a_i $$
+        Every polynomial in $k[x_i]_i = k[x_i - a_i]_i$ can be represented as $\sum_{\alpha} c_\alpha \cdot \left( x - a \right)^{\alpha}$, where $x = (x_i)_i$ and $a = (a_i)_i$. This polynomial mapsto $c_0$ by the map $\phi$, and this value is zero if and only if $\sum_{\alpha} c_\alpha \cdot \left( x - a \right)^{\alpha}$ is an element of $ \left\langle x_i - a_i \right\rangle_i $, i.e., $\ker \phi = \left\langle x_i - a_i \right\rangle_i$ holds. By the first isomorphism theorem, one can conclude that
+        $$ \frac{k[x_i]_i}{\left\langle x_i - a_i \right\rangle_i} \cong k $$
+        so the ideal $\left\langle x_i - a_i \right\rangle_i$ is maximal. This finishes the proof.
+    \end{proof}
+
+    \begin{proof}[Solution of Problem 5]
+        Let's consider an ideal $\left\langle x_1^2+1, x_i \right\rangle_{i \ge 2}$, then one can conclude that
+        $$ \frac{\mathbb{R}[x_i]_i}{\left\langle x_1^2+1, x_i \right\rangle_{i \ge 2}}  = \frac{\left(\mathbb{R}[x_1] \right) [x_i]_{i \ge 2}}{ \left\langle \left\langle x_1^2+1 \right\rangle, x_i \right\rangle_{i \ge 2}} \cong \frac{\mathbb{R}[x_1]}{\left\langle x_1^2 +1 \right\rangle} \cong \mathbb{C} $$
+        Thus, the ideal $\left\langle x_1^2+1, x_i \right\rangle_{i \ge 2}$ is maximal. However, it is not of the form $\left\langle x_i - a_i \right\rangle_i$, because the residue field corresponds to this maximal ideal is $\mathbb{R}$, but not $\mathbb{C}$, by the solution of \textbf{Problem 4}. This gives the result.
     \end{proof}
     
 \end{document}
