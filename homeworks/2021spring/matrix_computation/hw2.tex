@@ -1,0 +1,343 @@
+\input{format.sty}
+
+\usepackage{float}
+
+\usepackage{glossaries-extra}
+\usepackage{subfig}
+\usepackage[numbered,framed]{matlab-prettifier}
+\lstset{
+  style              = Matlab-editor,
+  basicstyle         = \mlttfamily,
+  escapechar         = ",
+  mlshowsectionrules = true,
+}
+
+\newcommand\homeworknumber{2}
+
+\begin{document}
+    \maketitle
+    \tableofcontents
+
+    \begin{abstract}
+        \emph{Singular value decomposition(SVD)} is a kind of factorization of matrices. By using this decomposition, one can approximate a matrix by using other matrix of lower rank. This can be used for compressing images, and this article explains how the process works.
+    \end{abstract}
+
+    \section{Principle of Compressing Images by SVD}
+
+    Note that we can represent a ($2$-dimensional, digital, gray) image as a matrix $ A \in \mathbb{C}^{m \times n}$. To save this matrix representation of an image, we need $m \times n$ real numbers in a computer system. In many case, big-size image occupy too large memory to save, so we have to compress it. To obtain this purpose, we have to define how can we define difference between two images. In this article, we measure it by \emph{matrix norms}, more specifically, operator and vector $L^2$-norms.
+    
+    Then, how can we compress an image using SVD? Let $A = U \Sigma V^*$ be a singular value decomposition of an image $A$, then one can consider a matrix
+    $$ A_r := \sum_{i=1}^{r} \sigma_i \left( u_i \otimes v_i^* \right) $$
+    where $r \le m,n$ is a natural number, $u_i$ (respectively, $v_i$) is the $i$-th row of $U$ (respectively, $V$). Of course, if $r = \min \left\{ m,n \right\}$, then $A_r$ becomes $A$. More generally, $A_r$ approximates $A$, and the difference is given by next lemma.
+
+    \begin{Lemma}\label{error bound}
+        For any $A \in \mathbb{C}^{m \times n}$, we have equalities
+        $$ \left \lVert A - A_r \right \rVert_2 = \sigma_{r+1} $$
+        and
+        $$ \left \lVert A - A_r \right \rVert_{\mathrm F} = \sqrt{\sigma_{r+1}^2 + \cdots + \sigma_{\min \left\{ m,n \right\}}^2} $$
+        hold, where $ \left \lVert \bullet \right \rVert_2$ is the operator $L^2$-norm, and $ \left \lVert \bullet \right \rVert_{\mathrm F}$ is the (vector) $L^2$-norm, i.e., the \emph{Frobenius norm}.
+    \end{Lemma}
+
+    \begin{proof}[Proof of Lemma~\ref{error bound}]
+        Note that one can evaluate that
+        $$ A - A_r = U \cdot \diag \left((0)_{1 \le i \le r}, (\sigma_i)_{r+1 \le i \le \min\left\{ m,n \right\}}\right) \cdot V^* $$
+        that means, the singular values of $A-A_r$ are $\left ((0)_{1 \le i \le r}, (\sigma_i)_{r+1 \le i \le \min \left\{ m,n \right\}} \right)$. The equalities can be immediately obtained by this fact.
+    \end{proof}
+
+    In particular, larger $r$ gives a same or better level of approximation, and error measured by the operator norm can't exceed the value measured by the vector norm. If we need $5$\% precision of the approximation, it is enough to take $r \ge 0.95 \cdot \min \left\{ m,n \right\}$ if we use the vector norm, and there is no non-trivial bound for the operator norm. This is because if the singular values are all the same, then $\left \lVert A-A_r \right \rVert_2$ is the singular value whenever $r < \min \left\{ m,n \right\}$. Similarly, the bound for the vector norm is optimal. Note that to save $A_r$, we need $r \cdot m$ (respectively, $r \cdot n$) real numbers to represent $u_1, \cdots, u_r$ (respectively, $v_1, \cdots, v_r$), and $r$ real numbers to save $\sigma_1, \cdots, \sigma_r$. Hence, we need $r(m+n+1)$ number of real numbers to represent the matrix $A_r$. If we take $r \ll m,n$, then the $r(m+n+1) \ll mn$, so we need smaller memory to save $A_r$, compared to the value of $A$. Let's define a compression ratio as $ \frac{r(m+n+1)}{mn} $. This is how the compression works.
+
+    For the colored image, one can induce three matrices corresponding the red, green, blue parts of the image, in the other words, a colored image can be represented by a tuple of three matrices of the same size. Each matrix can be approximated by SVD, and one can approximate the image by combining them. To measure the difference between two colored images, we take the vector $L^2$-norm, that means, we define a distance between tuple of three matrices (of the same size) $(R,G,B)$ and $(R',G',B')$ is
+    $$ \sqrt{\left \lVert R-R' \right \rVert_{\mathrm{F}}^2 + \left \lVert G-G' \right \rVert_{\mathrm{F}}^2 + \left \lVert B-B' \right \rVert_{\mathrm{F}}^2} $$
+
+    Here is a MATLAB code for compressing colored images.
+
+    \begin{lstlisting}
+img = imread('img.jpg'); % You may use other path to find an image file you want to compress.
+img = im2double(img);
+s = size(img);
+s_proj = s(1:2); % Size of a matrix
+imgR = zeros(s_proj); % Will be the red part of the image
+imgG = zeros(s_proj); % Will be the green part of the image
+imgB = zeros(s_proj); % Will be the blue part of the image
+
+N = [10, 50, 100]; % You may put other values for r you want.
+
+for i = 1:s(1)
+    for j = 1:s(2)
+        imgR(i,j) = img(i,j,1);
+        imgG(i,j) = img(i,j,2);
+        imgB(i,j) = img(i,j,3);
+    end
+end
+
+[UR, SR, VR] = svd(imgR);
+[UG, SG, VG] = svd(imgG);
+[UB, SB, VB] = svd(imgB);
+
+modified_SR = zeros(s_proj);
+modified_SG = zeros(s_proj);
+modified_SB = zeros(s_proj);
+
+for k = 1:length(N)
+    for i = 1:N(k)
+        modified_SR(i,i) = SR(i,i);
+        modified_SG(i,i) = SG(i,i);
+        modified_SB(i,i) = SB(i,i);
+    end
+
+    modified_imgR = UR*modified_SR*VR';
+    modified_imgG = UG*modified_SG*VG';
+    modified_imgB = UB*modified_SB*VB';
+
+    modified_img = zeros(s); % Will be the compressed image
+
+    for i = 1:s(1)
+        for j = 1:s(2)
+            modified_img(i,j,1) = modified_imgR(i,j);
+            modified_img(i,j,2) = modified_imgG(i,j);
+            modified_img(i,j,3) = modified_imgB(i,j);
+        end
+    end
+    
+    imwrite(modified_img,append('tiger',int2str(k),'.bmp')); % Saving the compressed image as a BMP file.
+end
+    \end{lstlisting}
+
+    \section{Results and Analysis}
+
+    For each case, the number $r$ needed to achieve the given precisions of relative errors are as follow.
+
+    \begin{table}[H]
+        \caption{Needed $r$ for \texttt{beach.bmp}}
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|}
+                \hline & gray, operator norm & gray, vector norm & color, vector norm \\
+                \hline 5\% & 5 & 265 & 253 \\
+                \hline 2\% & 27 & 488 & 480 \\
+                \hline 1\% & 88 & 623 & 618 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    \begin{table}[H]
+        \caption{Needed $r$ for \texttt{tiger.bmp}}
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|}
+                \hline & gray, operator norm & gray, vector norm & color, vector norm \\
+                \hline 5\% & 36 & 184 & 194 \\
+                \hline 2\% & 89 & 333 & 350 \\
+                \hline 1\% & 149 & 450 & 467 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    \begin{table}[H]
+        \caption{Needed $r$ for \texttt{words.bmp}}
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|}
+                \hline & gray, operator norm & gray, vector norm & color, vector norm \\
+                \hline 5\% & 1 & 69 & 66 \\
+                \hline 2\% & 5 & 183 & 178 \\
+                \hline 1\% & 33 & 254 & 252 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    \begin{table}[H]
+        \caption{Needed $r$ for \texttt{yukina.bmp}}
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|}
+                \hline & gray, operator norm & gray, vector norm & color, vector norm \\
+                \hline 5\% & 8 & 118 & 118 \\
+                \hline 2\% & 38 & 202 & 201 \\
+                \hline 1\% & 89 & 253 & 253 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    Note that our bound of $r$ for the $5$\% of precision is $0.95 \cdot \min \left\{ m,n \right\}$, but the exact values of the ratios $\frac{r}{\min \left\{ m,n \right\}}$ do not exceed $0.31$. This is because the bound is optimal when the singular values are all the same thing, and the difference of the inequality can be large when the variance of singular values is large. However, the variance for given images is vary large. This means that these images can be approximated well with small $r$ because the relative errors
+    $$ \frac{\left \lVert A-A_r \right \rVert_2}{\left \lVert A \right \rVert_2} = \frac{\sigma_1}{\sigma_{r+1}} $$
+    and
+    $$ \frac{\left \lVert A-A_r \right \rVert_{\mathrm{F}}}{\left \lVert A \right \rVert_{\mathrm{F}}} = \sqrt{ \frac{\sigma_1^2 + \cdots + \sigma_{\min \left\{ m,n \right\}}^2}{\sigma_{r+1}^2 + \cdots + \sigma_{\min \left\{ m,n \right\}}^2}} $$
+    decreases rapidly, so the compression works satisfactorily. Graphs for singular values and relative errors measured by the vector norm can be found at the following pages.
+
+    \begin{table}[H]
+        \caption{Singular values and relative errors measured by the vector norm, \texttt{beach.bmp}}
+        \begin{center}
+            \begin{tabular}{cc}
+                \includegraphics[scale = 0.45]{images/project_2/beach_singular.png} & \includegraphics[scale = 0.45]{images/project_2/beach_error.png}
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    \begin{table}[H]
+        \caption{Singular values and relative errors measured by the vector norm, \texttt{tiger.bmp}}
+        \begin{center}
+            \begin{tabular}{cc}
+                \includegraphics[scale = 0.45]{images/project_2/tiger_singular.png} & \includegraphics[scale = 0.45]{images/project_2/tiger_error.png}
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    \begin{table}[H]
+        \caption{Singular values and relative errors measured by the vector norm, \texttt{words.bmp}}
+        \begin{center}
+            \begin{tabular}{cc}
+                \includegraphics[scale = 0.45]{images/project_2/words_singular.png} & \includegraphics[scale = 0.45]{images/project_2/words_error.png}
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    \begin{table}[H]
+        \caption{Singular values and relative errors measured by the vector norm, \texttt{yukina.bmp}}
+        \begin{center}
+            \begin{tabular}{cc}
+                \includegraphics[scale = 0.45]{images/project_2/yukina_singular.png} & \includegraphics[scale = 0.45]{images/project_2/yukina_error.png}
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    For each image, the compression ratios are as follow.
+
+    \begin{table}[H]
+        \caption{The compression ratios for \texttt{beach.bmp}}
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|}
+                \hline & gray, operator norm & gray, vector norm & color, vector norm \\
+                \hline 5\% & 0.87\% & 46.03\% & 43.94\% \\
+                \hline 2\% & 4.69\% & 84.76\% & 83.37\% \\
+                \hline 1\% & 15.28\% & >1 & >1 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    \begin{table}[H]
+        \caption{The compression ratios for \texttt{tiger.bmp}}
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|}
+                \hline & gray, operator norm & gray, vector norm & color, vector norm \\
+                \hline 5\% & 5.85\% & 29.91\% & 31.54\% \\
+                \hline 2\% & 14.47\% & 54.13\% & 56.90\% \\
+                \hline 1\% & 24.22\% & 73.15\% & 75.92\% \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    \begin{table}[H]
+        \caption{The compression ratios for \texttt{words.bmp}}
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|}
+                \hline & gray, operator norm & gray, vector norm & color, vector norm \\
+                \hline 5\% & 0.22\% & 14.98\% & 14.33\% \\
+                \hline 2\% & 1.09\% & 39.73\% & 38.65\% \\
+                \hline 1\% & 7.17\% & 55.15\% & 54.72\% \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    \begin{table}[H]
+        \caption{The compression ratios for \texttt{yukina.bmp}}
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|}
+                \hline & gray, operator norm & gray, vector norm & color, vector norm \\
+                \hline 5\% & 4.08\% & 60.20\% & 60.20\% \\
+                \hline 2\% & 19.39\% & >1 & >1 \\
+                \hline 1\% & 45.41\% & >1 & >1 \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    From these datum, one can know that \texttt{words.bmp} is the most well-approximated picture, \texttt{tiger.bmp} and \texttt{beach.bmp} are the next, and \texttt{yukina.bmp} is the last. One possible reason explaining this phenomena is that, if the variance of color distribution is small, then we weed small number of information to approximate it. This is because small change of colors make only small difference. Of course, \texttt{words.bmp} is almost white, so we need a small amount of information, and for \texttt{beach.bmp} and \texttt{tiger.bmp}, there are some colors, but the image is brightness of each image is homogeneous. However, for \texttt{yukina.bmp}, there are many kind of colors, and some part is bright but other part is dark. This is why the compression ratio of \texttt{yukina.bmp} is large.
+
+    I attached these compressed images at the following pages. If you see these pictures, then you may know that the error measures by the operator norm is too small. So, I think the vector 2-norm is better to measure the relative error.
+
+    \newpage
+
+    \begin{table}[H]
+        \caption{Compressed images of \texttt{beach.bmp}}
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|}
+                \hline & gray, operator norm & gray, vector norm & color, vector norm \\ 
+                \hline original & \multicolumn{2}{|c|}{\href{run:images/project_2/beach.png}{\includegraphics[scale = 0.16]{images/project_2/beach.png}}} & \includegraphics[scale = 0.08]{images/project_2/colored/beach.png} \\  
+                \hline 5\% & \includegraphics[scale = 0.08]{images/project_2/operator_norm/beach1.png} & \includegraphics[scale = 0.08]{images/project_2/vector_norm/beach1.png} & \includegraphics[scale = 0.08]{images/project_2/colored/beach1.png} \\
+                \hline 2\% & \includegraphics[scale = 0.08]{images/project_2/operator_norm/beach2.png} & \includegraphics[scale = 0.08]{images/project_2/vector_norm/beach2.png} & \includegraphics[scale = 0.08]{images/project_2/colored/beach2.png} \\
+                \hline 1\% & \includegraphics[scale = 0.08]{images/project_2/operator_norm/beach3.png} & \includegraphics[scale = 0.08]{images/project_2/vector_norm/beach3.png} & \includegraphics[scale = 0.08]{images/project_2/colored/beach3.png} \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    \begin{dnote}
+        Note that the images above are not the exact non-compressed or compressed images, and even not of the original size. For the correct images, you can check \href{run:./images}{\texttt{./images/beach.bmp}} for the non-compressed original image, \href{run:./images/operator_norm}{\texttt{./images/operator\_norm}} (respectively, \href{run:./images/vector_norm}{\texttt{./images/vector\_norm}}) for compressed images with errors measured by the operator norm (respectively, vector norm), and \href{run:./images/colored}{\texttt{./images/colored}} for colored images.
+    \end{dnote}
+
+    \newpage
+    
+    \begin{table}[H]
+        \begin{center}
+            \caption{Compressed images of \texttt{tiger.bmp}}
+            \begin{tabular}{|c|c|c|c|}
+                \hline & gray, operator norm & gray, vector norm & color, vector norm \\ 
+                \hline original & \multicolumn{2}{|c|}{\href{run:images/project_2/tiger.png}{\includegraphics[scale = 0.16]{images/project_2/tiger.png}}} & \includegraphics[scale = 0.08]{images/project_2/colored/tiger.png} \\ 
+                \hline 5\% & \includegraphics[scale = 0.08]{images/project_2/operator_norm/tiger1.png} & \includegraphics[scale = 0.08]{images/project_2/vector_norm/tiger1.png} & \includegraphics[scale = 0.08]{images/project_2/colored/tiger1.png} \\
+                \hline 2\% & \includegraphics[scale = 0.08]{images/project_2/operator_norm/tiger2.png} & \includegraphics[scale = 0.08]{images/project_2/vector_norm/tiger2.png} & \includegraphics[scale = 0.08]{images/project_2/colored/tiger2.png} \\
+                \hline 1\% & \includegraphics[scale = 0.08]{images/project_2/operator_norm/tiger3.png} & \includegraphics[scale = 0.08]{images/project_2/vector_norm/tiger3.png} & \includegraphics[scale = 0.08]{images/project_2/colored/tiger3.png} \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+        
+    \begin{dnote}
+        Note that the images above are not the exact non-compressed or compressed images, and even not of the original size. For the correct images, you can check \href{run:./images}{\texttt{./images/tiger.bmp}} for the non-compressed original image, \href{run:./images/operator_norm}{\texttt{./images/operator\_norm}} (respectively, \href{run:./images/vector_norm}{\texttt{./images/vector\_norm}}) for compressed images with errors measured by the operator norm (respectively, vector norm), and \href{run:./images/colored}{\texttt{./images/colored}} for colored images.
+    \end{dnote}
+
+    \newpage
+    
+    \begin{table}[H]
+        \begin{center}
+            \caption{Compressed images of \texttt{words.bmp}}
+            \begin{tabular}{|c|c|c|c|}
+                \hline & gray, operator norm & gray, vector norm & color, vector norm \\ 
+                \hline original & \multicolumn{2}{|c|}{\href{run:images/project_2/words.png}{\includegraphics[scale = 0.2]{images/project_2/words.png}}} & \includegraphics[scale = 0.1]{images/project_2/colored/words.png} \\ 
+                \hline 5\% & \includegraphics[scale = 0.1]{images/project_2/operator_norm/words1.png} & \includegraphics[scale = 0.1]{images/project_2/vector_norm/words1.png} & \includegraphics[scale = 0.1]{images/project_2/colored/words1.png} \\
+                \hline 2\% & \includegraphics[scale = 0.1]{images/project_2/operator_norm/words2.png} & \includegraphics[scale = 0.1]{images/project_2/vector_norm/words2.png} & \includegraphics[scale = 0.1]{images/project_2/colored/words2.png} \\
+                \hline 1\% & \includegraphics[scale = 0.1]{images/project_2/operator_norm/words3.png} & \includegraphics[scale = 0.1]{images/project_2/vector_norm/words3.png} & \includegraphics[scale = 0.1]{images/project_2/colored/words3.png} \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+        
+    \begin{dnote}
+        Note that the images above are not the exact non-compressed or compressed images, and even not of the original size. For the correct images, you can check \href{run:./images}{\texttt{./images/words.bmp}} for the non-compressed original image, \href{run:./images/operator_norm}{\texttt{./images/operator\_norm}} (respectively, \href{run:./images/vector_norm}{\texttt{./images/vector\_norm}}) for compressed images with errors measured by the operator norm (respectively, vector norm), and \href{run:./images/colored}{\texttt{./images/colored}} for colored images.
+    \end{dnote}
+
+    \newpage
+    
+    \begin{table}[H]
+        \begin{center}
+            \caption{Compressed images of \texttt{yukina.bmp}}
+            \begin{tabular}{|c|c|c|c|}
+                \hline & gray, operator norm & gray, vector norm & color, vector norm \\ 
+                \hline original & \multicolumn{2}{|c|}{\href{run:images/project_2/yukina.png}{\includegraphics[scale = 0.46]{images/project_2/yukina.png}}} & \includegraphics[scale = 0.23]{images/project_2/colored/yukina.png} \\ 
+                \hline 5\% & \includegraphics[scale = 0.23]{images/project_2/operator_norm/yukina1.png} & \includegraphics[scale = 0.23]{images/project_2/vector_norm/yukina1.png} & \includegraphics[scale = 0.23]{images/project_2/colored/yukina1.png} \\
+                \hline 2\% & \includegraphics[scale = 0.23]{images/project_2/operator_norm/yukina2.png} & \includegraphics[scale = 0.23]{images/project_2/vector_norm/yukina2.png} & \includegraphics[scale = 0.23]{images/project_2/colored/yukina2.png} \\
+                \hline 1\% & \includegraphics[scale = 0.23]{images/project_2/operator_norm/yukina3.png} & \includegraphics[scale = 0.23]{images/project_2/vector_norm/yukina3.png} & \includegraphics[scale = 0.23]{images/project_2/colored/yukina3.png} \\
+                \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+        
+    \begin{dnote}
+        Note that the images above are not the exact non-compressed or compressed images, and even not of the original size. For the correct images, you can check \href{run:./images}{\texttt{./images/yukina.bmp}} for the non-compressed original image, \href{run:./images/operator_norm}{\texttt{./images/operator\_norm}} (respectively, \href{run:./images/vector_norm}{\texttt{./images/vector\_norm}}) for compressed images with errors measured by the operator norm (respectively, vector norm), and \href{run:./images/colored}{\texttt{./images/colored}} for colored images.
+    \end{dnote}
+        
+
+\end{document}

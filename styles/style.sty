@@ -6,27 +6,31 @@
 
 % Packages, please DO NOT change the order!
 \usepackage{amsmath, amssymb, amsthm, amsfonts}
-\usepackage{tikz-cd, adjustbox}
-\usepackage[all]{xy}
-\usepackage{euler}
-\usepackage{mathtools}
-\usepackage{mathrsfs}
-\usepackage{manfnt}
+\usepackage{tikz-cd}
+\usepackage{mathrsfs} % \mathfrak
+\usepackage{manfnt} % dangerous bend symbol
+\usepackage{stmaryrd} % \mapsfrom
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{CormorantGaramond}
+\usepackage[cmintegrals,cmbraces]{newtxmath}
+\usepackage{ebgaramond-maths}
+
 \usepackage{array}
-\usepackage{marginnote}
 \usepackage{fullpage}
 \usepackage{comment}
-\usepackage[overlay]{textpos}
-\usepackage{libertine}
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
 \usepackage{enumitem}
 \usepackage[most]{tcolorbox}
 \usepackage{hyperref}
-\usepackage{stmaryrd}
 \usepackage{ulem}
 
+% \usepackage{mathtools}
+\usepackage{marginnote}
+% \usepackage[overlay]{textpos}
+
 \setlength{\parskip}{0.5em}
+\linespread{1.25}
 
 %\numberwithin{equation}{subsection}
 
@@ -180,7 +184,7 @@
 }
 
 % Bourbaki dangerous bend symbol
-\newenvironment{dnote}{\begin{cau}\reversemarginpar\marginnote{\huge\textdbend}[-\baselineskip]}{\end{cau}}
+\newenvironment{dnote}{\begin{Caution}\reversemarginpar\marginnote{\huge\textdbend}[-\baselineskip]}{\end{Caution}}
 
 % Dark Mode, basic format from https://tex.stackexchange.com/a/502238 by https://tex.stackexchange.com/users/71473/loved-by-jesus
 \newcommand{\setbackgroundcolour}{\pagecolor[rgb]{0,0,0}}  
