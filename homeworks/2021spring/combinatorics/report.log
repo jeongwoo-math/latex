@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.12.24)  28 APR 2021 07:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2020.12.24)  28 MAY 2021 12:41
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**/home/jeongwoo/Documents/latex/homeworks/2021spring/commutative_algebra/hw7.tex
-(/home/jeongwoo/Documents/latex/homeworks/2021spring/commutative_algebra/hw7.tex
+**/home/jeongwoo/Documents/latex/homeworks/2021spring/combinatorics/report.tex
+(/home/jeongwoo/Documents/latex/homeworks/2021spring/combinatorics/report.tex
 LaTeX2e <2020-02-02> patch level 2
-L3 programming layer <2020-02-14> (/home/jeongwoo/Documents/latex/homeworks/2021spring/commutative_algebra/format.sty (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrartcl.cls
+L3 programming layer <2020-02-14> (/home/jeongwoo/Documents/latex/homeworks/2021spring/combinatorics/format.sty (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrartcl.cls
 Document Class: scrartcl 2020/01/24 v3.29 KOMA-Script document class (article)
 (/usr/share/texlive/texmf-dist/tex/latex/koma-script/scrkbase.sty
 Package: scrkbase 2020/01/24 v3.29 KOMA-Script package (KOMA-Script-dependent basics and keyval usage)
@@ -104,7 +104,7 @@ Package tocbasic Info: omitting babel extension for `lot'
 \c@table=\count175
 Class scrartcl Info: Redefining `\numberline' on input line 6178.
 \bibindent=\dimen134
-) (/home/jeongwoo/Documents/latex/homeworks/2021spring/commutative_algebra/../../../styles/style.sty (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+) (/home/jeongwoo/Documents/latex/homeworks/2021spring/combinatorics/../../../styles/style.sty (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2020/01/20 v2.17e AMS math features
 \@mathmargin=\skip63
 
@@ -642,14 +642,11 @@ Package: array 2019/08/31 v2.4l Tabular extension package (FMi)
 \extratabsurround=\skip70
 \backup@length=\skip71
 \ar@cellbox=\box62
-) (/usr/share/texlive/texmf-dist/tex/latex/preprint/fullpage.sty
-Package: fullpage 1999/02/23 1.1 (PWD)
-\FP@margin=\skip72
 ) (/usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
 \CommentStream=\write4
  Excluding comment 'comment') (/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2019/06/20 v3.9 Customized lists
-\labelindent=\skip73
+\labelindent=\skip72
 \enit@outerparindent=\dimen258
 \enit@toks=\toks46
 \enit@inbox=\box63
@@ -852,11 +849,11 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 286.
 )
-\Hy@SectionHShift=\skip74
+\Hy@SectionHShift=\skip73
 ) (/usr/share/texlive/texmf-dist/tex/generic/ulem/ulem.sty
 \UL@box=\box78
 \UL@hyphenbox=\box79
-\UL@skip=\skip75
+\UL@skip=\skip74
 \UL@hook=\toks50
 \UL@height=\dimen270
 \UL@pe=\count320
@@ -864,89 +861,335 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 28
 \ULC@box=\box80
 Package: ulem 2019/11/18
 \ULdepth=\dimen272
-) (/usr/share/texlive/texmf-dist/tex/latex/marginnote/marginnote.sty
-Package: marginnote 2018/08/09 v1.4b non floating margin notes for LaTeX
-\c@mn@abspage=\count321
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 202.
-)) (/home/jeongwoo/Documents/latex/homeworks/2021spring/commutative_algebra/hw7.aux)
-\openout1 = `hw7.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/EBGaramond-Maths/m/it on input line 7.
-LaTeX Font Info:    Trying to load font information for OML+EBGaramond-Maths on input line 7.
+Class scrartcl Warning: Usage of package `fancyhdr' together
+(scrartcl)              with a KOMA-Script class is not recommended.
+(scrartcl)              I'd suggest to use 
+(scrartcl)              package `scrlayer' or `scrlayer-scrpage', because
+(scrartcl)              they support KOMA-Script classes.
+(scrartcl)              With `fancyhdr' several features of class `scrartcl'
+(scrartcl)              like options `headsepline', `footsepline' or command
+(scrartcl)              `\MakeMarkcase' and the commands `\setkomafont' and
+(scrartcl)              `\addtokomafont' for the page style elements need
+(scrartcl)              explicite user intervention to work.
+(scrartcl)              Nevertheless, using requested
+(scrartcl)              package `fancyhdr' on input line 32.
+
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+Package: fancyhdr 2019/01/31 v3.10 Extensive control of page headers and footers
+\f@nch@headwidth=\skip75
+\f@nch@O@elh=\skip76
+\f@nch@O@erh=\skip77
+\f@nch@O@olh=\skip78
+\f@nch@O@orh=\skip79
+\f@nch@O@elf=\skip80
+\f@nch@O@erf=\skip81
+\f@nch@O@olf=\skip82
+\f@nch@O@orf=\skip83
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 204.
+)) (/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.sty
+Package: biblatex 2019/12/01 v3.14 programmable bibliographies (PK/MW)
+ (/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.sty
+Package: logreq 2010/08/04 v1.0 xml request logger
+\lrq@indent=\count321
+ (/usr/share/texlive/texmf-dist/tex/latex/logreq/logreq.def
+File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
+)) (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@tabx@nest=\count322
+\c@listtotal=\count323
+\c@listcount=\count324
+\c@liststart=\count325
+\c@liststop=\count326
+\c@citecount=\count327
+\c@citetotal=\count328
+\c@multicitecount=\count329
+\c@multicitetotal=\count330
+\c@instcount=\count331
+\c@maxnames=\count332
+\c@minnames=\count333
+\c@maxitems=\count334
+\c@minitems=\count335
+\c@citecounter=\count336
+\c@maxcitecounter=\count337
+\c@savedcitecounter=\count338
+\c@uniquelist=\count339
+\c@uniquename=\count340
+\c@refsection=\count341
+\c@refsegment=\count342
+\c@maxextratitle=\count343
+\c@maxextratitleyear=\count344
+\c@maxextraname=\count345
+\c@maxextradate=\count346
+\c@maxextraalpha=\count347
+\c@abbrvpenalty=\count348
+\c@highnamepenalty=\count349
+\c@lownamepenalty=\count350
+\c@maxparens=\count351
+\c@parenlevel=\count352
+\blx@tempcnta=\count353
+\blx@tempcntb=\count354
+\blx@tempcntc=\count355
+\blx@maxsection=\count356
+\blx@maxsegment@0=\count357
+\blx@notetype=\count358
+\blx@parenlevel@text=\count359
+\blx@parenlevel@foot=\count360
+\blx@sectionciteorder@0=\count361
+\blx@entrysetcounter=\count362
+\labelnumberwidth=\skip84
+\labelalphawidth=\skip85
+\biblabelsep=\skip86
+\bibitemsep=\skip87
+\bibnamesep=\skip88
+\bibinitsep=\skip89
+\bibparsep=\skip90
+\bibhang=\skip91
+\blx@bcfin=\read5
+\blx@bcfout=\write7
+\blx@langwohyphens=\language85
+\c@mincomprange=\count363
+\c@maxcomprange=\count364
+\c@mincompwidth=\count365
+Package biblatex Info: Trying to load biblatex default data model...
+Package biblatex Info: ... file 'blx-dm.def' found.
+ (/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-dm.def
+File: blx-dm.def 2019/12/01 v3.14 biblatex localization (PK/MW)
+)
+Package biblatex Info: Trying to load biblatex style data model...
+Package biblatex Info: ... file 'alphabetic.dbx' not found.
+Package biblatex Info: Trying to load biblatex custom data model...
+Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
+\c@afterword=\count366
+\c@savedafterword=\count367
+\c@annotator=\count368
+\c@savedannotator=\count369
+\c@author=\count370
+\c@savedauthor=\count371
+\c@bookauthor=\count372
+\c@savedbookauthor=\count373
+\c@commentator=\count374
+\c@savedcommentator=\count375
+\c@editor=\count376
+\c@savededitor=\count377
+\c@editora=\count378
+\c@savededitora=\count379
+\c@editorb=\count380
+\c@savededitorb=\count381
+\c@editorc=\count382
+\c@savededitorc=\count383
+\c@foreword=\count384
+\c@savedforeword=\count385
+\c@holder=\count386
+\c@savedholder=\count387
+\c@introduction=\count388
+\c@savedintroduction=\count389
+\c@namea=\count390
+\c@savednamea=\count391
+\c@nameb=\count392
+\c@savednameb=\count393
+\c@namec=\count394
+\c@savednamec=\count395
+\c@translator=\count396
+\c@savedtranslator=\count397
+\c@shortauthor=\count398
+\c@savedshortauthor=\count399
+\c@shorteditor=\count400
+\c@savedshorteditor=\count401
+\c@labelname=\count402
+\c@savedlabelname=\count403
+\c@institution=\count404
+\c@savedinstitution=\count405
+\c@lista=\count406
+\c@savedlista=\count407
+\c@listb=\count408
+\c@savedlistb=\count409
+\c@listc=\count410
+\c@savedlistc=\count411
+\c@listd=\count412
+\c@savedlistd=\count413
+\c@liste=\count414
+\c@savedliste=\count415
+\c@listf=\count416
+\c@savedlistf=\count417
+\c@location=\count418
+\c@savedlocation=\count419
+\c@organization=\count420
+\c@savedorganization=\count421
+\c@origlocation=\count422
+\c@savedoriglocation=\count423
+\c@origpublisher=\count424
+\c@savedorigpublisher=\count425
+\c@publisher=\count426
+\c@savedpublisher=\count427
+\c@language=\count428
+\c@savedlanguage=\count429
+\c@origlanguage=\count430
+\c@savedoriglanguage=\count431
+\c@pageref=\count432
+\c@savedpageref=\count433
+\shorthandwidth=\skip92
+\shortjournalwidth=\skip93
+\shortserieswidth=\skip94
+\shorttitlewidth=\skip95
+\shortauthorwidth=\skip96
+\shorteditorwidth=\skip97
+\locallabelnumberwidth=\skip98
+\locallabelalphawidth=\skip99
+\localshorthandwidth=\skip100
+\localshortjournalwidth=\skip101
+\localshortserieswidth=\skip102
+\localshorttitlewidth=\skip103
+\localshortauthorwidth=\skip104
+\localshorteditorwidth=\skip105
+Package biblatex Info: Trying to load compatibility code...
+Package biblatex Info: ... file 'blx-compat.def' found.
+ (/usr/share/texlive/texmf-dist/tex/latex/biblatex/blx-compat.def
+File: blx-compat.def 2019/12/01 v3.14 biblatex compatibility (PK/MW)
+)
+Package biblatex Info: Trying to load generic definitions...
+Package biblatex Info: ... file 'biblatex.def' found.
+ (/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.def
+File: biblatex.def 2019/12/01 v3.14 biblatex compatibility (PK/MW)
+\c@textcitecount=\count434
+\c@textcitetotal=\count435
+\c@textcitemaxnames=\count436
+\c@biburlbigbreakpenalty=\count437
+\c@biburlbreakpenalty=\count438
+\c@biburlnumpenalty=\count439
+\c@biburlucpenalty=\count440
+\c@biburllcpenalty=\count441
+\biburlbigskip=\muskip18
+\biburlnumskip=\muskip19
+\biburlucskip=\muskip20
+\biburllcskip=\muskip21
+\c@smartand=\count442
+)
+Package biblatex Info: Trying to load bibliography style 'alphabetic'...
+Package biblatex Info: ... file 'alphabetic.bbx' found.
+ (/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/alphabetic.bbx
+File: alphabetic.bbx 2019/12/01 v3.14 biblatex bibliography style (PK/MW)
+Package biblatex Info: Trying to load bibliography style 'standard'...
+Package biblatex Info: ... file 'standard.bbx' found.
+ (/usr/share/texlive/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
+File: standard.bbx 2019/12/01 v3.14 biblatex bibliography style (PK/MW)
+\c@bbx:relatedcount=\count443
+\c@bbx:relatedtotal=\count444
+))
+Package biblatex Info: Trying to load citation style 'alphabetic'...
+Package biblatex Info: ... file 'alphabetic.cbx' found.
+ (/usr/share/texlive/texmf-dist/tex/latex/biblatex/cbx/alphabetic.cbx
+File: alphabetic.cbx 2019/12/01 v3.14 biblatex citation style (PK/MW)
+Package biblatex Info: Redefining '\cite'.
+Package biblatex Info: Redefining '\parencite'.
+Package biblatex Info: Redefining '\footcite'.
+Package biblatex Info: Redefining '\footcitetext'.
+Package biblatex Info: Redefining '\smartcite'.
+Package biblatex Info: Redefining '\textcite'.
+Package biblatex Info: Redefining '\textcites'.
+Package biblatex Info: Redefining '\cites'.
+Package biblatex Info: Redefining '\parencites'.
+Package biblatex Info: Redefining '\smartcites'.
+)
+Package biblatex Info: Trying to load configuration file...
+Package biblatex Info: ... file 'biblatex.cfg' found.
+ (/usr/share/texlive/texmf-dist/tex/latex/biblatex/biblatex.cfg
+File: biblatex.cfg 
+))
+LaTeX Font Info:    Redeclaring math alphabet \mathcal on input line 14.
+LaTeX Font Info:    Overwriting math alphabet `\mathcal' in version `normal'
+(Font)                  OT1/EBGaramond-LF/m/sw --> OMS/cmsy/m/n on input line 14.
+LaTeX Font Info:    Overwriting math alphabet `\mathcal' in version `bold'
+(Font)                  OT1/EBGaramond-LF/m/sw --> OMS/cmsy/m/n on input line 14.
+\@quotelevel=\count445
+\@quotereset=\count446
+ (/home/jeongwoo/Documents/latex/homeworks/2021spring/combinatorics/report.aux)
+\openout1 = `report.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/EBGaramond-Maths/m/it on input line 23.
+LaTeX Font Info:    Trying to load font information for OML+EBGaramond-Maths on input line 23.
  (/usr/share/texlive/texmf-dist/tex/latex/ebgaramond-maths/OMLEBGaramond-Maths.fd
 File: OMLEBGaramond-Maths.fd 2019/09/24 font definitions for OML/EBGaramond-Maths.
 )
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OT1/EBGaramond-LF/m/n on input line 7.
-LaTeX Font Info:    Trying to load font information for OT1+EBGaramond-LF on input line 7.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/EBGaramond-LF/m/n on input line 23.
+LaTeX Font Info:    Trying to load font information for OT1+EBGaramond-LF on input line 23.
  (/usr/share/texlive/texmf-dist/tex/latex/ebgaramond/OT1EBGaramond-LF.fd
 File: OT1EBGaramond-LF.fd 2019/10/22 (autoinst) Font definitions for OT1/EBGaramond-LF.
 )
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 7.
-LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 7.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/ntxexa/m/n on input line 23.
+LaTeX Font Info:    Trying to load font information for U+ntxexa on input line 23.
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxexa.fd
 File: untxexa.fd 2012/04/16 Fontinst v1.933 font definitions for U/ntxexa.
 )
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 7.
-LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line 7.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for LMS/ntxsy/m/n on input line 23.
+LaTeX Font Info:    Trying to load font information for LMS+ntxsy on input line 23.
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/lmsntxsy.fd
 File: lmsntxsy.fd 2016/07/02 Fontinst v1.933 font definitions for LMS/ntxsy.
 )
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 7.
-LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input line 7.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for LMX/ntxexx/m/n on input line 23.
+LaTeX Font Info:    Trying to load font information for LMX+ntxexx on input line 23.
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/lmxntxexx.fd
 File: lmxntxexx.fd 2016/07/03 Fontinst v1.933 font definitions for LMX/ntxexx.
 )
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Trying to load font information for T1+EBGaramond-OsF on input line 7.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Trying to load font information for T1+EBGaramond-OsF on input line 23.
  (/usr/share/texlive/texmf-dist/tex/latex/ebgaramond/T1EBGaramond-OsF.fd
 File: T1EBGaramond-OsF.fd 2019/10/22 (autoinst) Font definitions for T1/EBGaramond-OsF.
 )
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' in size <10.95> not available
-(Font)              Font shape `T1/EBGaramond-OsF/regular/n' tried instead on input line 7.
+(Font)              Font shape `T1/EBGaramond-OsF/regular/n' tried instead on input line 23.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/regular/n' will be
-(Font)              scaled to size 10.95pt on input line 7.
-Package scrbase Info: activating english \contentsname on input line 7.
-Package scrbase Info: activating english \listfigurename on input line 7.
-Package scrbase Info: activating english \listtablename on input line 7.
+(Font)              scaled to size 10.95pt on input line 23.
+Package scrbase Info: activating english \contentsname on input line 23.
+Package scrbase Info: activating english \listfigurename on input line 23.
+Package scrbase Info: activating english \listtablename on input line 23.
  ABD: EveryShipout initializing macros (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count322
+\scratchcounter=\count447
 \scratchdimen=\dimen273
 \scratchbox=\box81
-\nofMPsegments=\count323
-\nofMParguments=\count324
+\nofMPsegments=\count448
+\nofMParguments=\count449
 \everyMPshowfont=\toks51
-\MPscratchCnt=\count325
+\MPscratchCnt=\count450
 \MPscratchDim=\dimen274
-\MPnumerator=\count326
-\makeMPintoPDFobject=\count327
+\MPnumerator=\count451
+\makeMPintoPDFobject=\count452
 \everyMPtoPDFconversion=\toks52
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
+ (/usr/share/texlive/texmf-dist/tex/latex/grfext/grfext.sty
+Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
+)
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 504.
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
-\c@mv@tabular=\count328
-\c@mv@boldtabular=\count329
-\c@lstlisting=\count330
+\c@mv@tabular=\count453
+\c@mv@boldtabular=\count454
+\c@lstlisting=\count455
 \AtBeginShipoutBox=\box82
-Package hyperref Info: Link coloring ON on input line 7.
+Package hyperref Info: Link coloring ON on input line 23.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
  (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
@@ -954,14 +1197,14 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count331
+\c@section@level=\count456
 )
-LaTeX Info: Redefining \ref on input line 7.
-LaTeX Info: Redefining \pageref on input line 7.
-LaTeX Info: Redefining \nameref on input line 7.
- (/home/jeongwoo/Documents/latex/homeworks/2021spring/commutative_algebra/hw7.out) (/home/jeongwoo/Documents/latex/homeworks/2021spring/commutative_algebra/hw7.out)
-\@outlinefile=\write7
-\openout7 = `hw7.out'.
+LaTeX Info: Redefining \ref on input line 23.
+LaTeX Info: Redefining \pageref on input line 23.
+LaTeX Info: Redefining \nameref on input line 23.
+ (/home/jeongwoo/Documents/latex/homeworks/2021spring/combinatorics/report.out) (/home/jeongwoo/Documents/latex/homeworks/2021spring/combinatorics/report.out)
+\@outlinefile=\write8
+\openout8 = `report.out'.
 
 Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           Using `bookmark' together with `hyperref' is recommended,
@@ -970,132 +1213,220 @@ Class scrartcl Info: loading recommended package `bookmark'.
 (scrartcl)           `bookmarkpackage=false' before \begin{document} and
 (scrartcl)           you can avoid this message adding:
 (scrartcl)             \usepackage{bookmark}
-(scrartcl)           before \begin{document} on input line 7.
+(scrartcl)           before \begin{document} on input line 23.
  (/usr/share/texlive/texmf-dist/tex/latex/bookmark/bookmark.sty
 Package: bookmark 2019/12/03 v1.28 PDF bookmarks (HO)
  (/usr/share/texlive/texmf-dist/tex/latex/bookmark/bkm-pdftex.def
 File: bkm-pdftex.def 2019/12/03 v1.28 bookmark driver for pdfTeX (HO)
 Package auxhook Info: \AddLineBeginMainAux comes a little late,
 (auxhook)             because the main .aux file is already opened on input line 168.
-\BKM@id=\count332
+\BKM@id=\count457
 ))
-LaTeX Font Info:    Trying to load font information for T1+cmss on input line 9.
+Package biblatex Info: Trying to load language 'english'...
+Package biblatex Info: ... file 'english.lbx' found.
+ (/usr/share/texlive/texmf-dist/tex/latex/biblatex/lbx/english.lbx
+File: english.lbx 2019/12/01 v3.14 biblatex localization (PK/MW)
+)
+Package biblatex Info: Input encoding 'utf8' detected.
+Package biblatex Info: Automatic encoding selection.
+(biblatex)             Assuming data encoding 'utf8'.
+\openout7 = `report.bcf'.
+
+Package biblatex Info: Trying to load bibliographic data...
+Package biblatex Info: ... file 'report.bbl' found.
+ (/home/jeongwoo/Documents/latex/homeworks/2021spring/combinatorics/report.bbl)
+Package biblatex Info: Reference section=0 on input line 23.
+Package biblatex Info: Reference segment=0 on input line 23.
+LaTeX Font Info:    Trying to load font information for T1+cmss on input line 25.
  (/usr/share/texlive/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 2019/12/16 v2.5j Standard LaTeX font definitions
 )
-LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' in size <14.4> not available
-(Font)              Font shape `T1/EBGaramond-OsF/regular/n' tried instead on input line 9.
+LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' in size <20.74> not available
+(Font)              Font shape `T1/EBGaramond-OsF/regular/n' tried instead on input line 25.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/regular/n' will be
-(Font)              scaled to size 14.4pt on input line 9.
-LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/m/n' in size <14.4> not available
-(Font)              Font shape `OT1/EBGaramond-LF/regular/n' tried instead on input line 9.
+(Font)              scaled to size 20.74pt on input line 25.
+LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/m/n' in size <10.95> not available
+(Font)              Font shape `OT1/EBGaramond-LF/regular/n' tried instead on input line 25.
 LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/regular/n' will be
-(Font)              scaled to size 14.4pt on input line 9.
-LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/m/n' in size <10.5> not available
-(Font)              Font shape `OT1/EBGaramond-LF/regular/n' tried instead on input line 9.
+(Font)              scaled to size 10.95pt on input line 25.
+LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/m/n' in size <8> not available
+(Font)              Font shape `OT1/EBGaramond-LF/regular/n' tried instead on input line 25.
 LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/regular/n' will be
-(Font)              scaled to size 10.5pt on input line 9.
-LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/m/n' in size <7.9> not available
-(Font)              Font shape `OT1/EBGaramond-LF/regular/n' tried instead on input line 9.
+(Font)              scaled to size 8.0pt on input line 25.
+LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/m/n' in size <6.1> not available
+(Font)              Font shape `OT1/EBGaramond-LF/regular/n' tried instead on input line 25.
 LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/regular/n' will be
-(Font)              scaled to size 7.9pt on input line 9.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 9.
+(Font)              scaled to size 6.1pt on input line 25.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 25.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 9.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 25.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+rsfs on input line 9.
+LaTeX Font Info:    Trying to load font information for U+rsfs on input line 25.
  (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-
-LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.5> not available
-(Font)              size <10.95> substituted on input line 9.
-
-LaTeX Font Info:    Trying to load font information for U+stmry on input line 9.
-(/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-
-LaTeX Font Warning: Font shape `U/stmry/m/n' in size <10.5> not available
-(Font)              size <10.95> substituted on input line 9.
-
-LaTeX Font Info:    Trying to load font information for U+ntxmia on input line 9.
-(/usr/share/texlive/texmf-dist/tex/latex/newtx/untxmia.fd
+LaTeX Font Info:    Trying to load font information for U+stmry on input line 25.
+ (/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
+LaTeX Font Info:    Trying to load font information for U+ntxmia on input line 25.
+ (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxmia.fd
 File: untxmia.fd 2018/04/14 Fontinst v1.933 font definitions for U/ntxmia.
 )
-LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 9.
+LaTeX Font Info:    Trying to load font information for U+ntxsym on input line 25.
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsym.fd
 File: untxsym.fd 2015/03/20 Fontinst v1.933 font definitions for U/ntxsym.
 )
-LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 9.
+LaTeX Font Info:    Trying to load font information for U+ntxsyc on input line 25.
  (/usr/share/texlive/texmf-dist/tex/latex/newtx/untxsyc.fd
 File: untxsyc.fd 2012/04/12 Fontinst v1.933 font definitions for U/ntxsyc.
 )
+LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' in size <14.4> not available
+(Font)              Font shape `T1/EBGaramond-OsF/regular/n' tried instead on input line 25.
+LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/regular/n' will be
+(Font)              scaled to size 14.4pt on input line 25.
+LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/m/n' in size <14.4> not available
+(Font)              Font shape `OT1/EBGaramond-LF/regular/n' tried instead on input line 25.
+LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/regular/n' will be
+(Font)              scaled to size 14.4pt on input line 25.
+LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/m/n' in size <10.5> not available
+(Font)              Font shape `OT1/EBGaramond-LF/regular/n' tried instead on input line 25.
+LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/regular/n' will be
+(Font)              scaled to size 10.5pt on input line 25.
+LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/m/n' in size <7.9> not available
+(Font)              Font shape `OT1/EBGaramond-LF/regular/n' tried instead on input line 25.
+LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/regular/n' will be
+(Font)              scaled to size 7.9pt on input line 25.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 25.
+
+
+LaTeX Font Warning: Font shape `U/stmry/m/n' in size <10.5> not available
+(Font)              size <10.95> substituted on input line 25.
+
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/b/n' in size <14.4> not available
-(Font)              Font shape `T1/EBGaramond-OsF/bold/n' tried instead on input line 9.
+(Font)              Font shape `T1/EBGaramond-OsF/bold/n' tried instead on input line 25.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/bold/n' will be
-(Font)              scaled to size 14.4pt on input line 9.
-LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/it' in size <10.95> not available
-(Font)              Font shape `T1/EBGaramond-OsF/regular/it' tried instead on input line 12.
+(Font)              scaled to size 14.4pt on input line 25.
+LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' in size <10.5> not available
+(Font)              Font shape `T1/EBGaramond-OsF/regular/n' tried instead on input line 25.
+LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/regular/n' will be
+(Font)              scaled to size 10.5pt on input line 25.
+LaTeX Font Info:    Trying to load font information for TS1+EBGaramond-OsF on input line 25.
+(/usr/share/texlive/texmf-dist/tex/latex/ebgaramond/TS1EBGaramond-OsF.fd
+File: TS1EBGaramond-OsF.fd 2019/10/22 (autoinst) Font definitions for TS1/EBGaramond-OsF.
+)
+LaTeX Font Info:    Font shape `TS1/EBGaramond-OsF/m/n' in size <10.5> not available
+(Font)              Font shape `TS1/EBGaramond-OsF/regular/n' tried instead on input line 25.
+LaTeX Font Info:    Font shape `TS1/EBGaramond-OsF/regular/n' will be
+(Font)              scaled to size 10.5pt on input line 25.
+LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' in size <10> not available
+(Font)              Font shape `T1/EBGaramond-OsF/regular/n' tried instead on input line 25.
+LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/regular/n' will be
+(Font)              scaled to size 10.0pt on input line 25.
+LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/m/n' in size <10> not available
+(Font)              Font shape `OT1/EBGaramond-LF/regular/n' tried instead on input line 25.
+LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/regular/n' will be
+(Font)              scaled to size 10.0pt on input line 25.
+LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/m/n' in size <7.3> not available
+(Font)              Font shape `OT1/EBGaramond-LF/regular/n' tried instead on input line 25.
+LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/regular/n' will be
+(Font)              scaled to size 7.3pt on input line 25.
+LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/m/n' in size <5.5> not available
+(Font)              Font shape `OT1/EBGaramond-LF/regular/n' tried instead on input line 25.
+LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/regular/n' will be
+(Font)              scaled to size 5.5pt on input line 25.
+
+
+LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 25.
+
+
+LaTeX Font Warning: Font shape `U/stmry/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 25.
+
+LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' in size <7.3> not available
+(Font)              Font shape `T1/EBGaramond-OsF/regular/n' tried instead on input line 25.
+LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/regular/n' will be
+(Font)              scaled to size 7.3pt on input line 25.
+LaTeX Font Info:    Font shape `TS1/EBGaramond-OsF/m/n' in size <7.3> not available
+(Font)              Font shape `TS1/EBGaramond-OsF/regular/n' tried instead on input line 25.
+LaTeX Font Info:    Font shape `TS1/EBGaramond-OsF/regular/n' will be
+(Font)              scaled to size 7.3pt on input line 25.
+LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/it' in size <10> not available
+(Font)              Font shape `T1/EBGaramond-OsF/regular/it' tried instead on input line 25.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/regular/it' will be
-(Font)              scaled to size 10.95pt on input line 12.
-LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/m/n' in size <10.95> not available
-(Font)              Font shape `OT1/EBGaramond-LF/regular/n' tried instead on input line 13.
-LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/regular/n' will be
-(Font)              scaled to size 10.95pt on input line 13.
-LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/m/n' in size <8> not available
-(Font)              Font shape `OT1/EBGaramond-LF/regular/n' tried instead on input line 13.
-LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/regular/n' will be
-(Font)              scaled to size 8.0pt on input line 13.
-LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/m/n' in size <6.1> not available
-(Font)              Font shape `OT1/EBGaramond-LF/regular/n' tried instead on input line 13.
-LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/regular/n' will be
-(Font)              scaled to size 6.1pt on input line 13.
- [1
+(Font)              scaled to size 10.0pt on input line 25.
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 25.
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2019/12/16 v2.5j Standard LaTeX font definitions
+) [0
 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/it' in size <10.95> not available
+(Font)              Font shape `T1/EBGaramond-OsF/regular/it' tried instead on input line 29.
+LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/regular/it' will be
+(Font)              scaled to size 10.95pt on input line 29.
+ [1] (/home/jeongwoo/Documents/latex/homeworks/2021spring/combinatorics/report.toc)
+\tf@toc=\write9
+\openout9 = `report.toc'.
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+ [2]
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/b/n' in size <10.95> not available
-(Font)              Font shape `T1/EBGaramond-OsF/bold/n' tried instead on input line 56.
+(Font)              Font shape `T1/EBGaramond-OsF/bold/n' tried instead on input line 43.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/bold/n' will be
-(Font)              scaled to size 10.95pt on input line 56.
+(Font)              scaled to size 10.95pt on input line 43.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' in size <8> not available
-(Font)              Font shape `T1/EBGaramond-OsF/regular/n' tried instead on input line 63.
+(Font)              Font shape `T1/EBGaramond-OsF/regular/n' tried instead on input line 50.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/regular/n' will be
-(Font)              scaled to size 8.0pt on input line 63.
-LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' in size <6.1> not available
-(Font)              Font shape `T1/EBGaramond-OsF/regular/n' tried instead on input line 63.
+(Font)              scaled to size 8.0pt on input line 50.
+LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/n' in size <9> not available
+(Font)              Font shape `T1/EBGaramond-OsF/regular/n' tried instead on input line 50.
 LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/regular/n' will be
-(Font)              scaled to size 6.1pt on input line 63.
- [3] [4] [5]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 100.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 100.
- (/home/jeongwoo/Documents/latex/homeworks/2021spring/commutative_algebra/hw7.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 100.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 100.
-Package rerunfilecheck Info: File `hw7.out' has not changed.
+(Font)              scaled to size 9.0pt on input line 50.
+LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/m/n' in size <9> not available
+(Font)              Font shape `OT1/EBGaramond-LF/regular/n' tried instead on input line 50.
+LaTeX Font Info:    Font shape `OT1/EBGaramond-LF/regular/n' will be
+(Font)              scaled to size 9.0pt on input line 50.
+ [3] [4]
+LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/m/sc' in size <10.95> not available
+(Font)              Font shape `T1/EBGaramond-OsF/regular/sc' tried instead on input line 112.
+LaTeX Font Info:    Font shape `T1/EBGaramond-OsF/regular/sc' will be
+(Font)              scaled to size 10.95pt on input line 112.
+ [5]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 114.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 114.
+ (/home/jeongwoo/Documents/latex/homeworks/2021spring/combinatorics/report.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 114.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 114.
+Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
 
 
 LaTeX Font Warning: Size substitutions with differences
-(Font)              up to 0.45pt have occurred.
+(Font)              up to 0.5pt have occurred.
+
+Package logreq Info: Writing requests to 'report.run.xml'.
+\openout1 = `report.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 31038 strings out of 481239
- 632756 string characters out of 5920376
- 1005042 words of memory out of 5000000
- 45642 multiletter control sequences out of 15000+600000
- 615994 words of font info for 127 fonts, out of 8000000 for 9000
+ 38044 strings out of 481239
+ 770839 string characters out of 5920376
+ 1511893 words of memory out of 5000000
+ 52554 multiletter control sequences out of 15000+600000
+ 663571 words of font info for 194 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 84i,15n,119p,10223b,525s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texlive/texmf-dist/fonts/enc/dvips/ebgaramond/ebgm_gfppum.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/ebgaramond-maths/a_w5zv5t.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/ebgaramond/ebgm_ljow5q.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/ebgaramond/ebgm_tcdnmr.enc}{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond-Italic.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond-Regular.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx2074.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsya.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyc.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txsys.pfb>
-Output written on /home/jeongwoo/Documents/latex/homeworks/2021spring/commutative_algebra/hw7.pdf (5 pages, 365002 bytes).
+ 84i,12n,119p,10220b,1690s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/ebgaramond/ebgm_byuyni.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/ebgaramond/ebgm_gfppum.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/ebgaramond-maths/a_w5zv5t.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/ebgaramond/ebgm_ljow5q.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/ebgaramond/ebgm_ld6df2.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/ebgaramond/ebgm_tcdnmr.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond-Bold.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond-Italic.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ebgaramond/EBGaramond-Regular.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy6.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfsx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1000.pfb></usr/share/texmf/fonts/type1/public/cm-super/sftt1095.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txmiaX.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsya.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/txfonts/txsyb.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/newtx/txsys.pfb>
+Output written on /home/jeongwoo/Documents/latex/homeworks/2021spring/combinatorics/report.pdf (6 pages, 424757 bytes).
 PDF statistics:
- 141 PDF objects out of 1000 (max. 8388607)
- 98 compressed objects within 1 object stream
- 17 named destinations out of 1000 (max. 500000)
- 165 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 215 PDF objects out of 1000 (max. 8388607)
+ 168 compressed objects within 2 object streams
+ 34 named destinations out of 1000 (max. 500000)
+ 189 words of extra memory for PDF output out of 10000 (max. 10000000)
 

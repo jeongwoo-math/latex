@@ -1,0 +1,148 @@
+\input{format.sty}
+
+\newcommand\homeworknumber{10}
+
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+
+\begin{document}
+    \maketitle
+
+    \section{Solutions}
+
+    \subsection{Problem~1}
+
+    \begin{enumerate}
+        \item For any $c \in K$ and $x,y \in L$, the equality
+        $$ M_a \left( cx+y \right) = a \left( cx + y \right) = acx + ay = c \cdot M_a \left( x \right) + M_a \left( y \right) $$
+        holds, and this proves that $M_a$ is $K$-linear endomorphism.
+
+        \item Following proves the statement:
+        \begin{enumerate}
+            \item[Symmetry] It is clear from the fact that $M_{ab} = M_{ba}$.
+            \item[Additivity] For any $x,y,y' \in L$, one can deduce that
+            $$ \left\langle x,y+y' \right\rangle = \Tr \left( M_{x \left( y+y' \right)} \right) = \Tr \left( M_{xy} + M_{xy'} \right) = \Tr M_{xy} + \Tr M_{xy'} = \left\langle x,y \right\rangle + \left\langle x,y' \right\rangle $$
+            \item[Homogenity of degree $1$] For any $c \in K$ and $x,y \in L$, the identity
+            $$ \left\langle x, cy\right\rangle = \Tr M_{cxy} = \Tr (c \cdot M_{xy}) = c \cdot \Tr M_{xy} = c \cdot \left\langle x,y \right\rangle $$
+            holds.
+        \end{enumerate}
+
+        \item We need a lemma.
+        
+        \begin{Lemma}
+            Let $L/K$ be a finite separable extension of fields. Then, $\Tr a = \sum_{\sigma \in \Hom_K \left(L, \bar L \right)} \sigma a$ holds.
+        \end{Lemma}
+
+        \begin{proof}
+            By the primitive element theorem, there is an element $\theta \in L$ such that $L = K(\theta)$. First, I'll show the identity when $a = \theta^i$ for any $i \ge 0$. Let $m_\theta\left( t \right) = t^d + c_{d-1} t^{d-1} + \cdots + c_0 = \prod_{\sigma \in \Hom_K \left(L, \bar L \right)} \left( t-\sigma \theta \right)$ be the minimal polynomial of $\theta$. The matrix representation of the map $M_\theta$ with respect to the basis $1, \theta, \cdots, \theta^{d-1}$ is
+            $$ 
+            \begin{pmatrix}
+                0 & \cdots & 0 & -c_0 \\
+                & & & -c_1 \\
+                & I & & \vdots \\
+                & & & -c_{d-1}
+            \end{pmatrix}
+            = C \left( m_\theta \left( t \right) \right)
+            $$
+            i.e., the companion matrix of $m_\theta\left( t \right)$. Since $M_{\theta^i} = M_\theta^i$, one can deduce that
+            $$ \Tr \theta^i = \sum_{\sigma \in \Hom_K \left(L, \bar L \right)} \sigma \theta^i $$
+            because trace is a sum of eigenvalues.
+
+            Now, let's consider $ a = a_0 + a_1 \theta + \cdots + a_{d-1} \theta^{d-1} \in L$, then one can know that
+            $$ \Tr a = \sum_i a_i \Tr \theta^i = \sum_i a_i \sum_{\sigma} \sigma \theta^i = \sum_\sigma \sigma \left( \sum_i a_i \theta^i \right) = \sum_\sigma \sigma a $$
+            This completes the proof of the lemma.
+        \end{proof}
+
+        Since the extension $L/K$ is finite and separable, there is $\theta \in L$ such that $L = K \left( \theta \right)$. Take any indexing $\Hom_K\left( L, \bar L \right) = \left\{ \sigma_i \right\}_{1 \le i \le d}$ where $d:= [L:K]$. We define a matrix
+        $$ A = \left( \sigma_i \left( \theta^{j-1} \right) \right)_{i,j} $$
+        then for any $0 \le j,j' \le d-1$, the equality
+        $$ \delta_{j'} \cdot A ^\mathsf{T} A \cdot \delta_j = \sum_\sigma \theta^{j+j'-2} = \Tr \left( \theta^{j-1} \cdot \theta^{j'-1} \right) = \left\langle \theta^{j'}, \theta^j \right\rangle $$
+        holds, i.e., the matrix $A ^\mathsf{T} A$ is the matrix representation of the bilinear form $\left\langle -,- \right\rangle$, with respect to the basis $\left( \theta^j \right)_{0 \le j \le d-1}$. Note that a bilinear form is non-degenerate if and only if its matrix representation is non-singular, so the remainder is to show the non-singularity of the matrix $A$. By the Vandermonde determinant identity, we can know that $\det A = \prod_{i<j} \left( \sigma_j \left( \theta \right) - \sigma_i \left( \theta \right) \right) \neq 0$ holds, so $A$ is invertible. This proves the statement.
+
+        \item Let $\left( x_i \right)_i$ be a basis of $L$, and let $\left( x^*_i \right)_i$ be the dual of it. Since $L \to L^*, v \mapsto \left\langle v, - \right\rangle$ is an isomorphism, one can find a basis $\left( y_i \right)_i$ such that $x^*_i = \left\langle y_i, - \right\rangle$. By the definition of dual basis, the equality
+        $$ \left\langle x_i, y_j \right\rangle = x^*_j(x_i) = \delta_{i,j} $$
+        holds, and so $\left( y_i \right)_i$ is what we want to find. This completes the proof. \qed
+    \end{enumerate}
+
+    \subsection{Problem~2}
+
+    By the primitive element theorem, there is $\theta \in L$ such that $L = K(\theta)$. There is $a \in K \setminus 0$ such that $a \theta \in B$, so we can replace $\theta$ to $a \theta$, i.e., we can assume that $\theta \in B$. Note that for any $b \in B$ can be represented uniquely as $ b = \sum_{i=0}^{d-1} a_i \cdot \theta^i $ where $a_i \in K$ and $d = \deg \theta$. It is enough to show that there is a constant $0 \neq d \in A$ independent of $b$ such that $d a_i \in A$ holds for any $b$, because $ b = \sum_i d a_i \cdot \frac{\theta^{i-1}}{d} \in \sum_i A \cdot \frac{\theta^{i-1}}{d}$ holds, and we can take $x_i = \frac{\theta^{i-1}}{d}$ to the conclusion.
+
+    Let $\Hom_K\left( L, \bar L \right) = \left\{ \sigma_i \right\}_{1 \le i \le d}$, then one can deduce that $\sigma_i \left( b \right) = \sum_j a_j \cdot \sigma_i\left( \theta^{j-1} \right)$, or equivalently,
+    $$ \left( \sigma_i \left( b \right) \right)_i = A \cdot \left( a_j \right)_j $$
+    holds where $A = \left( \sigma_i \left( \theta^{j-1} \right) \right)_{i,j} \in B^{d \times d}$. Let $\operatorname{adj} A \in B^{d \times d}$ be the adjugate matrix of $A$, $\operatorname{adj} A \cdot A = \det A \cdot I$ holds, so the identity
+    $$ \operatorname{adj} A \cdot \left( \sigma_i \left( b \right) \right)_i = \operatorname{adj} A \cdot A \cdot \left( a_j \right)_j = \det A \cdot \left( a_j \right)_j \in B^d $$
+    holds. By the proof of \textbf{Problem~1}, the determinant $\det A$ is non-zero, and is an element of $B$. By the definition of determinant, one can deduce that $\sigma_i \left( \det A \right) = \pm \det A$. If we define $d = \left( \det A \right)^2 \in B \setminus 0$, then it is invariant under the action of $\sigma_i$'s so it must be an element of $K$, in particular, $d \in A \setminus 0$ holds. By the identity above, $\det A \cdot a_i \in B$ holds, in particular, $d \cdot a_i \in B \cap K = A $ holds. This implies that $d$ satisfies the condition we want, and this completes the proof. \qed
+
+    \subsection{Problem~3}
+
+    \begin{enumerate}
+        \item By \textbf{Problem~2}, $\mathcal{O}_K$ is a subring of a finitely generated $\mathbb{Z}$-module. Since $\mathbb{Z}$ is Noetherian, every finitely generated $\mathbb{Z}$-module is Noetherian, in particular, $\mathcal{O}_K$ is Noetherian $\mathbb{Z}$-module. Since $\mathcal{O}_K$ forms $\mathbb{Z}$-algebra naturally, this ring must be a Noetherian ring --- this is because every ideal of $\mathcal{O}_K$ forms a $\mathbb{Z}$-submodule.
+        
+        \item Because $\mathcal{O}_K$ is integrally closed Noetherian domain of dimension $1$, it is a Dedekind domain. \qed
+    \end{enumerate}
+
+    \subsection{Problem~4}
+
+    We need some lemmas.
+
+    \begin{Lemma}
+        Let $A$ be a PID, and $F$ be a free $A$-module. Then, every $A$-submodule of $F$ is a free $A$-module.
+    \end{Lemma}
+
+    \begin{proof}
+        Let $F'$ be a submodule of $F$, and let $\left\{ e_i \right\}_{i \in I}$ be a basis of $F$, where $I$ is an ordinal number. We define $F_j := \sum_{i \le j} A \cdot e_i$ and $F'_j := F' \cap F_j$. Let $\pi_j : F \to A$ be a natural projection to the $j$-th coordinate. Note that $\pi_j \left( F'_j \right)$ is an principal ideal of $A$ because $A$ is a PID, so there is $e'_j \in F'_j$ such that $\pi_j\left( e'_j \right)$ is a generator of that ideal; we pick $e'_j = 0$ if the ideal is the zero ideal. I'll show that $B_i := \left\{ e_j \neq 0 \right\}_{j \le i}$ forms a basis of $F'_i$ by the transfinite induction.
+
+        When $i = 0$, then the result is straightforward --- if $e'_0 = 0$, then $F'_0$ must be zero and $B_0 = \varnothing$ forms a basis of it; if not, then $\left. \pi_0 \right|_{F'_0} : F'_0 \to A \cdot \pi_0\left( e'_0 \right)$ forms an isomorphism because $\left. \pi_0 \right|_{F_0}$ is injective, in particular, $B_0 = \left\{ e'_0 \right\}$ is a basis of $F'_0$.
+
+        Now, assume that $i \le I$ is an ordinal number and the statement holds for any ordinal numbers $i'$ less than $i$. If $e'_i = 0$, then $\pi_i \left( F'_i \right) = 0$ holds, i.e., $F'_i = \bigcup_{i'<i} F'_{i'}$ holds. Hence, $B_i = \bigcup_{i' < i} B_{i'}$ generates $F'_{i}$, and it must be linearly independent. Hence, $B_i$ is a basis of $F'_i$.
+
+        If $e'_i \neq 0$, then there is no non-zero $a \in A$ and $a_j \in A$ such that $a e'_i = \sum_{j<i} a_j e'_j$, because $\pi_i \left(a e'_i \right) \neq 0$ but $\pi_i \left( \sum_{j<i} a_j e'_j \right) = 0$. By the induction hypothesis, $B_{i'}$ is linearly independent for all $i'<i$, so $B_i$ must be linearly independent.
+
+        The remainder is to show that $B_i$ generates $F'_i$. Let $x \in F'_i$, then there is $a \in A$ such that $\pi_i \left( x \right) = a \cdot \pi_i \left( e'_i \right)$. In particular, $x-a e'_i \in F_i \cap \ker \pi_i = \bigcup_{i'<i} F_{i'} = \bigcup_{i'<i} \left\langle B_{i'} \right\rangle \subseteq \left\langle B_i \right\rangle$ holds, and so $x \in \left\langle B_i \right\rangle$. This completes the proof.
+    \end{proof}
+
+    \begin{Lemma}
+        Let $A$ be a PID. A finitely-generated $A$-module is torsion-free if and only if free.
+    \end{Lemma}
+
+    \begin{proof}
+        It is not too hard to show that every free module is torsion-free, so let's show the reversed implication. Let $M$ be a finitely-generated torsion-free $A$-module with a generator $\left\{ x_i \right\}_{1 \le i \le d}$. By a previous homework, the map $M \to K \otimes_{A} M, x \mapsto 1 \otimes x$ is injective, where $K = \Frac A$. Note that $\left\{ 1 \otimes x_i \right\}_i$ generates $K \otimes_{A} M$ as a $K$-vector space, in particular, this vector space must be finite-dimensional. Let $\left\{ y_j \right\}_{1 \le j \le m}$ be a basis of $K \otimes_{A} M$, then there are $a_{ij}, b_{ij} \in A$ such that $1 \otimes x_i = \sum_{j=1}^m \frac{a_{ij}}{b_{ij}} \cdot y_j$. Let $b = \prod_{i,j} b_{ij}$, then it is non-zero and $1 \otimes x_i \in \bigoplus_{j=1}^m A \cdot \frac{y_j}{b}$ holds. Hence, the map $M \to K \otimes_{A} M$ factor through $M \to \bigoplus_j A \cdot \frac{y_j}{b} \to K \otimes_{A} M$. By the lemma above, $M$ must be free because it is isomorphic to a submodule of a free module $\bigoplus_j A \cdot \frac{y_j}{b}$. This proves the lemma.
+    \end{proof}
+
+    \begin{Lemma}[Atiyah--MacDonalds, p.86]
+        Let $(A, \mathfrak{m})$ be a Noetherian local ring with the residue field $k$. For any finitely-generated $A$-module $M$, the following are equivalent:
+        \begin{enumerate}
+            \item $M$ is free.
+            \item $M$ is flat.
+            \item $\Tor_1^A(k,M)=0$.
+        \end{enumerate}
+    \end{Lemma}
+
+    \begin{proof}
+        Because every free module is flat, 1 implies 2. By a previous homework, 2 implies 3, and the remainder is to show that $3$ implies $1$.
+
+        Note that $M/ \mathfrak{m}M$ is finitely generated $k$-module, so it must be finite-dimensional. Let $\left( x_i\right)_{1 \le i \le d}$ be elements in $M$ such that $\left( \bar x_i \right)_1$ forms a $k$-basis of $M/ \mathfrak{m}M$. By Nakayama, $\left( x_i \right)_i$ generates $M$, so one can obtain a surjective map $\phi : A^d \to M; \left( a_i \right)_i \mapsto \sum_i a_i x_i$. Let $K$ be the kernel of this surjective map, then the sequence
+        $$ 0 \longrightarrow K \longrightarrow A^d \longrightarrow M \longrightarrow 0 $$
+        is exact. this induces the Tor-exact sequence
+        $$ \cdots \longrightarrow \Tor_1^A(k,M) = 0 \longrightarrow k \otimes_{A} K \longrightarrow k \otimes_{A} A^d \overset{\id \otimes \phi}{\longrightarrow} k \otimes_{A} M \longrightarrow 0 $$
+        Since $\dim_k \left( k \otimes_{A} A^d \right) = \dim \left( k \otimes_{A} M \right) = d$ is finite, the surjective morphism $\id \otimes \phi$ must be an isomorphism, that means, $k \otimes_{A} K = 0$. Because $k \otimes_{A} K \cong K/\mathfrak{m}K$, one can conclude that $K=0$ by the Nakayama lemma --- $K$ is finitely-generated because it is a submodule of a Noetherian module $A^d$, i.e. $K$ must be Noetherian. Therefore, $\phi$ must be an isomorphism, and this finishes the proof.
+    \end{proof}
+
+    \begin{Lemma}[Atiyah--MacDonalds, p.86]\label{flatness and local freeness}
+        Let $A$ be a Noetherian ring and $M$ be a finitely-generated $A$-module. Then, the following are equivalent:
+        \begin{enumerate}
+            \item $M$ is a flat $A$-module.
+            \item $M_\mathfrak{p}$ is a free $A_\mathfrak{p}$-module, for all prime $\mathfrak{p} \trianglelefteq A$.
+            \item $M_\mathfrak{m}$ is a free $A_\mathfrak{p}$-module, for all maximal $\mathfrak{m} \trianglelefteq A$.
+        \end{enumerate}
+    \end{Lemma}
+
+    \begin{proof}
+        First, let's show that 1 implies 2. Let $M$ be a flat $A$-module and $\mathfrak{p} \trianglelefteq A$ be prime, then $M_\mathfrak{p}$ is flat as a $A_\mathfrak{p}$-module, because the flatness is a local property. Note that $A_\mathfrak{p}$ is a Noetherian local ring. By the lemma above, the freeness and flatness are equivalent for $A_\mathfrak{p}$-modules, so $M_\mathfrak{p}$ is free as a $A_\mathfrak{p}$-module.
+
+        Note that 2 implies 3 is clear, so the remainder is to show that 3 implies 1. Let's assume that $M_\mathfrak{m}$ is a free $M_\mathfrak{m}$-module, for all maximal $\mathfrak{m} \trianglelefteq A$. Since freeness implies flatness, $M_\mathfrak{m}$ is flat $A_\mathfrak{m}$-module. Because the flatness is a local property, $M$ must be flat as an $A$-module. This proves the lemma.
+    \end{proof}
+
+    Now, let's start the proof of the problem. Note that $A$ is a Noetherian ring, so we can apply the \textbf{Lemma~\ref{flatness and local freeness}}, thus one can deduce that $M$ is flat if and only if $M_\mathfrak{p}$ is free $A_\mathfrak{p}$-module, for all prime $\mathfrak{p} \trianglelefteq A$. Since $A_\mathfrak{p}$ is a DVR, it is a PID. Hence, the freeness and torsion-freeness are equivalent for finitely-generated $A_\mathfrak{p}$-modules, in particular, $M_\mathfrak{p}$ is free if and only if the module is torsion-free, because $M_\mathfrak{p}$ is finitely-generated. Because the torsion-freeness is a local property by a previous homework, $M_\mathfrak{p}$ is torsion-free for every prime $\mathfrak{p} \trianglelefteq A$ is equivalent to that $M$ is a torsion-free $A$-module. This completes the proof. \qed
+
+\end{document}

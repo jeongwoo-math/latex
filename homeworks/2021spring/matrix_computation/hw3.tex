@@ -1,0 +1,287 @@
+\input{format.sty}
+
+\usepackage{float}
+
+\usepackage{glossaries-extra}
+\usepackage{subfig}
+\usepackage[numbered,framed]{matlab-prettifier}
+\lstset{
+  style              = Matlab-editor,
+  basicstyle         = \mlttfamily,
+  escapechar         = ",
+  mlshowsectionrules = true,
+}
+
+\newcommand\homeworknumber{3}
+
+\begin{document}
+    \maketitle
+
+    \begin{abstract}
+        \section*{Abstract}
+
+        Usually, \emph{stability of an algorithm} is defined by using a relative error of the result of the algorithm. However, relative error is too complicated to treat directly, for some cases. For example, there are various matrix factorizations that may not be unique, but an algorithm for the decomposition gives the unique result. It is hard to determine what factorization is the result obtained by the algorithm, and this can be arouse a problem on the estimation of relative errors. One way to avoid this problem is a consideration of images by a suitable continuous function, but not the direct value.
+
+        Also, the coefficient for big-O of the stability can be very large, and in this case, the inequality of relative error is too rough for the most of matrices. So, one can consider more \emph{effective} approximation of the relative error, and this can be simulated statistically by using random matrices. This modified approximation of relative error is called \emph{asymptotic stability}.
+
+        In this article, I'll talk about asymptotic stability, which is modified as in the first paragraph, including some examples and simulated datum.
+    \end{abstract}
+
+    \tableofcontents \newpage
+
+    \section{Introduction}
+
+    To test an asymptotic stability, we have to run an algorithm for many \emph{random matrices}. To do this, one has to clarify what the \emph{random} means. In the lecture note, the randomness is considered as the normal one. However, we can't do this for Cholesky factorization, because the domain of this method is \emph{positive-definitive matrices}, but not arbitrary matrices. For this case, I considered a randomness that is obtained as follows:
+    \begin{enumerate}
+        \item Pick a matrix $A$ randomly as we did in the lecture note.
+        \item Do the Cholesky decomposition for $A^* A$.\footnote{Note that $A^* A$ is positive-definitive for almost all matrix $A$.}
+    \end{enumerate}
+    In addition, one can consider a random \emph{complex matrices} similarly, and I did this one also. My MATLAB codes are attached at the next section.
+
+    \newpage
+    
+    \section{MATLAB codes}
+
+    \subsection{Asymptotic Stability}
+
+    \begin{lstlisting}[mathescape]
+M = 1000; % Number of datum
+bound = [10,1000]; % Range for sizes of matrices
+kind_matrix = 'real'; % Kind of matrices; choose 'real' or 'complex'
+factorization = 'LU'; % Kind of a factorization; take 'LU', 'SVD' or 'Cholesky'
+
+points = zeros(2, M);
+p = 1;
+
+tic
+for i = 1:M
+    m = floor(10^(log10(bound(1))+rand()*(log10(bound(2))-log10(bound(1))))); % pick number of rows/columns randomly, uniformly distributed under log10
+
+    if strcmp(factorization, 'LU')
+        if strcmp(kind_matrix, 'real')
+            A = randn(m,m);
+        end
+
+        if strcmp(kind_matrix, 'complex')
+            A = randn(m,m) + 1i*randn(m,m);
+        end
+        [L,U] = lu(A);
+
+        points(1, i) = m;
+        points(2, i) = norm(A-L*U)/norm(A);
+    end
+
+    if strcmp(factorization, 'SVD')
+        if strcmp(kind_matrix, 'real')
+            A = randn(m,m);
+        end
+
+        if strcmp(kind_matrix, 'complex')
+            A = randn(m,m) + 1i*randn(m,m);
+        end
+        [U,S,V] = svd(A);
+
+        points(1, i) = m;
+        points(2, i) = norm(A-U*S*V)/norm(A);
+    end
+
+    if strcmp(factorization,'Cholesky')
+        if strcmp(kind_matrix, 'real')
+            A = randn(m,m); A = A'*A;
+        end
+
+        if strcmp(kind_matrix, 'complex')
+            A = randn(m,m) + 1i*randn(m,m); A = A'*A;
+        end
+
+        R = chol(A);
+        points(1, i) = m;
+        points(2, i) = norm(A-R'*R)/norm(A);
+    end
+    
+    progress = i/M;
+    if progress >= p/100 % Progress status checker
+        time = toc;
+        disp(strcat(string(p), {'% completed. (time remaining: '}, string(time*(1/progress-1)), ' s)'))
+        p = p+1;
+    end
+end
+
+x = log10(points(1:1, 1:M)); y = log10(points(2:2, 1:M));
+line = polyfit(x, y, 1);
+sigma = std(x-(line(1)*x+line(2)));
+
+plot(x, y, '.');
+hold on
+plot(x, line(1)*x+line(2), 'r-')
+legend('Datum plot', strcat({'Linear fitting, y = '}, string(line(2)), {' + '}, string(line(1)), {'*x, sigma = '}, string(sigma)), 'Location', 'northwest')
+title(strcat(string(factorization), {' factorization for '}, string(kind_matrix), ' matrices'))
+hold off
+    \end{lstlisting}
+
+    \subsection{Distribution of Datum for Matrices of Fixed Size}
+
+    \begin{lstlisting}
+M = 1000; % Number of datum
+m = 100; % Size of matrices
+kind_matrix = 'real'; % Kind of matrices; choose 'real' or 'complex'
+factorization = 'LU'; % Kind of a factorization; take 'LU', 'SVD' or 'Cholesky'
+
+points = zeros(1, M);
+p = 1;
+
+tic
+for i = 1:M
+    
+    if strcmp(factorization, 'LU')
+        if strcmp(kind_matrix, 'real')
+            A = randn(m,m);
+        end
+
+        if strcmp(kind_matrix, 'complex')
+            A = randn(m,m) + 1i*randn(m,m);
+        end
+        [L,U] = lu(A);
+
+        points(i) = norm(A-L*U)/norm(A);
+    end
+
+    if strcmp(factorization, 'SVD')
+        if strcmp(kind_matrix, 'real')
+            A = randn(m,m);
+        end
+
+        if strcmp(kind_matrix, 'complex')
+            A = randn(m,m) + 1i*randn(m,m);
+        end
+        [U,S,V] = svd(A);
+
+        points(i) = norm(A-U*S*V)/norm(A);
+    end
+
+    if strcmp(factorization,'Cholesky')
+        if strcmp(kind_matrix, 'real')
+            A = randn(m,m); A = A'*A;
+        end
+
+        if strcmp(kind_matrix, 'complex')
+            A = randn(m,m) + 1i*randn(m,m); A = A'*A;
+        end
+
+        R = chol(A);
+        
+        points(i) = norm(A-R'*R)/norm(A);
+    end
+    
+    progress = i/M;
+    time = toc;
+    if progress >= p/100 % Progress status checker
+        disp(strcat(string(p), '% completed. (', string(time), 's, time remaining: ', string(time*(1/progress-1)), ' s)'))
+        p = p+1;
+    end
+end
+
+histogram(points, 25)
+title(strcat(string(factorization), {' factorization for '}, string(kind_matrix), ' matrices'))
+    \end{lstlisting}
+
+    \newpage
+
+    \section{Results}
+
+    \subsection{Asymptotic Stability}
+
+    \subsubsection{Real Matrices}
+
+    \begin{table}[H]
+        \caption{Asymptotic Stability, Real Matrices}
+        \begin{center}
+            \begin{tabular}{|c|c|c|}
+                \hline & $[10,1000]$ & $[100,1000]$\\ \hline
+                LU & \includegraphics[scale = 0.3]{images/project_3/asymptic_stability_[10,1000]/LU_real.png} & \includegraphics[scale = 0.3]{images/project_3/asymptic_stability_[100,1000]/LU_real.png} \\ \hline
+                SVD & \includegraphics[scale = 0.3]{images/project_3/asymptic_stability_[10,1000]/SVD_real.png} & \includegraphics[scale = 0.3]{images/project_3/asymptic_stability_[100,1000]/SVD_real.png} \\ \hline
+                Cholesky & \includegraphics[scale = 0.3]{images/project_3/asymptic_stability_[10,1000]/Cholesky_real.png} & \includegraphics[scale = 0.3]{images/project_3/asymptic_stability_[100,1000]/Cholesky_real.png} \\ \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    \begin{table}[H]
+        \caption{Linear Fitting, Real Matrices}
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|}
+                \hline & $[10,1000]$, fitting & $[10,1000]$, $\sigma$ & $[100,1000]$, fitting & $[100,1000]$, $\sigma$ \\ \hline
+                LU & $ -16.7462 + 0.87297 x $ & $0.074303$ & $ -16.9384 + 0.95225 x $ & $0.013827$ \\ \hline
+                SVD & $ 0.17394 + 0.013021 x $ & $0.57677$ & $ 0.20155 + 0.0016919 x $ & $0.29261$ \\ \hline
+                Cholesky & $ -16.1559 + 0.19722 x $ & $0.47276$ & $ -15.7314 + 0.032622 x $ & $0.278$ \\ \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    \subsubsection{Complex Matrices}
+
+    \begin{table}[H]
+        \caption{Asymptotic Stability, Complex Matrices}
+        \begin{center}
+            \begin{tabular}{|c|c|c|}
+                \hline & $[10,1000]$ & $[100,1000]$\\ \hline
+                LU & \includegraphics[scale = 0.3]{images/project_3/asymptic_stability_[10,1000]/LU_complex.png} & \includegraphics[scale = 0.3]{images/project_3/asymptic_stability_[100,1000]/LU_complex.png} \\ \hline
+                SVD & \includegraphics[scale = 0.3]{images/project_3/asymptic_stability_[10,1000]/SVD_complex.png} & \includegraphics[scale = 0.3]{images/project_3/asymptic_stability_[100,1000]/SVD_complex.png} \\ \hline
+                Cholesky & \includegraphics[scale = 0.3]{images/project_3/asymptic_stability_[10,1000]/Cholesky_complex.png} & \includegraphics[scale = 0.3]{images/project_3/asymptic_stability_[100,1000]/Cholesky_complex.png} \\ \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    \begin{table}[H]
+        \caption{Linear Fitting, Complex Matrices}
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|}
+                \hline & $[10,1000]$, fitting & $[10,1000]$, $\sigma$ & $[100,1000]$, fitting & $[100,1000]$, $\sigma$ \\ \hline
+                LU & $ -16.829 + 1.0838 x $ & $0.048726$ & $ -16.897 + 1.1172 x $ & $0.033562$ \\ \hline
+                SVD & $ 0.18173 + 0.0097304 x $ & $0.5676$ & $ 0.19913 + 0.0026002 x $ & $0.28373$ \\ \hline
+                Cholesky & $ -16.1331 + 0.17234 x $ & $0.48362$ & $ -15.813 + 0.049908 x $ & $0.27725$ \\ \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    \subsection{Distribution of Datum for Matrices of Fixed Size}
+
+    \subsubsection{Real Matrices}
+
+    \begin{table}[H]
+        \caption{Distribution of Datum for Matrices of Fixed Size, Real Matrices}
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|}
+                \hline & 100 & 200 & 400 \\ \hline
+                LU & \includegraphics[scale = 0.2]{images/project_3/size_100/LU_real.png} & \includegraphics[scale = 0.2]{images/project_3/size_200/LU_real.png} & \includegraphics[scale = 0.2]{images/project_3/size_400/LU_real.png} \\ \hline
+                SVD & \includegraphics[scale = 0.2]{images/project_3/size_100/SVD_real.png} & \includegraphics[scale = 0.2]{images/project_3/size_200/SVD_real.png} & \includegraphics[scale = 0.2]{images/project_3/size_400/SVD_real.png} \\ \hline
+                Cholesky & \includegraphics[scale = 0.2]{images/project_3/size_100/Cholesky_real.png} & \includegraphics[scale = 0.2]{images/project_3/size_200/Cholesky_real.png} & \includegraphics[scale = 0.2]{images/project_3/size_400/Cholesky_real.png} \\ \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    \subsubsection{Complex Matrices}
+
+    \begin{table}[H]
+        \caption{ADistribution of Datum for Matrices of Fixed Size, Complex Matrices}
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|}
+                \hline & 100 & 200 & 400 \\ \hline
+                LU & \includegraphics[scale = 0.2]{images/project_3/size_100/LU_complex.png} & \includegraphics[scale = 0.2]{images/project_3/size_200/LU_complex.png} & \includegraphics[scale = 0.2]{images/project_3/size_400/LU_complex.png} \\ \hline
+                SVD & \includegraphics[scale = 0.2]{images/project_3/size_100/SVD_complex.png} & \includegraphics[scale = 0.2]{images/project_3/size_200/SVD_complex.png} & \includegraphics[scale = 0.2]{images/project_3/size_400/SVD_complex.png} \\ \hline
+                Cholesky & \includegraphics[scale = 0.2]{images/project_3/size_100/Cholesky_complex.png} & \includegraphics[scale = 0.2]{images/project_3/size_200/Cholesky_complex.png} & \includegraphics[scale = 0.2]{images/project_3/size_400/Cholesky_complex.png} \\ \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    \newpage
+
+    \section{Analysis}
+
+    \begin{itemize}
+        \item The root mean square error of the fitting is small for the LU decomposition, but large for SVD and Cholesky factorization. This means that the model formula $Y = c_0 \cdot X^q$ is proper for the LU decomposition, but this model is slightly improper for SVD and Cholesky factorization.
+        \item Under the model we used, one can deduce that SVD is the most asymptotically stable algorithm, and Cholesky factorization is the middle one. The LU decomposition is the worst one. Moreover, the line fitting for SVD is nearly constant, so in this case, the algorithm is nearly stable independently of the size of matrix.
+        \item The case of complex matrices gives worse relative error than the value for the real case. One possible (potential) reason is that real number uses one coordinates, but complex number uses two --- of course, it is natural that more coordinates induces more error.
+        \item The plot of datum for SVD is uniform, but the LU decomposition and Cholesky factorization are not. So, the error distribution of datum for matrices of fixed size maybe far from normal for the LU decomposition and Cholesky factorization. As we can see, the distribution is nearly normal for SVD, but not for the LU decomposition and Cholesky factorization; they have long tails.
+    \end{itemize}
+
+\end{document}

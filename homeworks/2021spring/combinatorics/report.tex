@@ -1,0 +1,114 @@
+\input{format.sty}
+
+\usepackage[
+backend=biber,
+style=alphabetic,
+sorting=ynt
+]{biblatex}
+\setcounter{biburlnumpenalty}{10000}
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}
+
+\addbibresource{references.bib}
+
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+
+\theoremstyle{plain}
+\newtheorem{theorem}[subsection]{Theorem}
+\newtheorem{lemma}[subsection]{Lemma}
+
+\theoremstyle{definition}
+\newtheorem{definition}[subsection]{Definition}
+
+\begin{document}
+    \maketitle
+
+    \begin{abstract}
+        \section*{Abstract}
+
+        One of the most basic and powerful tool in combinatorics is \emph{counting case by case}. This article includes a polynomial method for partitioning sets, which can be used to apply case-by-case-counting method. Also, I'll introduce its applications, like the \href{https://en.wikipedia.org/wiki/Szemer%C3%A9di%E2%80%93Trotter_theorem}{\uwave{Szemer\'edi--Trotter theorem}}.
+    \end{abstract}
+
+    \tableofcontents
+
+    \newpage
+
+    \section{Brief Introduction}
+
+    The \href{https://en.wikipedia.org/wiki/Ham_sandwich_theorem}{\uwave{ham sandwich theorem}} states that, for any $d$ bounded open subsets of a Euclidean space $\mathbb{R}^d$, there is a \emph{hyperplane} bisecting each of them, in the sense of the \emph{Lebesgue measure}. One can consider \emph{hypersurfaces} instead of hyperplanes. In this case, we can bisect \emph{more than $d$} bounded open subsets of $\mathbb{R}^d$. Also, there are discrete analogues of them, by replacing the Lebesgue measure to the \emph{counting measure}, and bounded open subsets to finite subsets. We can use this to make a \emph{nice division} of a finite set, which can be applied to prove Szemer\'edi--Trotter theorem.
+
+
+    \section{The Ham Sandwich theorems}
+
+    \begin{theorem}[Borsuk--Ulam theorem]
+        
+    \end{theorem}
+
+    The classical ham sandwich theorem can be stated as follows.
+
+    \begin{definition}[bisection]
+        Let $A$ be a Lebesgue-measurable subset of $\mathbb{R}^d$. We call a hyperplane $H = \left\{ x \in \mathbb{R}^d \,;\, x \cdot v = b \right\}$ \emph{bisects $A$}, if and only if, $m\left( A \cap H^+ \right) = m\left( A \cap H^- \right) = \frac{1}{2} \cdot m(A)$, where $H^+ := \left\{ x \in \mathbb{R}^d \,;\, x \cdot v > b \right\}$ and $H^- := \left\{ x \in \mathbb{R}^d \,;\, x \cdot v < b \right\}$ are two half-spaces.\footnote{The well-definedness is not too hard to show, because $H^+$ and $H^-$ can be considered as the two connected components of $\mathbb{R}^d \setminus H$. However, I prefer the former definition, because it is more fundamental and easy to generalize.}
+    \end{definition}
+
+    \begin{theorem}[classical ham sandwich theorem]
+        Let $\left( O_i \right)_{1 \le i \le d}$ be a collection of bounded open subsets of $\mathbb{R}^d$. There is a hyperplane $H$ bisecting each of $\left( O_i \right)_{1 \le i \le d}$.
+    \end{theorem}
+    
+    \begin{proof}
+        Use Borsuk--Ulam theorem. Standard proofs can be found in {\color{red}(???)}
+    \end{proof}
+
+    \begin{theorem}[polynomial ham sandwich theorem]
+        
+    \end{theorem}
+
+    \begin{theorem}[general ham sandwich theorem, cf. \cite{stone1942}]
+        
+    \end{theorem}
+
+    \begin{theorem}[discretized classical sandwich theorem]
+        
+    \end{theorem}
+
+    \begin{theorem}[discretized polynomial sandwich theorem]
+        
+    \end{theorem}
+
+    \begin{definition}[Veronese embedding]
+        
+    \end{definition}
+
+    \section{Cell Decomposition}
+
+    \begin{lemma}[cell decomposition]
+        
+    \end{lemma}
+
+    \begin{theorem}[\cite{thom1965}]
+        
+    \end{theorem}
+
+    \begin{lemma}[B\'ezout's theorem, cf. \cite{fulton2008}]
+        
+    \end{lemma}
+
+    \section{Szemer\'edi--Trotter Theorem}
+
+    \begin{theorem}[Szemer\'edi--Trotter theorem]
+        
+    \end{theorem}
+
+    
+
+    \cite{kaplan2011}
+    \cite{munkres2000}
+    \cite{thom1965}
+    \cite{stone1942}
+    \cite{tao2011}
+    \cite{yuval2015}
+
+    \newpage
+
+    \printbibliography
+
+\end{document}

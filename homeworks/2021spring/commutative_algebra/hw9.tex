@@ -1,0 +1,136 @@
+\input{format.sty}
+
+\newcommand\homeworknumber{9}
+
+\begin{document}
+    \maketitle
+
+    \section{Solutions}
+
+    \subsection{Problem~1}
+
+    We need some lemmas.
+
+    \begin{Lemma}
+        A formal power series in $k\! \left \llbracket t \right \rrbracket$ is a unit if and only if the constant term is non-zero.
+    \end{Lemma}
+
+    \begin{proof}
+        I proved this in a previous homework. The idea of proof is that the inverse of $1-t g(t)$ is $1 + t g(t) + t^2 g(t)^2 + \cdots$, for any $g(t) \in k \! \left \llbracket t \right \rrbracket$.
+    \end{proof}
+
+    \begin{Lemma}
+        Every non-zero element of $k (\!( t )\!)$ can be uniquely represented as $u \cdot t^d$, where $u \in k \! \left \llbracket t \right \rrbracket^\times$ and $d \in \mathbb{Z}$.
+    \end{Lemma}
+
+    \begin{proof}
+        Let $\frac{f(t)}{g(t)} \in k (\!( t )\!)$ be a non-zero formal Laurent series, then one can know that
+        $$ \frac{f(t)}{g(t)} = \frac{f(t) \cdot t^{-\ord f}}{g(t) \cdot t^{-\ord g}} \cdot t^{\ord f - \ord g} $$
+        where $f(t) \cdot t^{-\ord f}, g(t) \cdot t^{-\ord g} \in k\! \left \llbracket t \right \rrbracket^\times$ holds by the lemma above. If we take $u = \frac{f(t) \cdot t^{-\ord f}}{g(t) \cdot t^{-\ord g}}$ and $d = \ord f - \ord g$, then we have a representation $\frac{f(t)}{g(t)} = u \cdot t^d$. This proves the existence part.
+
+        For the uniqueness, we assume that $ u \cdot t^d = u' \cdot t^{d'}$ holds for some $u,u' \in k \! \left \llbracket t \right \rrbracket$ and $d,d' \in \mathbb{Z}$. One can deduce that $u^{-1}u' = t^{d - d'} \in k \! \left \llbracket t \right \rrbracket^\times$, but this can happen if and only if $x^{d-d'}$ is constant, i.e., $d = d'$. In this situation, $u = u'$ can be deduced, and this proves the uniqueness of the representation.
+    \end{proof}
+
+    Now, one can define a valuation $\nu : k (\!( t )\!) \setminus 0 \to \mathbb{Z}$ as $u \cdot t^d \mapsto d$. This satisfies that
+    \begin{enumerate}
+        \item For any $d \in \mathbb{Z}$, we have $d = \nu \left( t^d \right) \in \im \nu$, i.e., $\nu$ is surjective.
+        \item $ k \! \left \llbracket t \right \rrbracket = \nu ^{-1}\left( \mathbb{N} \right)$, since $u \cdot t^d \in k \! \left \llbracket t \right \rrbracket$ if and only if $d \ge 0$.
+        \item $\nu\left( \left( u \cdot t^d \right) \cdot \left( u' \cdot t^{d'} \right) \right) = \nu \left( uu' \cdot t^{d+d'} \right) = d+d' = \nu\left( u \cdot t^d \right) + \nu \left( u' \cdot t^{d'} \right) $ holds.
+        \item The inequality
+        \begin{align*}
+            \nu \left( u \cdot t^d + u' \cdot t^{d'} \right) &= \nu \left( \left( u \cdot t^{d - \min \left\{ d,d' \right\}} + u' \cdot t^{d' - \min \left\{ d,d' \right\}} \right) \cdot t^{\min \left\{ d,d' \right\}} \right)\\
+            &= \nu \left( u \cdot t^{d - \min \left\{ d,d' \right\}} + u' \cdot t^{d' - \min \left\{ d,d' \right\}} \right) + \nu \left( t^{\min \left\{ d,d' \right\}} \right)\\
+            &\ge \min \left\{ d,d' \right\}
+        \end{align*}
+        holds, since $u \cdot t^{d - \min \left\{ d,d' \right\}} + u' \cdot t^{d' - \min \left\{ d,d' \right\}} \in k \! \left \llbracket t \right \rrbracket$ holds.
+    \end{enumerate}
+    This implies that $\nu$ is well-defined as a discrete valuation, and so $k \! \left \llbracket t \right \rrbracket$ is a discrete valuation ring. \qed
+
+    \subsection{Problem~2}
+
+    \begin{enumerate}
+        \item By definition, $ \lvert 0 \rvert = 0$. Conversely, let $x \neq 0$. Then, $ \lvert x \rvert = a^{- \nu (x)} = e^{- \nu(x) \log a}$ cannot be zero, since the exponential function $\exp$ has no zero.
+        \item By a simple calculation, one can deduce that
+        $$ \lvert x \cdot y \rvert = a^{- \nu (xy)} = a^{- \nu(x) - \nu(y)} = a^{-\nu(x)} \cdot a^{-\nu (y)} = \lvert x \rvert \cdot \lvert y \rvert $$
+        \item Since the function $ t \mapsto a^{-t}$ decreases, one can know that
+        $$ \lvert x+y \rvert = a^{- \nu (x+y)} \le a^{- \min\left\{ \nu(x),\nu(y) \right\}} = \max \left\{ a^{- \nu(x)}, a^{-\nu(y)} \right\} = \max \left\{ \lvert x \rvert, \lvert y \rvert \right\} $$
+        This completes the proof. \qed
+    \end{enumerate}
+
+    \subsection{Problem~3}
+
+    By \textbf{Problem~2.3}, one can deduce that $\lvert x+y \rvert \le \max \left\{ \lvert x \rvert, \lvert y \rvert \right\} \le \lvert x \rvert + \lvert y \rvert$, since every absolute value is non-negative number.
+
+    Also, the given function $d$ forms a metric since it satisfies that
+
+    \begin{enumerate}
+        \item[Positivity] $d(x,y) = \lvert x-y \rvert$ is zero if and only if $x-y = 0$, or equivalently, $x=y$.
+        \item[Symmetry] $d(x,y) = \lvert x-y \rvert = \lvert y-x \rvert = d(y,x)$ holds, since the valuation is invariant up to the unit-multiplication.
+        \item[$\begin{matrix} \qquad \qquad \quad \text{Strong}\\ \text{triangular inequality} \end{matrix}$] $d(x,z) = \lvert x-z \rvert = \lvert \left( x-y \right) + \left( y-z \right) \rvert \le \max \left\{ \lvert x-y \rvert, \lvert y-z \rvert \right\} = \max \left\{ d(x,y), d(y,z) \right\}$ holds.
+        \item[Triangular inequality] $d(x,z) \le \max \left\{ d(x,y), d(y,z) \right\} \le d(x,y) + d(y,z)$ holds.
+    \end{enumerate}
+
+    Hence, $d$ forms a metric, and this is what we want to show. \qed
+
+    \subsection{Problem~4}
+
+    It is enough to show that for any $x \in K$ and $\varepsilon>0$, there is $\varepsilon'>0$ such that $B'_{\varepsilon'}(x) \subseteq B_{\varepsilon}(x)$ and $B_{\varepsilon'}(x) \subseteq B'_{\varepsilon}(x)$, where $B$ (respectively, $B'$) is an open ball defined by a metric $d_a$ (respectively, $d_b$). By symmetry, it is enough to show that $B'_{\varepsilon'}(x) \subseteq B_\varepsilon(x)$ holds for some $\varepsilon'>0$.
+
+    Take $\varepsilon' = \varepsilon^{\frac{\log b}{\log a}} > 0$, and let $y \in B'_{\varepsilon'}(x)$, or equivalently, $b^{-\nu (x-y)} < \varepsilon'$. This is equivalent with $- \nu (x-y) \log b < \log \varepsilon' = \frac{\log \varepsilon}{\log a} \log b$, and this implies that $- \nu (x-y) \log a < \log \varepsilon$. By taking $\exp$, one can deduce that $d_a(x,y) < \varepsilon$, in the other words, $y \in B_\varepsilon(x)$. This is what we want to show. \qed
+
+    \subsection{Problem~5}
+
+    We need some lemmas.
+
+    \begin{Lemma}
+        A geometric series $\sum_{i=0}^\infty p^{ni}$ converges to $\frac{1}{1-p^n}$ in the $p$-adic topology, for any positive integer $n$.
+    \end{Lemma}
+
+    \begin{proof}
+        Note that the identity for finite geometric series
+        $$ \sum_{i=0}^{N-1} p^{ni} = \frac{1-p^{nN}}{1-p^n} $$
+        holds, so we have to show that for any $M>0$, the $p$-adic valuation of the difference $\frac{1}{1-p^n} - \frac{1-p^{nN}}{1-p^n} = \frac{p^{nN}}{1-p^n}$ is at least $M$, if $N$ is large enough. Note that the valuation of that number is $\nu_p \left( \frac{p^{nN}}{1-p^n} \right) = nN$, so this value must be at least $M$ for any $N \ge M/n$. This completes the proof.
+    \end{proof}
+
+    \begin{Lemma}
+        There is one and only one $p$-adic representation $\sum_{i \gg -\infty} a_i p^i$ of a rational number, and this must be eventually periodic, that means, there are $N, l>0$ satisfying $a_{i+l} = a_i$ for all $i \ge N$.\footnote{Note that any $p$-adic representation of this form converges to a rational number, by the lemma above.}
+    \end{Lemma}
+
+    \begin{proof}
+        First, let's show the existence of the $p$-adic representation with the property in the statement. Note that multiplying a power of $p$ just shifts a $p$-adic representation, so it is enough to show for the case $\frac{a}{b} \in \mathbb{Q}$ satisfying $\nu\left( \frac{a}{b} \right)$ and $\gcd(a,b) = 1$, in particular, $p \nmid b$ holds. By the Euler's theorem in number theory, one can know that $b \mid 1-p^{\varphi(b)}$, where $\varphi$ is the Euler's totient function. Let $m = \frac{1-p^{\varphi(b)}}{b}$, then the equality $\frac{a}{b} = \frac{am}{1-p^{\varphi(b)}}$ holds. By the division algorithm, there are $0 \le \hat a_i \le p-1$ --- not all of them is $p-1$ --- and $n \in \mathbb{Z}$ such that $am = n \cdot \left( 1 - p^{\varphi(b)} \right) + \sum_{i=0}^{\varphi(b)-1} \hat a_i p^i$, and one can deduce that
+        $$ \frac{am}{1-p^{\varphi(b)}} = n + \frac{\sum_{i=0}^{\varphi(b)-1} \hat a_i p^{i}}{1- p^{\varphi(b)}} = n + \sum_{i=0}^{\varphi(b)-1} \sum_{j=0}^\infty \hat a_i p^{i+j \varphi(b)} = n + \sum_{j=0}^\infty a_i p^j $$
+        where $a_i := \hat a_{i \, \text{mod}\, \varphi(b)}$. Since not all of $\hat a_i$'s are $p-1$, the identity above gives the result if $n \ge 0$, because adding $n$ changes only finitely many digits of $p$-adic representation in this case. If $n$ is negative, the process above proves the additive inverse $- \frac{a}{b}$ has the property we want, and moreover, the zeroth digit is non-zero, because its $p$-adic valuation must be zero --- if the zeroth digit is zero, than the valuation of the $p$-adic representation is at least $1$, since $\nu_p^{-1}\left( \mathbb{Z}_{\ge 1} \right)$ is closed. However, an additive inverse of a $p$-adic representation $a_0 + a_1 p + a_2 p^2 + \cdots$ with non-zero $a_0$ is $\left( p-a_0 \right) + \left(p-1-a_1 \right) p + \left( p-1-a_2 \right) p^2 + \cdots$. Hence, $\frac{a}{b}$ has the property we want.
+
+        Assume that $\sum_i a_i p^i = \sum_i a'_i p^i$ be a two different $p$-adic representations (of a rational number). One can find a minimal $j$ such that $a_j \neq a'_j$, so one can induce an equality $\left( a_j - a'_j \right) p^j = \sum_{i \ge j+1} a'_i p^i - \sum_{i \ge j+1} a_i p^i$. One can know that $\sum_{i \ge j+1} a_i p^i$ and $\sum_{i \ge j+1} a'_i p^i$ are element of $\nu_p^{-1}\left( \mathbb{Z}_{\ge j+1} \right)$, because the series are limits of sequence of the closed set $\nu_p^{-1}\left( \mathbb{Z}_{\ge j+1} \right)$. However, $\nu_p \left( \left( a_j - a'_j \right) p^j \right) = j$, and this arises a contradiction. This completes the proof.
+    \end{proof}
+
+    By the lemma, a $p$-adic representation $\sum_{i=0}^\infty p^{i!}$ does not converges in $\mathbb{Q}$, that means, a sequence $a_n = \sum_{0 \le i \le n-1} p^{i!}$ has no limit. Clearly, $a_n$ forms a Cauchy sequence because
+    $$ a_n - a_m = \sum_{m < i \le n} p^{i!} \overset{\nu_p}{\mapsto} (m+1)! $$
+    holds for all $m < n$, so the absolute value $\lvert a_n - a_m \rvert$ is at most $\varepsilon$ for any $m,n \ge - \frac{\log \varepsilon}{\log a}$. This is what we want to find. \qed
+
+    \subsection{Problem~6}
+
+    We need a lemma.
+
+    \begin{Lemma}
+        Every absolutely converging series of $k (\!( t )\!)$ converges.
+    \end{Lemma}
+
+    \begin{proof}
+        Assume that $\sum_{i=0}^\infty f_i(t)$ converges absolutely, where $f_i(t) = \sum_{j=0}^\infty a_{i,j} t^j$. Note that the absolute convergence implies that for each $d$, there are only finitely many $i$ such that $\ord f_i = d$, or equivalently, there are only finitely many $i$ such that $\ord f_i \le d$. One can define $a_j := \sum_{i} a_{i,j}$ and $f(t) = \sum_j a_j t^j$, because for each $j$, the sequence $(a_{i,j})_i$ becomes zero eventually. I'll show that the series $\sum_i f_i$ converges to $f$.
+
+        It is enough to show that, for any $M > 0$, the inequality $\nu \left( f- \sum_{i=0}^{N} f_i \right) \ge M$ for any large enough $N$. One can consider large $N'$ such that $a_{i,j} = 0$ for any $i \ge N'$ and $j \le M$. For any $N \ge N'$, one can deduce that the $j$-th coefficient of $f - \sum_{i=0}^N f_i$ is zero for any $j \le M$, and this means $\nu \left( f- \sum_{i=0}^N f_i \right) \ge M$. This completes the proof.
+    \end{proof}
+
+    Let $(a_i)_{i \in \mathbb{N}}$ be a Cauchy sequence, so one can find an increasing sequence $(i_j \in \mathbb{N})_{j \in \mathbb{N}}$ such that $\nu\left( a_i - a_{i'} \right) \ge j$ for all $i,i' \ge i_j$. We define
+    $$ b_j :=
+    \begin{cases}
+        a_{i_0} & j=0\\
+        a_{i_j} - a_{i_{j-1}} & j \ge 1
+    \end{cases}
+    $$
+    then, $a_{i_j} = \sum_{i=0}^{j} b_i$ and $\nu (b_j) \ge j$ holds. It is enough to show that the subsequence $\left( a_{i_j} \right)_j$ converges, because a Cauchy sequence converges if a subsequence of it converges --- it's a fact from an analysis or a topology course.
+
+    Note that $\sum_i b_i$ converges absolutely, because $\lvert b_i \rvert \le a^{-i}$ and $\sum_i a^{-i}$ converges. By the lemma above, $\sum_i b_i$ converges, that means, $a_{i_j}$ converges. This completes the proof. \qed
+
+\end{document}

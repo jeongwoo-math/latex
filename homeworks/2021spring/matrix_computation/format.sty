@@ -1,20 +1,38 @@
-\documentclass{scrartcl}
+\documentclass[titlepage]{scrartcl}
 \usepackage{../../../styles/style}
 
+\newcommand\authorname{Park Jeong-woo}   % Name of the student
+\newcommand\email{jeongwoo-math@kaist.ac.kr}
+\newcommand\site{jeongwoo-math.github.io}
+
+\newcommand\subjectcode{MAS364}
 \newcommand\subjectname{Matrix Computation and Application}
-\newcommand\authorname{Jeongwoo Park}   % Name of the student
 \newcommand\university{Korea Advanced Institute of Science and Technology} % Name of the university
 \newcommand\department{Department of Mathematical Sciences} % Name of the department
 \newcommand\studentid{20190262} % Student ID
 
+\pagestyle{fancy}
+\renewcommand{\subsectionmark}[1]{\markboth{\thesubsection~#1}{}}
+
+\fancyhf{}
+\lhead{\leftmark}
+\rhead{\subjectcode : \subjectname}
+\cfoot{\thepage}
+
 \title{
-    \subjectname \\[0.5em] \Large
-    --- MATLAB Project \#\homeworknumber\ ---\\[3em]
+    \setcounter{page}{-2}
+    \normalfont
+    \par\noindent\rule{\textwidth}{0.2mm}\\[0.7em]
+    \subjectcode : \subjectname \\[1em] \normalsize $\sim \ast \sim$ \\[1.5em] \Large
+    ---~MATLAB Project \#\homeworknumber~---\\[0.5em]
+    \par\noindent\rule{\textwidth}{0.2mm}
     }
-\author{\textbf{\authorname}\\[1em] \normalsize
-Student ID : \studentid\\[1em] \normalsize
-\department,\\ \normalsize
-\university\\[3em]
-\line(1,0){100}
+
+\author{
+    \\[2em]
+    \textbf{\authorname}\footnote{My family name is \emph{Park}, but please call me \emph{Jeong-woo}. \newline \; \makebox[3em]{email} \email \newline \makebox[3em]{site} \url{\site}}\\[1em] \normalsize
+    Student ID : \studentid\\[1em] \normalsize
+    \department,\\ \normalsize
+    \university\\[2em]
 }
 \date{}

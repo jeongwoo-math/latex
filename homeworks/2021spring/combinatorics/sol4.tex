@@ -1,0 +1,97 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{amsmath,amssymb,amsthm, tikz,titlesec,hyperref, mathrsfs, mathtools}
+\usepackage[a4paper,margin=2cm]{geometry}
+\usepackage{ulem}
+\linespread{1.3}
+\newtheorem{claim}{Claim}[section]
+\newtheorem{lemma}{Lemma}[section]
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+
+%%%%%%%%%%%%%%%%%%%%%%%% My Settings %%%%%%%%%%%%%%%%%%%%%%%%%
+
+\hypersetup{
+    colorlinks=true
+}
+
+\DeclareMathOperator*{\codim}{codim}
+\DeclareMathOperator*{\im}{im}
+\DeclareMathOperator*{\rank}{rank}
+\DeclareMathOperator*{\Span}{Span}
+\DeclareMathOperator*{\Sym}{Sym}
+
+\newcommand{\dx}{\mathrm{d}x}
+
+% Quotient
+\newcommand*{\quo}[2]{ % \newfaktor{#1}{#2} -> #1/#2
+  \raisebox{0.8\height}{\ensuremath{#1}} % Numerator
+  \mkern-7mu\raisebox{-0.2\height}{\scalebox{2}{$\diagup$}}\mkern-7mu % Slash /
+  \raisebox{-0.9\height}{\ensuremath{#2}} % Denominator
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\name{Jeongwoo Park}   % Name of the student
+\newcommand\university{KAIST} % Name of the university
+\newcommand\department{Mathematical Sciences} % Name of the department
+\newcommand\studentid{20190262} % Student ID
+
+\title{KAIST\\2021 MAS575 Combinatorics\\
+Homework\bigskip}
+\author{\textbf{\Large \name} \\
+University: \university\\
+Department: \department\\
+Student ID: \studentid}
+\date{\today}
+
+\begin{document}
+\thispagestyle{empty}
+\maketitle
+\tableofcontents
+\titleformat{\section}[frame]{\pagebreak}{\filright
+\footnotesize  \enspace \textsf{KAIST --- MAS575 Combinatorics 2021 Spring}\enspace}{6pt}{\Large\bfseries\filcenter}
+
+\section{HW 4.1}
+
+First, let's consider the case $\left \lvert A \right \rvert + \left \lvert B \right \rvert - 3 \ge p$. It is enough to show that $X = \mathbb{F}_p$. Suppose that $g \in \mathbb{F}_p \setminus X$. By the pigeonhole principle, there are three different elements in $A \cap (g-B)$; let's denote them as $a_i = g-b_i$ where $1 \le i \le 3$. Since $g \notin X$, the product $a_i b_i$ must be $1$, i.e., $b_i = a_i^{-1}$. This means $a_i$'s are three different solutions of the equation $g = x + x^{-1}$. However, this equation has at most two different solutions, because if $x$ solves the equation, then it must solve a quadratic equation $x^2 - gx + 1 = 0$ --- of course, every quadratic equation over a field has at most two roots. Hence, there is no such $g$, that means, $X = \mathbb{F}_p$.
+
+Now, the remainder it to show that $\left \lvert X \right \rvert \ge \left \lvert A \right \rvert +  \left \lvert B \right \rvert - 3$, under the assumption $\left \lvert A \right \rvert + \left \lvert B \right \rvert - 3 < p$. If the conclusion is false, then one can find a set $X' \supseteq X$ of cardinality $\left \lvert A \right \rvert + \left \lvert B \right \rvert - 3$. One can define a polynomial
+$$ f(x,y) := (xy-1) \cdot \prod_{c \in X'} (x+y-c) \in \mathbb{F}_p[x,y] $$
+Its degree doesn't exceed $2+ \left \lvert X' \right \rvert = \left \lvert A \right \rvert + \left \lvert B \right \rvert - 1$, and the $(\left \lvert A \right \rvert-1, \left \lvert B \right \rvert-1)$-coefficient is $\binom{\left \lvert A \right \rvert+ \left \lvert B \right \rvert - 3}{\left \lvert A \right \rvert - 2} + p \mathbb{Z}$. It is non-zero by the assumption $\left \lvert A \right \rvert + \left \lvert B \right \rvert - 3 < p$, so we can apply the combinatorial nullstellensatz. So, there are elements $a \in A$ and $b \in B$ such that $f(a,b) \neq 0$, that means, $ab \neq 1$ and $a+b \notin X'$. This contradicts to the fact that $X'$ contains $X$. Hence, $\left \lvert X \right \rvert \ge \left \lvert A \right \rvert + \left \lvert B \right \rvert - 3$ holds, and this completes the proof. \qed
+
+\section{HW 4.2}
+
+Let $E$ (respectively, $V$) be the edge set (respectively, vertex set) of the graph $G$. Since the average degree of $G$ is $\frac{2 \cdot \left \lvert E \right \rvert}{\left \lvert V \right \rvert} > 2p -2$, one can deduce that $\left \lvert E \right \rvert$ is grater than $(p-1) \cdot \left \lvert V \right \rvert$. One can consider a polynomial
+$$ f(x_e)_{e \in E} := {\color{red} \prod_{v \in V} \left( 1 - \left( \sum_{e \in E \,;\, e \ni v} x_e \right)^{p-1} \right)} - {\color{blue} \prod_{e \in E} (1-x_e)} \in \mathbb{F}_p[x_e]_{e \in E} $$
+Note that the red term has degree at most $(p-1) \cdot \left \lvert V \right \rvert$ and the blue term has degree $\left \lvert E \right \rvert$. So, the degree of $f$ is $\left \lvert E \right \rvert$, because of the inequality $ \left \lvert E \right \rvert > (p-1) \cdot \left \lvert V \right \rvert$. Also, the coefficient of term $\prod_{e \in E} x_e$ is $\pm 1$, so it is non-zero. Hence, we can apply the combinatorial nullstellensatz with sets $\left\{ 0,1 \right\}^E$. There is a vector $a \in \left\{ 0,1 \right\}^E$ such that $f(a) \neq 0$. Note that $f(0) = 0$, so $a \neq 0$, in particular, the evaluation of the blue term at $a$ is zero. This implies that the evaluation of red term at $a$ is non-zero, or equivalently, $\sum_{e \ni v} x_e = 0$ holds for each $v \in V$ --- this is because every non-zero element of $\mathbb{F}_p$ is a root of the polynomial $t^{p-1} - 1$.
+
+Let's consider a subgraph $G' = (E', V')$ consist of edges $e \in E$ such that $a_e = 1$, then it is non-empty since $a \neq 0$. Also, for each vertex $v$ of this graph, the degree must be $p$, because
+$$ \deg v + p \mathbb{Z} = \sum_{e \in E' \,;\, e \ni v} 1 = \sum_{e \in E' \,;\, e \ni v} a_e = \sum_{e \in E \,;\, e \ni v} a_e = 0 $$
+holds, but $\deg v > 0$ can't exceed $2p-1$, which bounds the degrees of $G$ from the above. In conclusion, $\deg v = p$ for all $p$, and $G'$ is non-empty. This is what we want to find. \qed
+
+\section{HW 4.3}
+
+Suppose that $(H_i)_{1 \le i \le m}$ is a collection of affine hyperplanes satisfying the condition given in the problem. Note that an affine hyperplane covers a point at most one time, so every point is covered by $(H_i)_{1 \le i \le m-1}$. By the theorem we covered at the {lecture~7.8}, $m-1 \ge n$ holds, that means, $m$ is at least $n+1$.
+
+Now, the remainder is to show that this is the best bound. Let $H_i := \left\{ x \in \left\{ 0,1 \right\}^n \,;\, x_i = 1 \right\}$, then every point $ x \in \left\{ 0,1 \right\}^n$ is contained in $H_i$ if and only if $x_i = 1$. Hence, $(H_i)_{1 \le i \le n}$ covers $x$ twice if $\sum_{i=1}^n x_i \ge 2$. Now, we add one more hyperplane $H := \left\{ x \in \left\{ 0,1 \right\}^n \,;\, \sum_{i=1}^n x_i = 1 \right\}$, then any point $0 \neq x \in \left\{ 0, 1 \right\}^n$ such that $\sum_{i} x_i = 1$ appears in both $H$ and $H_i$, where $1 \le i \le n$ is the unique number such that $x_i = 1$. Hence, every non-origin element in $\left\{ 0,1 \right\}^n$ appears twice in $\left( H, H_i \right)_i$, so the bound $m \ge n+1$ is tight. \qed
+
+\section{HW 4.4}
+
+One can define a polynomial
+$$ f(x_j)_j := \left( \prod_{i=1}^m \prod_{c \in Q_i^c} (c - f_i(x_j)_j) \right) - {\color{red} \left( \prod_{i=1}^m \prod_{c \in Q_i^c} c \right)} \cdot \prod_{j = 1}^n (1-x_j) \in \mathbb{F}_p[x_j]_{1 \le j \le n} $$
+The degree of the first term is less than $\sum_{i=1}^m \deg f_i \cdot \left \lvert Q_i^c \right \rvert < n$, and the red one is non-zero because $0 \notin Q_i^c$ for each $i$. Hence, the degree of the polynomial $f$ is $n$, and the coefficient of $\prod_j x_j$ is $\pm 1$, which is non-zero. Hence, we can apply the combinatorial nullstellensatz with $\left\{ 0,1 \right\}^n$, i.e., there is a vector $a \in \left\{ 0,1 \right\}^n$ such that $f(a) \neq 0$.
+
+Note that $f(0) = 0$ since there is no constant term in $f_i$'s, hence $a \neq 0$. This implies that the evaluation of the second term at $a$ must be zero, and $c-f_i(a) \neq 0$ for all $i$ and $c \in Q_i^c$. Therefore, $f_i(a) \in Q_i$, and this is what we want to find. \qed
+
+\section{HW 4.5}
+
+Let's denote the prime $2n+1$ as $p$. By the theorem given in the {lecture~7.9}, there is a permutation $\left( x_i, y_i \right)_{1 \le i \le n}$ of $\mathbb{F}_p \setminus 0$ such that $y_i - x_i = d_i + p \mathbb{Z}$. We assign the seat $(x_i, y_i)$ for the $i$-th couple, where the round table with $p$ chairs is identified with $\mathbb{F}_p$ --- this is possible since $x_i, y_i$'s are distinct. Then, the distance between $x_i$ and $y_i$ is
+\begin{align*}
+  \min \left\{ m \in \mathbb{N} \,;\, m + p \mathbb{Z} = \pm (y_i - x_i) \right\} &= \min \left\{ \min (d_i + p \mathbb{Z}), \min \left( -d_i + p \mathbb{Z} \right)) \right\}\\
+  &= \min \left\{ d_i, p-d_i \right\}\\
+  &= d_i
+\end{align*}
+by the range of $d_i$. Hence, this assignment is what we want to find. This completes the proof. \qed
+
+\end{document}

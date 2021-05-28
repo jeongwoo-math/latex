@@ -1,0 +1,248 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.1 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{ynt/global//global/global}
+    \entry{stone1942}{article}{}
+      \name{author}{2}{}{%
+        {{hash=e4a3a504d8ea5f7b5998f7da02ad675b}{%
+           family={Stone},
+           familyi={S\bibinitperiod},
+           given={A.\bibnamedelimi H.},
+           giveni={A\bibinitperiod\bibinitdelim H\bibinitperiod}}}%
+        {{hash=444903ebfc1a03fbab9cd193ee0cd3e0}{%
+           family={Tukey},
+           familyi={T\bibinitperiod},
+           given={J.\bibnamedelimi W.},
+           giveni={J\bibinitperiod\bibinitdelim W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Duke University Press}%
+      }
+      \strng{namehash}{9efa3f3d7af967e3f2af2a185d8e44b9}
+      \strng{fullhash}{9efa3f3d7af967e3f2af2a185d8e44b9}
+      \strng{bibnamehash}{9efa3f3d7af967e3f2af2a185d8e44b9}
+      \strng{authorbibnamehash}{9efa3f3d7af967e3f2af2a185d8e44b9}
+      \strng{authornamehash}{9efa3f3d7af967e3f2af2a185d8e44b9}
+      \strng{authorfullhash}{9efa3f3d7af967e3f2af2a185d8e44b9}
+      \field{labelalpha}{ST42}
+      \field{sortinit}{1}
+      \field{sortinithash}{50c6687d7fc80f50136d75228e3c59ba}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Duke Mathematical Journal}
+      \field{number}{2}
+      \field{title}{{Generalized “sandwich” theorems}}
+      \field{volume}{9}
+      \field{year}{1942}
+      \field{pages}{356\bibrangedash 359}
+      \range{pages}{4}
+      \verb{doi}
+      \verb 10.1215/S0012-7094-42-00925-6
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1215/S0012-7094-42-00925-6
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1215/S0012-7094-42-00925-6
+      \endverb
+    \endentry
+    \entry{munkres2000}{book}{}
+      \name{author}{1}{}{%
+        {{hash=46835eb9f51aadc1bdaecd6504a07339}{%
+           family={Munkres},
+           familyi={M\bibinitperiod},
+           given={James},
+           giveni={J\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Pearson}%
+      }
+      \strng{namehash}{46835eb9f51aadc1bdaecd6504a07339}
+      \strng{fullhash}{46835eb9f51aadc1bdaecd6504a07339}
+      \strng{bibnamehash}{46835eb9f51aadc1bdaecd6504a07339}
+      \strng{authorbibnamehash}{46835eb9f51aadc1bdaecd6504a07339}
+      \strng{authornamehash}{46835eb9f51aadc1bdaecd6504a07339}
+      \strng{authorfullhash}{46835eb9f51aadc1bdaecd6504a07339}
+      \field{labelalpha}{Mun00}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{edition}{2}
+      \field{isbn}{978-0131816299}
+      \field{title}{Topology}
+      \field{year}{2000}
+    \endentry
+    \entry{fulton2008}{online}{}
+      \name{author}{1}{}{%
+        {{hash=205bfcbd8ec5b58401ee1d5cbd94a5de}{%
+           family={Fulton},
+           familyi={F\bibinitperiod},
+           given={William},
+           giveni={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{205bfcbd8ec5b58401ee1d5cbd94a5de}
+      \strng{fullhash}{205bfcbd8ec5b58401ee1d5cbd94a5de}
+      \strng{bibnamehash}{205bfcbd8ec5b58401ee1d5cbd94a5de}
+      \strng{authorbibnamehash}{205bfcbd8ec5b58401ee1d5cbd94a5de}
+      \strng{authornamehash}{205bfcbd8ec5b58401ee1d5cbd94a5de}
+      \strng{authorfullhash}{205bfcbd8ec5b58401ee1d5cbd94a5de}
+      \field{labelalpha}{Ful08}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Algebraic Curves --- An Introduction to Algebraic Geometry}
+      \field{year}{2008}
+    \endentry
+    \entry{kaplan2011}{misc}{}
+      \name{author}{3}{}{%
+        {{hash=74fc28f5c63cf11e0fa303a99e5e55a5}{%
+           family={Kaplan},
+           familyi={K\bibinitperiod},
+           given={Haim},
+           giveni={H\bibinitperiod}}}%
+        {{hash=58d84b9d049d495fe8e16ed821570031}{%
+           family={Matoušek},
+           familyi={M\bibinitperiod},
+           given={Jiří},
+           giveni={J\bibinitperiod}}}%
+        {{hash=9586c4968b275c9bde911f0f96aba3d8}{%
+           family={Sharir},
+           familyi={S\bibinitperiod},
+           given={Micha},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{5016bfe027250580dd38582b32fe4786}
+      \strng{fullhash}{5016bfe027250580dd38582b32fe4786}
+      \strng{bibnamehash}{5016bfe027250580dd38582b32fe4786}
+      \strng{authorbibnamehash}{5016bfe027250580dd38582b32fe4786}
+      \strng{authornamehash}{5016bfe027250580dd38582b32fe4786}
+      \strng{authorfullhash}{5016bfe027250580dd38582b32fe4786}
+      \field{labelalpha}{KMS11}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{eprintclass}{math.CO}
+      \field{eprinttype}{arXiv}
+      \field{title}{Simple Proofs of Classical Theorems in Discrete Geometry via the Guth--Katz Polynomial Partitioning Technique}
+      \field{year}{2011}
+      \verb{eprint}
+      \verb 1102.5391
+      \endverb
+    \endentry
+    \entry{tao2011}{online}{}
+      \name{author}{1}{}{%
+        {{hash=4cea0d7ce90ed017dfa21b4cee6c72e9}{%
+           family={Tao},
+           familyi={T\bibinitperiod},
+           given={Terence},
+           giveni={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{4cea0d7ce90ed017dfa21b4cee6c72e9}
+      \strng{fullhash}{4cea0d7ce90ed017dfa21b4cee6c72e9}
+      \strng{bibnamehash}{4cea0d7ce90ed017dfa21b4cee6c72e9}
+      \strng{authorbibnamehash}{4cea0d7ce90ed017dfa21b4cee6c72e9}
+      \strng{authornamehash}{4cea0d7ce90ed017dfa21b4cee6c72e9}
+      \strng{authorfullhash}{4cea0d7ce90ed017dfa21b4cee6c72e9}
+      \field{labelalpha}{Tao11}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{accessed: 05.28.2021}
+      \field{title}{The Szemeredi-Trotter theorem via the polynomal ham snadwich theorem}
+      \field{year}{2011}
+      \verb{urlraw}
+      \verb https://terrytao.wordpress.com/2011/02/18/the-szemeredi-trotter-theorem-via-the-polynomial-ham-sandwich-theorem
+      \endverb
+      \verb{url}
+      \verb https://terrytao.wordpress.com/2011/02/18/the-szemeredi-trotter-theorem-via-the-polynomial-ham-sandwich-theorem
+      \endverb
+    \endentry
+    \entry{thom1965}{inbook}{}
+      \name{author}{1}{}{%
+        {{hash=6f1f3ecf1d3fa414d9495cc27437887e}{%
+           family={Thom},
+           familyi={T\bibinitperiod},
+           given={René},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Princeton University Press}%
+      }
+      \strng{namehash}{6f1f3ecf1d3fa414d9495cc27437887e}
+      \strng{fullhash}{6f1f3ecf1d3fa414d9495cc27437887e}
+      \strng{bibnamehash}{6f1f3ecf1d3fa414d9495cc27437887e}
+      \strng{authorbibnamehash}{6f1f3ecf1d3fa414d9495cc27437887e}
+      \strng{authornamehash}{6f1f3ecf1d3fa414d9495cc27437887e}
+      \strng{authorfullhash}{6f1f3ecf1d3fa414d9495cc27437887e}
+      \field{labelalpha}{Tho15}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{booktitle}{Differential and Combinatorial Topology}
+      \field{title}{Sur L'Homologie des Varietes Algebriques Réelles}
+      \field{year}{2015}
+      \field{pages}{255\bibrangedash 265}
+      \range{pages}{11}
+      \verb{doi}
+      \verb doi:10.1515/9781400874842-016
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1515/9781400874842-016
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1515/9781400874842-016
+      \endverb
+    \endentry
+    \entry{yuval2015}{online}{}
+      \name{author}{1}{}{%
+        {{hash=f73bc0e7a22bec03ee272451f1af38b3}{%
+           family={{Yuval Wigderson}},
+           familyi={Y\bibinitperiod}}}%
+      }
+      \strng{namehash}{f73bc0e7a22bec03ee272451f1af38b3}
+      \strng{fullhash}{f73bc0e7a22bec03ee272451f1af38b3}
+      \strng{bibnamehash}{f73bc0e7a22bec03ee272451f1af38b3}
+      \strng{authorbibnamehash}{f73bc0e7a22bec03ee272451f1af38b3}
+      \strng{authornamehash}{f73bc0e7a22bec03ee272451f1af38b3}
+      \strng{authorfullhash}{f73bc0e7a22bec03ee272451f1af38b3}
+      \field{labelalpha}{Yuv15}
+      \field{sortinit}{2}
+      \field{sortinithash}{ed39bb39cf854d5250e95b1c1f94f4ed}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{addendum}{accessed: 05.28.2021}
+      \field{title}{The Ham Sandwich Theorem and Friends}
+      \field{year}{2015}
+      \verb{urlraw}
+      \verb http://web.stanford.edu/~yuvalwig/math/teaching
+      \endverb
+      \verb{url}
+      \verb http://web.stanford.edu/~yuvalwig/math/teaching
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

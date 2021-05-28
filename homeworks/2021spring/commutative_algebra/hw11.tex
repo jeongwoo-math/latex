@@ -1,0 +1,107 @@
+\input{format.sty}
+
+\newcommand\homeworknumber{11}
+
+\DeclareMathAlphabet{\mathcal}{OMS}{cmsy}{m}{n}
+
+\begin{document}
+    \maketitle
+
+    \section{Solutions}
+
+    \subsection{Problem~1}
+
+    We need a lemma.
+
+    \begin{Lemma}
+        Let $A$ be a UFD, and $I,J$ be ideals of $A$. If a product $I \cdot J$ is principal, then each of $I$ and $J$ is principal.
+    \end{Lemma}
+
+    \begin{proof}
+        Note that one can define a \emph{gcd} of a given subset of $A$, as the minimal principal ideal containing the given set --- it is well-defined because $A$ is a UFD.
+        
+        One can assume that $\gcd I, \gcd J = A$, because $I = \gcd I \cdot \widetilde I$ and $J = \gcd J \cdot \widetilde J$ hold, where $\widetilde I$ (respectively, $\widetilde J$) is an ideal obtained as $I$ divided by $\gcd I$ (respectively, $\gcd J$), or equivalently, divided by a generator of $\gcd I$ (respectively, $\gcd J$). Of course, $\widetilde I \cdot \widetilde J$ is principal, and $\gcd \widetilde I, \gcd \widetilde J = A$. So, the restricted case implies that $\tilde I$ and $\tilde J$ are principal, thus $I$ and $J$ are so, too.
+
+        Now, let's assume that $\gcd I, \gcd J = A$, that means, the unique principal ideal containing $I$ or $J$ is $A$. I'll show that both of $I$ and $J$ are $A$. If $I \cdot J = a \cdot A \neq A$, then there is a prime element $p$ dividing $a$. Since $p \cdot A$ is prime ideal containing $I \cdot J$, it must contains one of $I$ and $J$. However, this contradicts to the assumption that there is no proper principal ideal containing $I$ or $J$. Hence, en equality $I \cdot J = A$ holds, and this happens only when $I,J$ are $A$. This proves the lemma.
+    \end{proof}
+
+    Now, let's solve the problem. Let $I$ be an invertible fractional ideal with inverse $I^{-1}$. Note that there are non-zero elements $a,a' \in A$ such that $aI, a'I^{-1} \trianglelefteq A$ holds. In particular, they are ideals of $A$ such that the product is $aI \cdot a'I^{-1} = aa' A$, which is principal. Hence, $aI$ must be principal by the lemma above, and $I$ is so, too.
+
+    In conclusion, every invertible ideal must be principal, so the class group must be trivial, by definition. This completes the proof. \qed
+
+    \subsection{Problem~2}
+
+    Assume that $M \not \subseteq N$. We have to conclude that $M \supseteq N$. Let's pick an element $a \in M \setminus N$, and assume that $0 \neq b \in N$. Note that $a \notin R \cdot b$ holds, so one can conclude that $\frac{a}{b} \notin R$. Since $R$ is a valuation ring and $a \neq 0$, we have a relation $\frac{b}{a} \in R$, that means, $b \in R \cdot a \subseteq M$. This implies that $N \setminus 0 \subseteq M$, thus $N$ must be a submodule of $M$. This is what we want to show. \qed
+
+    \subsection{Problem~3}
+
+    I'll show that $\left( \Gamma, \cdot \right)$ forms a group with the identity $R = 1R$ and the inversion $\operatorname{inv}: xR \mapsto x^{-1}R$ --- this map is well-defined since $xR = x'R$ is equivalent to that $x$ and $x'$ associates, so $x^{-1}R$ is independent of a choice of a representative $x$.\footnote{Also, this proves a well-definedness of the given multiplication $\cdot$, as a function.}
+
+    \begin{enumerate}
+        \item[associativity] Because of the identity $(x_1 R \cdot x_2 R) \cdot x_3 R = (x_1 x_2) x_3 R = x_1 (x_2 x_3) R = x_1 R \cdot (x_2 R \cdot x_3 R)$, the property holds.
+        \item[identity] It is clear from $R \cdot xR = xR \cdot R = xR$.
+        \item[inverse] It is not too hard from $xR \cdot x^{-1}R = x^{-1}R \cdot xR = R$.
+        \item[commutativity] This can be deduced from $xR \cdot yR = xy R = yx R = yR \cdot xR$.
+        \item[totally ordered] By the \textbf{Problem~2}, $\Gamma$ is totally ordered as a set. The remainder is to show that, the operation $\cdot$ respects the total order. Let $xR \le x'R$ and $yR \le y'R$ hold, that means, $xR \supseteq x'R$ and $yR \supseteq y'R$. By multiplying $y$ at the inequality $xR \supseteq x'R$, one can deduce that $xR \cdot yR = yxR \supseteq yx'R = x'R \cdot yR$, i.e., $xR \cdot yR \le x'R \cdot yR$ holds. Similarly, we have an inequality $x'R \cdot yR \le x'R \cdot y'R$ holds. By the transitivity, the inequality $xR \cdot yR \le x'R \cdot y'R$ holds, and this is what we want. \qed
+    \end{enumerate}
+
+    \subsection{Problem~4}
+
+    I'll use $\nu$ to denote the given valuation $v$. Before to start the proof, let's prove some basic properties.
+
+    \begin{enumerate}
+        \item[$\Gamma$ is torsion-free.] Assume that $nx = 0$ for some $n \in \mathbb{Z}_{>0}$ and $x \in \Gamma$. It is enough to show that $x = 0$. If $x \neq 0$, then $x$ is either positive or negative. However, $x>0$ implies that $0 = nx > (n-1)x > \cdots > x > 0$, because the operation respects the total order. This makes a contradiction, so $x$ can't be positive. However, similar argument shows that $x$ can't be negative, hence $x$ must be zero. This proves the property.
+        \item[$\nu(1) = 0$] This can be obtained by applying the cancellation law at the identity $\nu(1) = \nu(1 \cdot 1) = \nu(1) + \nu(1)$.
+        \item[$\nu(-1) = 0$] By the property (1), one can know that $0 = \nu(1) = \nu((-1) \cdot (-1)) = 2 \cdot \nu(-1)$. Because $\Gamma$ is torsion-free, $\nu(-1)$ must be zero.
+        \item[$\nu(-x) = \nu(x)$] This can be deduced from the property (1) and the fact that $\nu(-1) = 0$.
+        \item[$\nu \left( x^{-1} \right) = -\nu(x)$] First property gives that $0 = \nu(1) = \nu \left( x \cdot x^{-1} \right) = \nu(x) + \nu \left( x^{-1} \right)$, and this gives the result.
+    \end{enumerate}
+
+    Let's start the proof of the problem.
+
+    \begin{enumerate}
+        \item[$R_\nu$ forms a ring.] Let's show this by several steps.
+        \begin{enumerate}
+            \item[$R_\nu$ forms an abelian group.] Clearly, $0 \in R_\nu$, in particular, $R_\nu$ is non-empty. Let $x,y \in R_\nu$, or equivalently, $\nu(x), \nu(y) \ge 0$. By the property (1), $\nu(x-y) = \nu(x) + \nu(-y) \ge 0 $ holds, i.e., $x-y \in R_\nu$. Hence, $R_\nu$ is a group, and is abelian since the addition is inherited from a field.
+            \item[$R_\nu$ forms a ring.] Since $\nu(1) = 0$, the set $R_\nu$ contains $1$. If $x,y \in R_\nu$, then $\nu\left( xy \right) \ge \min \left\{ \nu(x), \nu\left( y \right) \right\} \ge 0$ holds, i.e., $xy \in R_\nu$. Hence, $R_\nu$ forms a ring.
+            \item[$R_\nu$ is a valuation ring.] For any $x \in K$, either $\nu(x) \ge 0$ or $\nu(x) \le 0$ holds. If $\nu(x) \ge 0$, then $x \in R_\nu$. If not, then $\nu\left( x^{-1} \right) = -\nu(x) \ge 0$, so $x^{-1} \in R_\nu$ holds. Hence, $R_\nu$ is a valuation ring.
+            \item[$\mathfrak{m}_\nu$ is the maximal ideal of $R_\nu$.] First, let's show that $\mathfrak{m}_\nu$ forms an ideal of $R_\nu$. This forms a group since it contains zero, and if $x,y \in \mathfrak{m}_\nu$, then $\nu\left( x-y \right) = \nu(x) + \nu\left( y \right) >0$, i.e., $x-y \in \mathfrak{m}_\nu$ holds. This forms an ideal since $\nu \left( ax \right) = \nu(a) + \nu(x) > 0$ holds, i.e., $ax \in \mathfrak{m}_\nu$ holds, for any $a \in R_\nu$ and $x \in \mathfrak{m}_\nu$.
+            
+            To show the maximality, it is enough to show that $R_\nu \setminus \mathfrak{m}_\nu = \nu ^{-1}\left( 0 \right)$ is the set of all units. However, if $x$ is a unit, then $0 \ge -\nu(x) = \nu \left( x^{-1} \right) \ge 0$ holds, i.e., $x \in \nu^{-1}(0)$. Conversely, if $\nu(x) = 0$, then $\nu \left( x^{-1} \right) = -\nu(x) = 0$, so $x^{-1} \in R_\nu$, i.e., $x$ has a unit in $R_\nu$. This completes the proof. \qed
+        \end{enumerate}
+    \end{enumerate}
+
+    \subsection{Problem~5}
+
+    We define $\nu\left( 0 \right) = \infty$. Since $\nu$ satisfies
+
+    \begin{enumerate}
+        \item[$\nu\left( xy \right) = \nu(x) \cdot \nu\left( y \right)$] This holds by definition: $\nu\left( xy \right) = xyR = \left( xR \right) \cdot \left( yR \right) = \nu\left( x \right) \cdot \nu\left( y \right)$.
+        \item[$\begin{matrix} \qquad \qquad \nu\left( x+y \right) \\ \ge \min \left\{ \nu(x), \nu\left( y \right) \right\} \end{matrix}$] Assume that $\nu(x) \ge \nu\left( y \right)$, i.e., $xR \subseteq yR$. Then, $\left( x+y \right)R \subseteq xR + yR = yR$ holds, so we can know that $\nu \left( x+y \right) \ge \nu\left( y \right)$. This shows the inequality.
+        \item[$\nu ^{-1}\left( \infty \right) = \left\{ 0 \right\}$] Clear by definition.
+    \end{enumerate}
+
+    it muse be a valuation. \qed
+
+    \subsection{Problem~6}
+
+    Let's consider a finitely-generated ideal $I = \sum_{i=1}^n a_i \cdot R$, where $a_i \in I$ are finitely many generators of $I$. Since the ideals of $R$ is totally ordered under the subset relation, there is the maximum $\max_{1 \le i \le n} a_i \cdot R$. Clearly, this maximum must be $I$, so $I$ must be principal. \qed
+
+    \subsection{Problem~7}
+
+    By \textbf{Problem~6}, every finitely-generated ideal must be principal. Also, every ideal is finitely-generated if $R$ is Noetherian. Hence, every ideal is principal. In this case, $R$ is a Noetherian local domain with a principal maximal ideal, so it must be a DVR. \qed
+
+    \subsection{Problem~8}
+
+    \begin{enumerate}
+        \item This is because $A\left[ x_i \right]_{1 \le i \le n}$ contains $A$.
+        \item A ring contains both $A\left[ x_i \right]_i$ and $A\left[ y_j \right]_j$ if and only if it contains $A \left[ x_i, y_j \right]_{i,j}$, because $A\left[ x_i, y_j \right]_{i,j}$ is the smallest ring containing both $A\left[ x_i \right]_i$ and $A\left[ y_j \right]_j$. Hence, $R \in U\left( x_i \right)_i \cap U\left( y_j \right)_j$ is equivalent to $R \in U\left( x_i, y_j \right)_{i,j}$. This proves the equality.
+        \item For each point $R \in U\left( x_i \right)_i \cap U\left( y_j \right)_j$, there is an element in $\mathcal{T}$ which is a subset of $U\left( x_i \right)_i \cap U\left( y_j \right)_j$ containing $R$: one can take $U\left( x_i, y_j \right)_{i,j}$ by the above result. Hence, $\mathcal{T}$ forms an open basis.
+        \item Note that $\left\{ U\left( x \right) \right\}_{x \in K}$ forms a subbase of the Zariski topology. By \href{https://en.wikipedia.org/wiki/Subbase\#Results\_using\_subbases}{\uwave{Alexander subbase theorem}}, it is enough to show that every open covering $\left\{ U\left( x_i \right) \right\}_{i \in I}$ has a finite subcovering.
+        
+        Let's consider a ring $A' = A\left[ x_i^{-1} \right]_{i \in I}$, and an ideal $\mathfrak{a} = \left\langle x_i^{-1} \right\rangle_{i \in I} \trianglelefteq A'$. If $\mathfrak{a}$ is proper, then there is a maximal ideal $\mathfrak{m}$ containing it. Hence, there is a valuation ring $R \in \operatorname{Zar}(K,A')$ such that $\mathfrak{m} = \mathfrak{m}_R \cap A'$, where $\mathfrak{m}_R$ is the maximal ideal of $R$. This implies that $x_i \notin R$ for all $i \in I$, because $\mathfrak{m}_R \supseteq \mathfrak{m} \ni x_i$, so each $x_i$ can't be a unit. However, this means that $R$ is not covered by $\left\{ U\left( x_i \right) \right\}_{i \in I}$, and this contradicts to our assumption. Thus, $1 \in \mathfrak{a}$ holds, i.e., there is a finite subset $I' \subseteq I$ and a $A$-coefficient multivariate polynomial $f \in A\left[ t_i \right]_{i \in I'}$ without constant term such that $1 = f\left( x_i^{-1} \right)_{i \in I'}$ holds --- this is because every element in $\mathfrak{a}$ is of that form. I'll show that $\left\{ U\left( x_i \right) \right\}_{i \in I'}$ gives a finite subcovering we want.
+
+        Assume that $R \in \operatorname{Zar}(K,A)$ is not covered by $\left\{ U\left( x_i \right) \right\}_{i \in I'}$, i.e., $R \not \ni x_i$ for all $i \in I'$. This means that $\mathfrak{m}_R \ni x_i^{-1}$ for all $i \in I'$, where $\mathfrak{m}_R$ is the maximal ideal of $R$. However, one can deduce that $\mathfrak{m}_R \ni f\left( x_i^{-1} \right)_{i \in I'} = 1$, and this does not make sense, because any maximal ideal cannot contain $1$. Therefore, $\left\{ U\left( x_i \right) \right\}_{i \in I'}$ forms a subcovering, and this completes the proof. \qed
+    \end{enumerate}
+
+\end{document}

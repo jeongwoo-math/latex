@@ -18,15 +18,16 @@
 \usepackage{ebgaramond-maths}
 
 \usepackage{array}
-\usepackage{fullpage}
+%\usepackage{fullpage}
 \usepackage{comment}
 \usepackage{enumitem}
 \usepackage[most]{tcolorbox}
 \usepackage{hyperref}
-\usepackage{ulem}
+\usepackage[normalem]{ulem}
 
+\usepackage{fancyhdr}
 % \usepackage{mathtools}
-\usepackage{marginnote}
+%\usepackage{marginnote}
 % \usepackage[overlay]{textpos}
 
 \setlength{\parskip}{0.5em}
@@ -37,10 +38,10 @@
 % Theorem-type environments
 
 \theoremstyle{plain}
-\newtheorem{Theorem}[subsection]{Theorem}
+\newtheorem{Theorem}[subsubsection]{Theorem}
 \newtheorem*{Theorem*}{Theorem}
 
-\newtheorem{Lemma}[subsection]{Lemma}
+\newtheorem{Lemma}[subsubsection]{Lemma}
 \newtheorem*{Lemma*}{Lemma}
 
 \newtheorem{Proposition}[subsection]{Proposition}
@@ -127,6 +128,7 @@
 \DeclareMathOperator{\colim}{colim}
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\dom}{dom}
+\DeclareMathOperator{\edim}{edim}
 \DeclareMathOperator{\End}{End}
 \DeclareMathOperator{\Ext}{Ext}
 \DeclareMathOperator{\fd}{fd}
